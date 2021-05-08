@@ -1,0 +1,14 @@
+- App
+  - Main Container
+    - Landing Page (if file not imported)
+      - Display w/ import button
+    - Rendered Page (if file imported)
+      - Header
+      - Component Tree
+        - Head Node
+        - Node
+      - Visualizer
+        - State/Props Container
+          - State/Prop Item
+        - Rendered Container
+          - React Component from Node
