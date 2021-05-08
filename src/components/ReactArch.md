@@ -1,14 +1,15 @@
+Current React component architecture
+
 - App
-  - Main Container
-    - Landing Page (if file not imported)
-      - Display w/ import button
-    - Rendered Page (if file imported)
+  - MainContainer
+    - LandingPage (if file not imported)
+    - RenderedPage (if file imported)
       - Header
-      - Component Tree
+      - ComponentTree
         - Head Node
         - Node
       - Visualizer
-        - State/Props Container
-          - State/Prop Item
-        - Rendered Container
-          - React Component from Node
+        - StateContainer
+          - StateItem
+        - RenderedContainer
+          - ReactComponent

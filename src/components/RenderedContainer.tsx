@@ -3,7 +3,7 @@ import ReactComponent from './ReactComponent';
 
 export default function RenderedContainer() {
   return (
-    <div>
+    <div className='renderedContainer'>
       <ReactComponent />
     </div>
   );

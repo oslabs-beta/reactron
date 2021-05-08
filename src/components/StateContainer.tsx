@@ -5,7 +5,7 @@ import StateItem from './StateItem';
 
 export default function StateContainer() {
   return (
-    <div>
+    <div className='stateContainer'>
       <StateItem />
     </div>
   );

@@ -1,6 +1,8 @@
 import React from 'react';
-import LandingDisplay from './LandingDisplay';
+
+// Will house the landing page / initial render page
+// Will import files from here
 
 export default function LandingPage() {
-  return <LandingDisplay />;
+  return <div className='landingPage'>LandingPage</div>;
 }
