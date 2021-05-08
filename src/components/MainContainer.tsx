@@ -2,12 +2,14 @@ import LandingPage from './LandingPage';
 import RenderedPage from './RenderedPage';
 import React from 'react';
 
-// conditional rendering in future
+// Houses the future conditional rendering
+// If file has not been imported, landing page should display
+// If file has been imported, rendered page should display
 
 export default function MainContainer() {
   return (
-    <div>
-      <LandingPage />
+    <div className='mainContainer'>
+      {/* <LandingPage /> */}
       <RenderedPage />
     </div>
   );

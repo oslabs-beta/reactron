@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function StateItem() {
-  return <div>Hello</div>;
+  return <div className='stateItem'>State / Prop</div>;
 }
