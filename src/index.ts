@@ -16,7 +16,6 @@ let mainWindow: {
   };
 } = null;
 
-
 const createWindow = (): void => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -38,7 +37,6 @@ const createWindow = (): void => {
   const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
   Menu.setApplicationMenu(mainMenu);
 };
-
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -67,7 +65,7 @@ app.on('activate', () => {
 
 exports.getFile = () => {
   const files = dialog.showOpenDialog({
-    properties: ['openFile'],
+    properties: ['openDirectory'],
   });
   files.then((data: { filePaths: any[] }) => {
     const file = data.filePaths[0];
@@ -76,8 +74,20 @@ exports.getFile = () => {
 };
 
 const openFile = (file: any) => {
-  const result = fs.readFileSync(file).toString();
-  mainWindow.webContents.send('file-opened', result);
+  const returnArr: string[] = [];
+  const result = fs.readdirSync(file);
+  result.forEach((elem: string) => {
+    if (elem.includes('.', 1)) {
+      returnArr.push(elem);
+    } else if (elem[0] !== '.') {
+      returnArr.push(...openFile(`${file}/${elem}`));
+    }
+  });
+  console.log(returnArr);
+  return returnArr;
+  // result is array
+  //openFile(file);
+  //mainWindow.webContents.send('file-opened', result);
 };
 
 const mainMenuTemplate = [
