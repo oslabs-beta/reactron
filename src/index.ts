@@ -1,4 +1,5 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, dialog, Menu } from 'electron';
+import fs from 'fs';
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -12,6 +13,10 @@ const createWindow = (): void => {
   const mainWindow = new BrowserWindow({
     height: 800,
     width: 1000,
+    webPreferences: {
+      nodeIntegration: true,
+      enableRemoteModule: true,
+    },
   });
 
   // and load the index.html of the app.
@@ -19,6 +24,9 @@ const createWindow = (): void => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+  Menu.setApplicationMenu(mainMenu);
 };
 
 // This method will be called when Electron has finished
@@ -45,3 +53,35 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+function openFile() {
+  const files = dialog.showOpenDialog({
+    properties: ['openDirectory'],
+  });
+  files.then((data) => {
+    const result = fs.readdirSync(data.filePaths[0]);
+    console.log(result);
+  });
+}
+
+const mainMenuTemplate = [
+  { label: 'Electron' },
+  {
+    label: 'File',
+    submenu: [
+      {
+        label: 'Open File',
+        click() {
+          openFile();
+        },
+      },
+      {
+        label: 'Quit',
+        accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click() {
+          app.quit();
+        },
+      },
+    ],
+  },
+];
