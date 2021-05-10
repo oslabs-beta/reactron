@@ -29,6 +29,20 @@
 import './index.scss';
 import './main';
 
+const { remote, ipcRenderer } = require('electron');
+
+const mainProcess = remote.require('./index');
+
+const testVar = document.getElementById('selectMe');
+
+testVar.addEventListener('click', () => {
+  mainProcess.getFile();
+});
+
+// ipcRenderer.on('file-opened', (event, ...args) => {
+//   console.log(args)
+// })
+
 console.log(
   '👋 This message is being logged by "renderer.js", included via webpack'
 );
