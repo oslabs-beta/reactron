@@ -3,7 +3,7 @@ import Header from './Header';
 import ComponentTree from './ComponentTree';
 import Visualizer from './Visualizer';
 const electron = window.require('electron');
-// allows async rendering
+// allows async rendering, and listens from the main processor
 const ipcRenderer = electron.ipcRenderer;
 
 // Page that will show once directory has been imported

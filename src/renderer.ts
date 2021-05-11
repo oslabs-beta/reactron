@@ -32,10 +32,10 @@ import './index.scss';
 import './main';
 
 // IPC stands for inter-process communication
-// ipcRenderer allows async rendering
+// ipcRenderer allows async rendering, listens from main processor
 const { remote, ipcRenderer } = require('electron');
 
-// ipcMain, event emitter, allows async main processing
+// ipcMain, event emitter, allows async main processing, will listen from the renderer
 
 const mainProcess = remote.require('./index');
 

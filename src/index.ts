@@ -73,6 +73,7 @@ exports.getFile = () => {
   });
   files.then((data: { filePaths: string[] }) => {
     // <--filepaths is an array from the returned user's choice
+
     const file = data.filePaths[0];
     openFile(file); //invoke helper function to open first (only?) returned file from dialogue
   });
@@ -85,7 +86,8 @@ const openFile = (file: string) => {
   const result = fs.readdirSync(file); //result is an array of arrays (which represent directorys) filled with file names
   result.forEach((elem: string) => {
     if (elem.includes('.', 1)) {
-      //if there is a period in string past position 1 (so its not a hidden file) we push it
+      //if there is a period in string past position 1 (so its not a hidden file) we push it 
+
       returnObj[file].push(elem); // pushes file to array
     } else if (elem[0] !== '.' && elem !== 'node_modules') {
       //if its not a hidden file or the node modules folder....
