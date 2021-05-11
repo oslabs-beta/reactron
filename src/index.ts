@@ -8,6 +8,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+// declare mainWindow variable outside the createWindow function to persist
 let mainWindow: {
   loadURL: (arg0: any) => void;
   webContents: {
@@ -16,6 +17,7 @@ let mainWindow: {
   };
 } = null;
 
+// create window size and preferences
 const createWindow = (): void => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -63,33 +65,38 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
+//Function to read file system and open directory of user's choosing 
 exports.getFile = () => {
-  const files = dialog.showOpenDialog({
+  const files = dialog.showOpenDialog({ //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
     properties: ['openDirectory'],
   });
-  files.then((data: { filePaths: any[] }) => {
+  files.then((data: { filePaths: any[] }) => { // <--filepaths is an array from the returned user's choice
     const file = data.filePaths[0];
-    openFile(file);
+    openFile(file);//invoke helper function to open first (only?) returned file from dialogue
   });
 };
 
-const openFile = (file: any) => {
-  const returnArr: string[] = [];
-  const result = fs.readdirSync(file);
+const openFile = (file: string) => { //file here is a file path, could be directory or a single file
+  const returnArr: string[] = []; //an array of strings
+  const result = fs.readdirSync(file); //result is an array of arrays (which represent directorys) filled with file names
   result.forEach((elem: string) => {
-    if (elem.includes('.', 1)) {
-      returnArr.push(elem);
-    } else if (elem[0] !== '.') {
-      returnArr.push(...openFile(`${file}/${elem}`));
+    if (elem.includes('.', 1)) { //if there is a period in string past position 1 (so its not a hidden file) we push it to returnArr
+      returnArr.push(elem);//because otherwise its a nested directory
+    } else if (elem[0] !== '.') { //if its not a hidden file....
+      returnArr.push(...openFile(`${file}/${elem}`)); //recursively call open again on the nested directory and push recursive results to returnArr.
     }
   });
   console.log(returnArr);
   return returnArr;
   // result is array
+  // next step is to create another function to utilize the array of filenames 
+    // to use for the react fiber tree(react tree graph) and rendering page
   //openFile(file);
   //mainWindow.webContents.send('file-opened', result);
 };
 
+
+// from electronForge
 const mainMenuTemplate = [
   { label: 'Electron' },
   {
