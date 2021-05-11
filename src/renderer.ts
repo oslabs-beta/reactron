@@ -26,15 +26,23 @@
  * ```
  */
 
+
+// renderer is needed to render files to react for electron
+// import files here
 import './index.scss';
 import './main';
 
+// IPC stands for inter-process communication
+// ipcRenderer allows async rendering
 const { remote, ipcRenderer } = require('electron');
+
+// ipcMain, event emitter, allows async main processing
 
 const mainProcess = remote.require('./index');
 
+// selectMe button in RenderedPage
 const testVar = document.getElementById('selectMe');
-
+// onClick, populate the page with file contents
 testVar.addEventListener('click', () => {
   mainProcess.getFile();
 });
