@@ -8,6 +8,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+// declare mainWindow variable outside the createWindow function to persist
 let mainWindow: {
   loadURL: (arg0: any) => void;
   webContents: {
@@ -16,6 +17,7 @@ let mainWindow: {
   };
 } = null;
 
+// create window size and preferences
 const createWindow = (): void => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -87,10 +89,14 @@ const openFile = (file: string) => { //file here is a file path, could be direct
   console.log(returnArr);
   return returnArr;
   // result is array
+  // next step is to create another function to utilize the array of filenames 
+    // to use for the react fiber tree(react tree graph) and rendering page
   //openFile(file);
   //mainWindow.webContents.send('file-opened', result);
 };
 
+
+// from electronForge
 const mainMenuTemplate = [
   { label: 'Electron' },
   {
