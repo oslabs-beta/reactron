@@ -10,10 +10,11 @@ const ipcRenderer = electron.ipcRenderer;
 
 // exports RenderedPage with hook
 export default function RenderedPage() {
-  // allows async rendering
+  // allows async rendering, to listen from the main processor
   ipcRenderer.on('file-opened', (event: any, content: string) => {
     // reassign #hello to content rendered from ipcRenderer, the file uploaded
-    document.getElementById('hello').innerText = content;
+    console.log(content);
+    document.getElementById('hello').innerHTML = content;
   });
   return (
     <div className='renderedPage'>

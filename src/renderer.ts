@@ -26,7 +26,6 @@
  * ```
  */
 
-
 // renderer is needed to render files to react for electron
 // import files here
 import './index.scss';
@@ -44,7 +43,7 @@ const mainProcess = remote.require('./index');
 const testVar = document.getElementById('selectMe');
 // onClick, populate the page with file contents
 testVar.addEventListener('click', () => {
-  mainProcess.getFile();
+  mainProcess.testFile();
 });
 
 // ipcRenderer.on('file-opened', (event, ...args) => {

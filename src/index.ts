@@ -31,7 +31,7 @@ const createWindow = (): void => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY); // refer to package.json line 46 for "magic", entry points are index.html and renderer.ts
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -71,7 +71,7 @@ exports.getFile = () => {
     //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
     properties: ['openDirectory'],
   });
-  files.then((data: { filePaths: any[] }) => {
+  files.then((data: { filePaths: string[] }) => {
     // <--filepaths is an array from the returned user's choice
     const file = data.filePaths[0];
     openFile(file); //invoke helper function to open first (only?) returned file from dialogue
@@ -80,24 +80,23 @@ exports.getFile = () => {
 
 const openFile = (file: string) => {
   //file here is a file path, could be directory or a single file
-  const returnArr: string[] = []; //an array of strings
+  const returnObj: any = {}; // empty object to hold results
+  returnObj[file] = []; // initializing the file path as a key, value empty obj
   const result = fs.readdirSync(file); //result is an array of arrays (which represent directorys) filled with file names
   result.forEach((elem: string) => {
     if (elem.includes('.', 1)) {
-      //if there is a period in string past position 1 (so its not a hidden file) we push it to returnArr
-      returnArr.push(elem); //because otherwise its a nested directory
+      //if there is a period in string past position 1 (so its not a hidden file) we push it
+      returnObj[file].push(elem); // pushes file to array
     } else if (elem[0] !== '.' && elem !== 'node_modules') {
-      //if its not a hidden file....
-      returnArr.push(...openFile(`${file}/${elem}`)); //recursively call open again on the nested directory and push recursive results to returnArr.
+      //if its not a hidden file or the node modules folder....
+      returnObj[file].push(openFile(`${file}/${elem}`)); // pushes to array the result of calling openFile recursively on subdirectory
     }
   });
-  console.log(returnArr);
-  return returnArr;
+  console.dir(returnObj, { depth: null }); // a console log but makes it pretty and shows all nested arrays/objs
+  return returnObj;
   // result is array
   // next step is to create another function to utilize the array of filenames
   // to use for the react fiber tree(react tree graph) and rendering page
-  //openFile(file);
-  //mainWindow.webContents.send('file-opened', result);
 };
 
 // from electronForge
@@ -116,3 +115,20 @@ const mainMenuTemplate = [
     ],
   },
 ];
+
+const testHTML = (file: string) => {
+  //First - read contents of given-file
+  const result = fs.readFileSync(file).toString();
+  mainWindow.webContents.send('file-opened', result);
+};
+
+exports.testFile = () => {
+  const file = dialog
+    .showOpenDialog({
+      properties: ['openFile'],
+    })
+    .then((data: { filePaths: string[] }) => {
+      const info = data.filePaths[0];
+      testHTML(info);
+    });
+};
