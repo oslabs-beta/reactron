@@ -65,14 +65,17 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-//Function to read file system and open directory of user's choosing 
+//Function to read file system and open directory of user's choosing
 exports.getFile = () => {
-  const files = dialog.showOpenDialog({ //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
+  const files = dialog.showOpenDialog({
+    //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
     properties: ['openDirectory'],
   });
-  files.then((data: { filePaths: string[] }) => { // <--filepaths is an array from the returned user's choice
+  files.then((data: { filePaths: string[] }) => {
+    // <--filepaths is an array from the returned user's choice
+
     const file = data.filePaths[0];
-    openFile(file);//invoke helper function to open first (only?) returned file from dialogue
+    openFile(file); //invoke helper function to open first (only?) returned file from dialogue
   });
 };
 
@@ -84,6 +87,7 @@ const openFile = (file: string) => {
   result.forEach((elem: string) => {
     if (elem.includes('.', 1)) {
       //if there is a period in string past position 1 (so its not a hidden file) we push it 
+
       returnObj[file].push(elem); // pushes file to array
     } else if (elem[0] !== '.' && elem !== 'node_modules') {
       //if its not a hidden file or the node modules folder....
@@ -113,3 +117,20 @@ const mainMenuTemplate = [
     ],
   },
 ];
+
+const testHTML = (file: string) => {
+  //First - read contents of given-file
+  const result = fs.readFileSync(file).toString();
+  mainWindow.webContents.send('file-opened', result);
+};
+
+exports.testFile = () => {
+  const file = dialog
+    .showOpenDialog({
+      properties: ['openFile'],
+    })
+    .then((data: { filePaths: string[] }) => {
+      const info = data.filePaths[0];
+      testHTML(info);
+    });
+};
