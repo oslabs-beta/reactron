@@ -31,7 +31,7 @@ const createWindow = (): void => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY); // refer to package.json line 46 for "magic", entry points are index.html and renderer.ts
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -70,31 +70,32 @@ exports.getFile = () => {
   const files = dialog.showOpenDialog({ //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
     properties: ['openDirectory'],
   });
-  files.then((data: { filePaths: any[] }) => { // <--filepaths is an array from the returned user's choice
+  files.then((data: { filePaths: string[] }) => { // <--filepaths is an array from the returned user's choice
     const file = data.filePaths[0];
     openFile(file);//invoke helper function to open first (only?) returned file from dialogue
   });
 };
 
-const openFile = (file: string) => { //file here is a file path, could be directory or a single file
-  const returnArr: string[] = []; //an array of strings
+const openFile = (file: string) => {
+  //file here is a file path, could be directory or a single file
+  const returnObj: any = {}; // empty object to hold results
+  returnObj[file] = []; // initializing the file path as a key, value empty obj
   const result = fs.readdirSync(file); //result is an array of arrays (which represent directorys) filled with file names
   result.forEach((elem: string) => {
-    if (elem.includes('.', 1)) { //if there is a period in string past position 1 (so its not a hidden file) we push it to returnArr
-      returnArr.push(elem);//because otherwise its a nested directory
-    } else if (elem[0] !== '.' && elem !== 'node_modules') { //if its not a hidden file....
-      returnArr.push(...openFile(`${file}/${elem}`)); //recursively call open again on the nested directory and push recursive results to returnArr.
+    if (elem.includes('.', 1)) {
+      //if there is a period in string past position 1 (so its not a hidden file) we push it 
+      returnObj[file].push(elem); // pushes file to array
+    } else if (elem[0] !== '.' && elem !== 'node_modules') {
+      //if its not a hidden file or the node modules folder....
+      returnObj[file].push(openFile(`${file}/${elem}`)); // pushes to array the result of calling openFile recursively on subdirectory
     }
   });
-  console.log(returnArr);
-  return returnArr;
+  console.dir(returnObj, { depth: null }); // a console log but makes it pretty and shows all nested arrays/objs
+  return returnObj;
   // result is array
-  // next step is to create another function to utilize the array of filenames 
-    // to use for the react fiber tree(react tree graph) and rendering page
-  //openFile(file);
-  //mainWindow.webContents.send('file-opened', result);
+  // next step is to create another function to utilize the array of filenames
+  // to use for the react fiber tree(react tree graph) and rendering page
 };
-
 
 // from electronForge
 const mainMenuTemplate = [
