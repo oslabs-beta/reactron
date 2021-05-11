@@ -65,36 +65,40 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 
-//Function to read file system and open directory of user's choosing 
+//Function to read file system and open directory of user's choosing
 exports.getFile = () => {
-  const files = dialog.showOpenDialog({ //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
+  const files = dialog.showOpenDialog({
+    //<--opens dialogue window to choose directory and sets that choice to 'files' and returns a promise
     properties: ['openDirectory'],
   });
-  files.then((data: { filePaths: any[] }) => { // <--filepaths is an array from the returned user's choice
+  files.then((data: { filePaths: any[] }) => {
+    // <--filepaths is an array from the returned user's choice
     const file = data.filePaths[0];
-    openFile(file);//invoke helper function to open first (only?) returned file from dialogue
+    openFile(file); //invoke helper function to open first (only?) returned file from dialogue
   });
 };
 
-const openFile = (file: string) => { //file here is a file path, could be directory or a single file
+const openFile = (file: string) => {
+  //file here is a file path, could be directory or a single file
   const returnArr: string[] = []; //an array of strings
   const result = fs.readdirSync(file); //result is an array of arrays (which represent directorys) filled with file names
   result.forEach((elem: string) => {
-    if (elem.includes('.', 1)) { //if there is a period in string past position 1 (so its not a hidden file) we push it to returnArr
-      returnArr.push(elem);//because otherwise its a nested directory
-    } else if (elem[0] !== '.') { //if its not a hidden file....
+    if (elem.includes('.', 1)) {
+      //if there is a period in string past position 1 (so its not a hidden file) we push it to returnArr
+      returnArr.push(elem); //because otherwise its a nested directory
+    } else if (elem[0] !== '.' && elem !== 'node_modules') {
+      //if its not a hidden file....
       returnArr.push(...openFile(`${file}/${elem}`)); //recursively call open again on the nested directory and push recursive results to returnArr.
     }
   });
   console.log(returnArr);
   return returnArr;
   // result is array
-  // next step is to create another function to utilize the array of filenames 
-    // to use for the react fiber tree(react tree graph) and rendering page
+  // next step is to create another function to utilize the array of filenames
+  // to use for the react fiber tree(react tree graph) and rendering page
   //openFile(file);
   //mainWindow.webContents.send('file-opened', result);
 };
-
 
 // from electronForge
 const mainMenuTemplate = [
