@@ -13,6 +13,7 @@ export default function RenderedPage() {
   // allows async rendering, to listen from the main processor
   ipcRenderer.on('file-opened', (event: any, content: string) => {
     // reassign #hello to content rendered from ipcRenderer, the file uploaded
+    console.log(content);
     document.getElementById('hello').innerHTML = content;
   });
   return (
