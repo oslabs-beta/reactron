@@ -82,7 +82,7 @@ const openFile = (file: string) => { //file here is a file path, could be direct
   result.forEach((elem: string) => {
     if (elem.includes('.', 1)) { //if there is a period in string past position 1 (so its not a hidden file) we push it to returnArr
       returnArr.push(elem);//because otherwise its a nested directory
-    } else if (elem[0] !== '.') { //if its not a hidden file....
+    } else if (elem[0] !== '.' && elem !== 'node_modules') { //if its not a hidden file....
       returnArr.push(...openFile(`${file}/${elem}`)); //recursively call open again on the nested directory and push recursive results to returnArr.
     }
   });
