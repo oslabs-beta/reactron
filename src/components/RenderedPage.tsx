@@ -14,13 +14,13 @@ export default function RenderedPage() {
   ipcRenderer.on('file-opened', (event: any, content: string) => {
     // reassign #hello to content rendered from ipcRenderer, the file uploaded
     console.log(content);
-    document.getElementById('hello').innerHTML = content;
+    document.getElementById('tester').innerHTML = content;
   });
   return (
     <div className='renderedPage'>
       {/* button selectMe in renderer.ts */}
       <button id='selectMe'>Click Me</button>
-      <div id='hello'></div>
+      <iframe id="tester"></iframe>
       <Header />
       <ComponentTree />
       <Visualizer />

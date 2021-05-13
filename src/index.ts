@@ -1,4 +1,4 @@
-const { app, BrowserWindow, dialog, Menu, Tray } = require('electron');
+const { app, BrowserView, BrowserWindow, dialog, Menu, Tray } = require('electron');
 const fs = require('fs');
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
@@ -118,10 +118,12 @@ const mainMenuTemplate = [
   },
 ];
 
+const view = new BrowserView()
+
 const testHTML = (file: string) => {
   //First - read contents of given-file
   const result = fs.readFileSync(file).toString();
-  mainWindow.webContents.send('file-opened', result);
+  view.webContents.loadURL(result);
 };
 
 exports.testFile = () => {
