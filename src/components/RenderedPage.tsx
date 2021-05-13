@@ -2,14 +2,10 @@ import React from 'react';
 import Header from './Header';
 import ComponentTree from './ComponentTree';
 import Visualizer from './Visualizer';
-const electron = window.require('electron');
-// allows async rendering, and listens from the main processor
-const ipcRenderer = electron.ipcRenderer;
 
 // Page that will show once directory has been imported
-
-// exports RenderedPage with hook
 export default function RenderedPage() {
+<<<<<<< HEAD
   // allows async rendering, to listen from the main processor
   ipcRenderer.on('file-opened', (event: any, content: string) => {
     // reassign #hello to content rendered from ipcRenderer, the file uploaded
@@ -21,9 +17,15 @@ export default function RenderedPage() {
       {/* button selectMe in renderer.ts */}
       <button id='selectMe'>Click Me</button>
       <iframe id="tester"></iframe>
+=======
+return (
+    <div className='renderedPage'>
+>>>>>>> cdd30d08009d87f11450dd8edb7d455ea2e55c45
       <Header />
       <ComponentTree />
       <Visualizer />
     </div>
   );
 }
+
+
