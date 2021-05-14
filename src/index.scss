@@ -1,66 +1,13 @@
-/* body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
-    Arial, sans-serif;
-  margin: auto;
-  max-width: 38rem;
-  padding: 2rem;
-} */
-
-/* MAIN CONTAINER */
-.mainContainer {
-  color: black;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* LANDING PAGE */
-.landingPage {
-  display: flex;
-  justify-content: center;
-}
-
-/* RENDERED PAGE */
-.renderedPage {
-  display: grid;
-  grid-template-columns: 45% 55%;
-}
-
-.renderedPage header {
-  grid-column: 1 / span 2;
-  border: 2px solid black;
-}
-
-/* COMPONENT TREE */
-.componentTree {
-  grid-column: 1 / span 1;
-  min-height: 700px;
-  border: 2px solid blue;
-}
-
-.node {
-  color: black;
-}
-
-/* VISUALIZER */
-.visualizer {
-  grid-column: 2 / span 1;
-  border: 2px solid red;
-}
-
-/* STATE CONTAINER */
-.stateContainer {
-  color: red;
-}
-
-/* STATE ITEM */
-.stateItem {
-  color: black;
-}
-
-/* RENDERED CONTAINER */
-.renderedContainer {
-  color: red;
-}
-
-/* REACT COMPONENT RENDERED */
-.reactComponent {
-  color: black;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
