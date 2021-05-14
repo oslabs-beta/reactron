@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactComponent from './ReactComponent';
+import ReactComponent from './ReactComponent.jsx';
 
 export default function RenderedContainer() {
   return (

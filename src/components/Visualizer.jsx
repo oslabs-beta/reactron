@@ -1,6 +1,6 @@
 import React from 'react';
-import StateContainer from './StateContainer';
-import RenderedContainer from './RenderedContainer';
+import StateContainer from './StateContainer.jsx';
+import RenderedContainer from './RenderedContainer.jsx';
 
 // shows the selected React Component and it's props / state / methods
 

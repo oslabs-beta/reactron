@@ -1,5 +1,5 @@
 import React from 'react';
-import StateItem from './StateItem';
+import StateItem from './StateItem.jsx';
 
 // conditional rendering based on how many state items
 

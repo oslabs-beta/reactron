@@ -1,5 +1,5 @@
-import LandingPage from './LandingPage';
-import RenderedPage from './RenderedPage';
+import LandingPage from './LandingPage.jsx';
+import RenderedPage from './RenderedPage.jsx';
 import React from 'react';
 
 // Houses the future conditional rendering
