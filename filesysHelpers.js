@@ -1,5 +1,7 @@
 const fsHelpers = {};
 
+fsHelpers.result = {};
+
 fsHelpers.directoryLogger = async (fileHandle) => {
   const fileObj = {};
   fileObj[fileHandle.name] = {
@@ -14,22 +16,83 @@ fsHelpers.directoryLogger = async (fileHandle) => {
     ) {
       const result = await fsHelpers.directoryLogger(handle);
       fileObj[fileHandle.name].files.push(result);
-    } else if (handle.kind === 'file') {
+    } else if (handle.kind === 'file' && handle.name !== '.DS_Store') {
       fileObj[fileHandle.name].files.push(handle);
     }
   }
   return fileObj;
 };
 
-fsHelpers.fileDisplay = async (filesArray) => {
-  filesArray.forEach((elem) => {
+fsHelpers.fileDisplay = async (filesArray, type) => {
+  const fileAdded = filesArray[Object.keys(filesArray)[0]].files;
+  const fileObj = [];
+  fileAdded.forEach((elem) => {
     if (elem.kind) {
       // these are regular files
+      fileObj.push(elem);
     } else if (elem[Object.keys(elem)[0]].handle.kind) {
       // these are directories
-      fsHelpers.fileDisplay(elem[Object.keys(elem)[0]].files);
+      const res = fsHelpers.fileDisplay(elem);
+      res.then((data) => fileObj.push(...data));
     }
   });
+  fsHelpers.result[type] = fileObj;
+  return fileObj;
 };
 
-module.exports = fsHelpers;
+fsHelpers.compileResults = async () => {};
+
+export default fsHelpers;
+
+// Fake File Structure
+// plainHTMLapp
+// - index.html
+// - fakeFolder
+//    - style.css
+// - script.js
+
+//directoryLogger results
+// {
+//   plainHTMLapp: {
+//     handle: **fileHandle uploaded from API - has a kind {directory} and name {plainHTMLapp} property**,
+//     files: [
+//       {**full fileHandle uploaded from API. some props blw**
+//         kind: file,
+//         name: index.html
+//       },
+//       {fakeFolder: {
+//         handle: **fileHandle uploaded from API - has a kind {directory} and name {fakeFolder} property**,
+//         files: [
+//           {**full fileHandle uploaded from API. some props blw**
+//             kind: file,
+//             name: style.css
+//           },
+//         ]
+//       }
+//       },
+//       {**full fileHandle uploaded from API. some props blw**
+//         kind: file,
+//         name: script.js
+//       },
+//     ]
+//   }
+// }
+
+// fileDisplay results
+// result object
+// {
+//   static or Component based on what uploaded: [
+//     {**full fileHandle uploaded from API. some props blw**
+//      kind: file,
+//      name: index.html
+//     },
+//     {**full fileHandle uploaded from API. some props blw**
+//      kind: file,
+//      name: style.css
+//     },
+//     {**full fileHandle uploaded from API. some props blw**
+//      kind: file,
+//      name: script.js
+//     },
+//   ],
+// }
