@@ -1,6 +1,6 @@
 import React from 'react';
-import HeadNode from './HeadNode';
-import Node from './Node';
+import HeadNode from './HeadNode.jsx';
+import Node from './Node.jsx';
 
 // Component Tree for React Fiber Tree
 // Currently renders a head node and a node component

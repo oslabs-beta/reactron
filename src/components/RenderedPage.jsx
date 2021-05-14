@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header';
-import ComponentTree from './ComponentTree';
-import Visualizer from './Visualizer';
+import Header from './Header.jsx';
+import ComponentTree from './ComponentTree.jsx';
+import Visualizer from './Visualizer.jsx';
 
 // Page that will show once directory has been imported
 export default function RenderedPage() {
