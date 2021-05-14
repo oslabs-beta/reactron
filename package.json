@@ -7,9 +7,16 @@
     "build": "webpack -w",
     "test": "jest --verbose"
   },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.14.2",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
+    "@babel/runtime": "^7.14.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
