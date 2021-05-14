@@ -1,10 +1,6 @@
 import React from 'react';
-import '../App.scss';
-import MainContainer from './MainContainer';
+import MainContainer from './MainContainer.jsx';
 
 export default function App() {
   return <MainContainer />;
 }
-
-
-
