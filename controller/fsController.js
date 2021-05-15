@@ -1,5 +1,6 @@
 const fs = require('fs');
 const babel = require('@babel/core');
+const path = require('path');
 const fsController = {};
 
 // for each component file
@@ -27,10 +28,7 @@ fsController.uploadFiles = async (req, res, next) => {
       console.log(res);
     }
   );
-  fs.appendFileSync(
-    '/Users/kerricrawford/Desktop/coding/production-project/reactron/userInfo/bundle.js',
-    newStr.code
-  );
+  fs.appendFileSync(path.join(__dirname, '../userInfo/bundle.js'), newStr.code);
   next();
 };
 
