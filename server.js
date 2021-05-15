@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const fileSysRouters = require('./routers/fileSysRouters.js');
 
 // For Main Server
 const MAIN_PORT = 3000;
@@ -15,6 +16,8 @@ mainApp.use(express.static(__dirname + '/public'));
 mainApp.get('/', (req, res) => {
   res.send(200);
 });
+
+mainApp.use('/fs', fileSysRouters);
 
 //mainApp.use('*', (req, res) => res.status(400).send('Page Not Found'));
 

@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function ReactComponent() {
-  return <div className='reactComponent'>Rendered React Component</div>;
+  return <div className='reactComponent'>React Component</div>;
 }

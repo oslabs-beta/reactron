@@ -1,3 +1,4 @@
+const { nodes } = require('babel-standalone');
 const path = require('path');
 const BUILD_DIR = path.resolve(__dirname, 'public/build');
 const APP_DIR = path.resolve(__dirname, './src');
@@ -9,6 +10,12 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: BUILD_DIR,
+  },
+  target: 'node',
+  resolve: {
+    fallback: {
+      fs: false,
+    },
   },
   module: {
     rules: [
