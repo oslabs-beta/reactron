@@ -6,10 +6,6 @@ import filesysHelpers from '../../filesysHelpers.js';
 
 // Page that will show once directory has been imported
 export default function RenderedPage() {
-  console.log(
-    filesysHelpers.result.staticFiles,
-    filesysHelpers.result.componentFiles
-  );
   return (
     <div className='renderedPage'>
       <Header />

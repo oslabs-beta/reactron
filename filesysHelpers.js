@@ -40,7 +40,15 @@ fsHelpers.fileDisplay = async (filesArray, type) => {
   return fileObj;
 };
 
-fsHelpers.compileResults = async () => {};
+// .getfile
+// .text
+
+fsHelpers.compileResults = async (components) => {};
+
+fsHelpers.addTransform = async (component) => {
+  const file = await component.getFile();
+  return await file.text();
+};
 
 export default fsHelpers;
 
