@@ -39,12 +39,12 @@ mainApp.listen(MAIN_PORT, () => {
   console.log(`Main server listening on port ${MAIN_PORT}`);
 });
 
-//iframeApp.use(express.static());
+iframeApp.use(express.static(__dirname + '/userInfo'));
 iframeApp.use(express.json());
 
 // get path needs decided
-iframeApp.get('/app2', (req, res) => {
-  res.sendFile();
+iframeApp.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './userInfo/test.html'));
 });
 
 iframeApp.use((err, req, res, next) => {
