@@ -11,11 +11,6 @@ export default function LandingPage(props) {
 
   const [components, useComponents] = useState();
 
-  const tempFunc = (newComponents) => {
-    console.log(newComponents);
-    //axios.post('/fs/upload', { item: newComponents });
-  };
-
   const staticOnClick = async () => {
     const fileHandle = await window.showDirectoryPicker();
     const result = await filesysHelpers.directoryLogger(fileHandle);
@@ -37,19 +32,13 @@ export default function LandingPage(props) {
       .fileDisplay(components, 'componentFiles')
       .then((data) => {
         const tempArr = [];
-        console.log(data);
         data.forEach((elem) => {
           tempArr.push(elem.getFile().then((res) => res.text()));
-          //.then((data) => console.log(data));
         });
-        console.log(tempArr);
         Promise.all(tempArr).then((res) =>
           axios.post('/fs/upload', { item: res })
         );
       });
-
-    // Promise.all([tempArr]).then((data) => console.log(data));
-    // axios.post('/fs/upload', { item: data[0] })
 
     props.useLoadStatus(true);
   };

@@ -18,17 +18,17 @@ fsController.uploadFiles = async (req, res, next) => {
   components.forEach((elem) => {
     str = str + elem.toString() + '\n';
   });
-  const newStr = babel.transformSync(
-    str,
-    {
-      babelrc: true,
-      filename: '.babelrc',
-    },
-    function (err, res) {
-      console.log(res);
-    }
-  );
-  fs.appendFileSync(path.join(__dirname, '../userInfo/bundle.js'), newStr.code);
+  // const newStr = babel.transformSync(
+  //   str,
+  //   {
+  //     babelrc: true,
+  //     filename: '.babelrc',
+  //   },
+  //   function (err, res) {
+  //     console.log(res);
+  //   }
+  // );
+  // fs.appendFileSync(path.join(__dirname, '../userInfo/bundle.js'), newStr.code);
   next();
 };
 
