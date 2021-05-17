@@ -2,6 +2,10 @@ const puppeteer = require('puppeteer');
 
 // Inspiration for fiber walk taken with love from ReactION.
 
+// React Fiber Tree needs:
+// - name
+// - children
+
 module.exports = async function getRoot(url) {
   const browser = await puppeteer.launch({ headless: true, devTools: true });
   const page = await browser.newPage();
@@ -29,11 +33,17 @@ module.exports = async function getRoot(url) {
       function fiberSearch(entry) {
         let dataArr = [],
           mainID = 1;
+
         // Recursive function to traverse fiber tree passing in rootNode
         // Iterates through each node's children and siblings and passes applicable
         // data into dataArr, and returns dataArr
+
         function traversal(root, level, parentId) {
           // if Element has a sibling, recursively calls traversal again
+          console.log('the root itself: ', root);
+          console.log('the root sibling: ', root.sibling);
+          console.log('the root child: ', root.child);
+          console.log('the root child name: ', root.child.type.name);
           if (root.sibling !== null) {
             mainID += 1;
             dataArr.push({
@@ -62,22 +72,26 @@ module.exports = async function getRoot(url) {
         }
         traversal(entry, 0, 0);
         // Extracts the type name of each fiber node
+        const newArr = [];
+
         dataArr.forEach((el) => {
-          console.log(el);
           if (typeof el.name.type === null) {
             el.name = '';
           } else if (typeof el.name.type === 'function' && el.name.type.name) {
+            // Grabs name of root if it is a React component
+            newArr.push(el);
+            console.log(el.name.type.name);
             el.name = el.name.type.name;
           } else if (typeof el.name.type === 'function') {
             el.name = 'function';
           } else if (typeof el.name.type === 'object') {
             el.name = 'function';
           } else if (typeof el.name.type === 'string') {
+            console.log(el.name.type);
             el.name = el.name.type;
           }
-          console.log(el);
         });
-
+        console.log(newArr);
         // Setting root parent to an empty string
         dataArr[0].parentId = '';
 
