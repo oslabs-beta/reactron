@@ -13,16 +13,15 @@ import { useState } from 'react';
 export default function MainContainer() {
   const [loadStatus, useLoadStatus] = useState(false);
 
-  const App: React.FC = (props: any) => {
-    const handleClick = (event: any, node: any) => {
-      console.log('handle click ', event);
-      console.log('handle click node', node);
-      alert(`${node} got clicked`);
-    }
+  // const App: React.FC = (props: any) => {
+  //   const handleClick = (event: any, node: any) => {
+  //     console.log('handle click ', event);
+  //     console.log('handle click node', node);
+  //     alert(`${node} got clicked`);
+  //   }
 
   return (
     <div className='mainContainer'>
-      
       <RenderedPage />
       {/* {loadStatus ? (
         <RenderedPage />
@@ -31,17 +30,17 @@ export default function MainContainer() {
       )} */}
 
       <Tree
-      animated={true}
-      data={data}
-      nodeRadius={15}
-      margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
-      gProps={{
-        className: 'node',
-        onClick: handleClick
-      }}
-      height={700}
-      width={1000}/>
-
+        animated={true}
+        data={data}
+        nodeRadius={15}
+        margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
+        gProps={{
+          className: 'node',
+          onClick: handleClick,
+        }}
+        height={700}
+        width={1000}
+      />
     </div>
   );
 }
