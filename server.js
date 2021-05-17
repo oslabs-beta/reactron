@@ -3,7 +3,12 @@ const path = require('path');
 const getRoot = require('./puppeteer.js')
 
 getRoot('http://localhost:3000')
-.then(result => console.log("this is getRoote in serer", result))
+.then(result => {
+  // result.forEach(el => {
+  //   console.log("this is a getRoote in server el", el)
+  // })
+   console.log(result)
+})
 
 // For Main Server
 const MAIN_PORT = 3000;
