@@ -28,7 +28,7 @@ export default function MainContainer() {
       ) : (
         <LandingPage useLoadStatus={useLoadStatus} />
       )} */}
-
+      {/* 
       <Tree
         animated={true}
         data={data}
@@ -40,7 +40,7 @@ export default function MainContainer() {
         }}
         height={700}
         width={1000}
-      />
+      /> */}
     </div>
   );
 }
