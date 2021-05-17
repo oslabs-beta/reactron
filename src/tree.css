@@ -1,0 +1,78 @@
+.node circle {
+	fill: rgb(247, 106, 214);
+	stroke: rgb(184, 37, 81);
+	stroke-width: 1.5px;
+}
+
+.node text {
+	font-size: 11px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background-color: black;
+	fill: black;
+}
+
+.node {
+	cursor: pointer;
+}
+
+path.link {
+	fill: none;
+	stroke: #2593B8;
+	stroke-width: 1.5px;
+}
+
+body {
+	background-color: white;
+	overflow: hidden;
+}
+
+span {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #F4F4F4;
+	text-shadow: 0 1px 4px black;
+	float: right;
+}
+
+.red {
+	fill: none;
+	stroke: red;
+	stroke-width: 1.5px;
+	stroke-dasharray: 5;
+}
+
+.yellow{
+	fill: none;
+	stroke: yellow;
+	stroke-width: 1.5px;
+}
+
+.grey{
+	fill: none;
+	stroke: grey;
+	stroke-width: 1.5px;
+}
+
+.black{
+	fill: none;
+	stroke: black;
+	stroke-width: 1.5px;
+}
+
+.blue{
+	fill: none;
+	stroke: blue;
+	stroke-width: 1.5px;
+}
+
+.green{
+	fill: none;
+	stroke: green;
+	stroke-dasharray: 5;
+	stroke-width: 1.5px;
+}
+
+.purple{
+	fill: none;
+	stroke: purple;
+	stroke-width: 1.5px;
+}
