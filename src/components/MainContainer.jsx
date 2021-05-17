@@ -13,16 +13,16 @@ import { useState } from 'react';
 export default function MainContainer() {
   const [loadStatus, useLoadStatus] = useState(false);
 
-  const App: React.FC = (props: any) => {
-    const handleClick = (event: any, node: any) => {
-      console.log('handle click ', event);
-      console.log('handle click node', node);
-      alert(`${node} got clicked`);
-    }
+  // const App: React.FC = (props: any) => {
+  //   const handleClick = (event: any, node: any) => {
+  //     console.log('handle click ', event);
+  //     console.log('handle click node', node);
+  //     alert(`${node} got clicked`);
+  //   }
 
   return (
     <div className='mainContainer'>
-      
+
       <RenderedPage />
       {/* {loadStatus ? (
         <RenderedPage />
