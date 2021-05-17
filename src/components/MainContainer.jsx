@@ -1,8 +1,5 @@
 import LandingPage from './LandingPage.jsx';
 import RenderedPage from './RenderedPage.jsx';
-import Tree from 'react-tree-graph';
-import data from '../data';
-import '../tree.css';
 import React from 'react';
 import { useState } from 'react';
 
@@ -22,25 +19,12 @@ export default function MainContainer() {
 
   return (
     <div className='mainContainer'>
-
       <RenderedPage />
       {/* {loadStatus ? (
         <RenderedPage />
       ) : (
         <LandingPage useLoadStatus={useLoadStatus} />
       )} */}
-
-      <Tree
-      animated={true}
-      data={data}
-      nodeRadius={15}
-      margins={{ top: 20, bottom: 10, left: 20, right: 200 }}
-      gProps={{
-        className: 'node',
-        onClick: handleClick
-      }}
-      height={700}
-      width={1000}/>
 
     </div>
   );

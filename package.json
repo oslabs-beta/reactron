@@ -29,6 +29,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-tree-graph": "^6.0.0",
+    "react-vertical-tree": "^1.1.7",
     "sass-loader": "^11.1.1",
     "style-loader": "^2.0.0",
     "web-vitals": "^1.0.1",
