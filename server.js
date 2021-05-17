@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+
 const getRoot = require('./puppeteer.js')
 
 getRoot('http://localhost:3000')
@@ -10,6 +11,10 @@ getRoot('http://localhost:3000')
    console.log(result)
 })
 
+const fileSysRouters = require('./routers/fileSysRouters.js');
+const bodyParser = require('body-parser');
+
+
 // For Main Server
 const MAIN_PORT = 3000;
 const mainApp = express();
@@ -18,12 +23,14 @@ const mainApp = express();
 const IFRAME_PORT = 5000;
 const iframeApp = express();
 
-mainApp.use(express.json());
+mainApp.use(express.json({ limit: '50mb', extended: true }));
 mainApp.use(express.static(__dirname + '/public'));
 
 mainApp.get('/', (req, res) => {
   res.send(200);
 });
+
+mainApp.use('/fs', fileSysRouters);
 
 //mainApp.use('*', (req, res) => res.status(400).send('Page Not Found'));
 
@@ -45,12 +52,12 @@ mainApp.listen(MAIN_PORT, () => {
   console.log(`Main server listening on port ${MAIN_PORT}`);
 });
 
-//iframeApp.use(express.static());
+iframeApp.use(express.static(__dirname + '/userInfo'));
 iframeApp.use(express.json());
 
 // get path needs decided
-iframeApp.get('/app2', (req, res) => {
-  res.sendFile();
+iframeApp.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './userInfo/test.html'));
 });
 
 iframeApp.use((err, req, res, next) => {

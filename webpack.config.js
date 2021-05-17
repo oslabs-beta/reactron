@@ -10,6 +10,12 @@ module.exports = {
     filename: 'bundle.js',
     path: BUILD_DIR,
   },
+  target: 'node',
+  resolve: {
+    fallback: {
+      fs: false,
+    },
+  },
   module: {
     rules: [
       {

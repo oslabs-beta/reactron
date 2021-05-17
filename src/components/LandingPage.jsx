@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
+import axios from 'axios';
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -27,11 +28,18 @@ export default function LandingPage(props) {
       staticFile,
       'staticFiles'
     );
-    const componentResults = await filesysHelpers.fileDisplay(
-      components,
-      'componentFiles'
-    );
-    filesysHelpers.compileResults(componentResults);
+    const componentResults = filesysHelpers
+      .fileDisplay(components, 'componentFiles')
+      .then((data) => {
+        const tempArr = [];
+        data.forEach((elem) => {
+          tempArr.push(elem.getFile().then((res) => res.text()));
+        });
+        Promise.all(tempArr).then((res) =>
+          axios.post('/fs/upload', { item: JSON.stringify(res) })
+        );
+      });
+
     props.useLoadStatus(true);
   };
 
