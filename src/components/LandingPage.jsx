@@ -36,7 +36,7 @@ export default function LandingPage(props) {
           tempArr.push(elem.getFile().then((res) => res.text()));
         });
         Promise.all(tempArr).then((res) =>
-          axios.post('/fs/upload', { item: res })
+          axios.post('/fs/upload', { item: JSON.stringify(res) })
         );
       });
 

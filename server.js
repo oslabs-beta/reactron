@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fileSysRouters = require('./routers/fileSysRouters.js');
+const bodyParser = require('body-parser');
 
 // For Main Server
 const MAIN_PORT = 3000;
@@ -10,7 +11,7 @@ const mainApp = express();
 const IFRAME_PORT = 5000;
 const iframeApp = express();
 
-mainApp.use(express.json());
+mainApp.use(express.json({ limit: '50mb', extended: true }));
 mainApp.use(express.static(__dirname + '/public'));
 
 mainApp.get('/', (req, res) => {

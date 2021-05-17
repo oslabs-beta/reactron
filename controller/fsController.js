@@ -13,7 +13,7 @@ const fsController = {};
 // serve index2.html with bundled file
 
 fsController.uploadFiles = async (req, res, next) => {
-  const components = req.body.item;
+  const components = JSON.parse(req.body.item);
   let str = '';
   components.forEach((elem) => {
     str = str + elem.toString() + '\n';
@@ -28,7 +28,7 @@ fsController.uploadFiles = async (req, res, next) => {
   //     console.log(res);
   //   }
   // );
-  // fs.appendFileSync(path.join(__dirname, '../userInfo/bundle.js'), newStr.code);
+  fs.appendFileSync(path.join(__dirname, '../userInfo/bundle.js'), str);
   next();
 };
 
