@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 // Inspiration for fiber walk taken with love from ReactION.
 
 module.exports = async function getRoot(url) {
-  const browser = await puppeteer.launch({ headless: true, devTools: true });
+  const browser = await puppeteer.launch({ headless: false, devTools: true });
   const page = await browser.newPage();
   page.setUserAgent(
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
