@@ -12,24 +12,23 @@ import '../tree.css';
 export default function ComponentTree() {
   return (
     <div className='componentTree'>
-      <div className="treeGraph">
-      <Tree
-        // svgProps={{
-        //   transform: '',
-        // }}
-        animated={true}
-        data={data}
-        nodeRadius={15}
-        margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
-        gProps={{
-          className: 'node',
-        }}
-
-        height={400}
-
-        width={400}
-      />
-    </div>
+      <div className='treeGraph'>
+        <Tree
+          svgProps={{
+            transform: 'rotate(90)',
+          }}
+          animated={true}
+          data={data}
+          nodeRadius={15}
+          margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
+          gProps={{
+            className: 'node',
+            transform: 'rotate(-90)',
+          }}
+          height={400}
+          width={400}
+        />
+      </div>
       {/* <HeadNode />
       <Node /> */}
     </div>
