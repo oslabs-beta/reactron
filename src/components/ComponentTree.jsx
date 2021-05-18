@@ -12,6 +12,7 @@ import '../tree.css';
 export default function ComponentTree() {
   return (
     <div className='componentTree'>
+      <div className="treeGraph">
       <Tree
         // svgProps={{
         //   transform: '',
@@ -23,9 +24,12 @@ export default function ComponentTree() {
         gProps={{
           className: 'node',
         }}
+
         height={400}
+
         width={400}
       />
+    </div>
       {/* <HeadNode />
       <Node /> */}
     </div>
