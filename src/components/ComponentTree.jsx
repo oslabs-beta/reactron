@@ -14,15 +14,16 @@ export default function ComponentTree() {
     <div className='componentTree'>
       <div className='treeGraph'>
         <Tree
-          // svgProps={{
-          //   transform: '',
-          // }}
+          svgProps={{
+            transform: 'rotate(90)',
+          }}
           animated={true}
-          data={results}
+          data={data}
           nodeRadius={15}
           margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
           gProps={{
             className: 'node',
+            transform: 'rotate(-90)',
           }}
           height={400}
           width={400}

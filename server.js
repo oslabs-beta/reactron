@@ -84,5 +84,3 @@ iframeApp.use((err, req, res, next) => {
 iframeApp.listen(IFRAME_PORT, () => {
   console.log(`iFrame server listening on port ${IFRAME_PORT}`);
 });
-
-module.exports = results;
