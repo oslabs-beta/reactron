@@ -12,6 +12,7 @@ import '../tree.css';
 export default function ComponentTree() {
   return (
     <div className='componentTree'>
+      <div className="treeGraph">
       <Tree
         svgProps={{
           transform: 'rotate(90)',
@@ -23,9 +24,10 @@ export default function ComponentTree() {
         gProps={{
           className: 'node',
         }}
-        height={700}
-        width={1000}
+        height={300}
+        width={400}
       />
+    </div>
       {/* <HeadNode />
       <Node /> */}
     </div>
