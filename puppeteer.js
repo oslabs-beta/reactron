@@ -1,11 +1,5 @@
 const puppeteer = require('puppeteer');
 
-// Inspiration for fiber walk taken with love from ReactION.
-
-// React Fiber Tree needs:
-// - name
-// - children
-
 module.exports = async function getRoot(url) {
   const browser = await puppeteer.launch({ headless: false, devTools: true });
   const page = await browser.newPage();
@@ -29,75 +23,82 @@ module.exports = async function getRoot(url) {
         }
       })();
 
-      // Function that accepts root node and returns whole application's node data
-      function fiberSearch(entry) {
-        let dataArr = [],
-          mainID = 1;
+      function parentFinder(node) {
+        if (!node.return) return;
+        if (node.return.tag === 0 || node.return.tag === 1) {
+          console.log(`This is the parent's name: ${node.return.type.name}`);
+          return node.return.type.name;
+        } else {
+          return parentFinder(node.return);
+        }
+      }
 
-        // Recursive function to traverse fiber tree passing in rootNode
-        // Iterates through each node's children and siblings and passes applicable
-        // data into dataArr, and returns dataArr
+      const objColors = [
+        'cyan',
+        'red',
+        'orange',
+        'yellow',
+        'green',
+        'blue',
+        'indigo',
+        'violet',
+      ];
 
-        function traversal(root, level, parentId) {
-          // if Element has a sibling, recursively calls traversal again
-          console.log('the root itself: ', root);
-          console.log('the root sibling: ', root.sibling);
-          console.log('the root child: ', root.child);
-          console.log('the root child name: ', root.child.type.name);
-          if (root.sibling !== null) {
-            mainID += 1;
-            dataArr.push({
-              name: root.sibling,
-              level: `${level}`,
-              id: `${mainID}`,
-              parentId: `${parentId}`,
-              props: Object.keys(root.sibling.memoizedProps),
-            });
-            traversal(root.sibling, level, parentId);
+      // Math.floor(Math.random() * objColors.length)
+      function findColor() {
+        return objColors[Math.floor(Math.random() * objColors.length)];
+      }
+
+      let rootObj;
+
+      // class Node
+      class Node {
+        constructor(name, parent) {
+          (this.name = name),
+            (this.parent = parent),
+            (this.children = []),
+            (this.color = findColor()),
+            (this.pathProps = { className: findColor() }),
+            (this.textProps = { x: -25, y: 25 });
+        }
+      }
+
+      const treeNodes = [new Node('App', null)];
+
+      function fiberFinder(node) {
+        if (node.sibling !== null) {
+          if (node.sibling.type.name) {
+            const parent = parentFinder(node.sibling);
+            treeNodes.push(new Node(node.sibling.type.name, parent));
+            console.log('here');
           }
-          // if Element has a child, recursively calls traversal again
-          if (root.child !== null) {
-            parentId += 1;
-            mainID += 1;
-            dataArr.push({
-              name: root.child,
-              level: `${level}`,
-              id: `${mainID}`,
-              parentId: `${parentId}`,
-              display: 'none',
-              props: Object.keys(root.child.memoizedProps),
-            });
-            traversal(root.child, level + 1, parentId);
+          fiberFinder(node.sibling);
+        }
+        if (node.child !== null) {
+          fiberFinder(node.child);
+        }
+      }
+      fiberFinder(_rootNode);
+
+      for (let i = 0; i < treeNodes.length; i += 1) {
+        // if node parent prop exist, assign node name to child of parent property
+        if (treeNodes[i].parent) {
+          // Blog - App
+          const parent = treeNodes[i].parent;
+          // search through array to find elem in array where that parent val exists
+          for (let j = 0; j < treeNodes.length; j += 1) {
+            if (treeNodes[j].name === parent) {
+              treeNodes[j].children.push(treeNodes[i]);
+              break;
+            }
           }
         }
-        traversal(entry, 0, 0);
-        // Extracts the type name of each fiber node
-        const newArr = [];
-
-        dataArr.forEach((el) => {
-          if (typeof el.name.type === null) {
-            el.name = '';
-          } else if (typeof el.name.type === 'function' && el.name.type.name) {
-            // Grabs name of root if it is a React component
-            newArr.push(el);
-            console.log(el.name.type.name);
-            el.name = el.name.type.name;
-          } else if (typeof el.name.type === 'function') {
-            el.name = 'function';
-          } else if (typeof el.name.type === 'object') {
-            el.name = 'function';
-          } else if (typeof el.name.type === 'string') {
-            console.log(el.name.type);
-            el.name = el.name.type;
-          }
-        });
-        console.log(newArr);
-        // Setting root parent to an empty string
-        dataArr[0].parentId = '';
-
-        return dataArr;
       }
-      return fiberSearch(_rootNode);
+
+      rootObj = treeNodes[0];
+      console.log(rootObj);
+
+      return rootObj;
     })
     .catch((err) => {
       console.log(err);

@@ -13,9 +13,9 @@ export default function ComponentTree() {
   return (
     <div className='componentTree'>
       <Tree
-        svgProps={{
-          transform: 'rotate(90)',
-        }}
+        // svgProps={{
+        //   transform: '',
+        // }}
         animated={true}
         data={data}
         nodeRadius={15}
@@ -23,8 +23,8 @@ export default function ComponentTree() {
         gProps={{
           className: 'node',
         }}
-        height={700}
-        width={1000}
+        height={400}
+        width={400}
       />
       {/* <HeadNode />
       <Node /> */}

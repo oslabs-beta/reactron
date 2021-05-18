@@ -26,6 +26,22 @@
         /***/
       },
 
+    /***/ './client/components/Author.jsx':
+      /*!**************************************!*\
+    !*** ./client/components/Author.jsx ***!
+    \**************************************/
+      /***/ (
+        __unused_webpack_module,
+        __webpack_exports__,
+        __webpack_require__
+      ) => {
+        eval(
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Author)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n\nfunction Author() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "I am the author component"));\n}\nAuthor.displayName = "Author";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Author.jsx?'
+        );
+
+        /***/
+      },
+
     /***/ './client/components/Blog.jsx':
       /*!************************************!*\
     !*** ./client/components/Blog.jsx ***!
@@ -36,7 +52,55 @@
         __webpack_require__
       ) => {
         eval(
-          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Blog)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n\nfunction Blog() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Blog Component"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Some fake text"));\n}\nBlog.displayName = "Blog";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Blog.jsx?'
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Blog)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n/* harmony import */ var _Author_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Author.jsx */ "./client/components/Author.jsx");\n/* harmony import */ var _Post_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Post.jsx */ "./client/components/Post.jsx");\n\n\n\nfunction Blog() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Blog Component"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Some fake text"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Author_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Post_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null));\n}\nBlog.displayName = "Blog";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Blog.jsx?'
+        );
+
+        /***/
+      },
+
+    /***/ './client/components/Cart.jsx':
+      /*!************************************!*\
+    !*** ./client/components/Cart.jsx ***!
+    \************************************/
+      /***/ (
+        __unused_webpack_module,
+        __webpack_exports__,
+        __webpack_require__
+      ) => {
+        eval(
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Cart)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n\nfunction Cart() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "I am the cart component"));\n}\nCart.displayName = "Cart";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Cart.jsx?'
+        );
+
+        /***/
+      },
+
+    /***/ './client/components/Pay.jsx':
+      /*!***********************************!*\
+    !*** ./client/components/Pay.jsx ***!
+    \***********************************/
+      /***/ (
+        __unused_webpack_module,
+        __webpack_exports__,
+        __webpack_require__
+      ) => {
+        eval(
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Pay)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n\nfunction Pay() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "I am the pay component"));\n}\nPay.displayName = "Pay";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Pay.jsx?'
+        );
+
+        /***/
+      },
+
+    /***/ './client/components/Post.jsx':
+      /*!************************************!*\
+    !*** ./client/components/Post.jsx ***!
+    \************************************/
+      /***/ (
+        __unused_webpack_module,
+        __webpack_exports__,
+        __webpack_require__
+      ) => {
+        eval(
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Post)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n\nfunction Post() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "I am the post component"));\n}\nPost.displayName = "Post";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Post.jsx?'
         );
 
         /***/
@@ -52,7 +116,7 @@
         __webpack_require__
       ) => {
         eval(
-          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Shop)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n\nfunction Shop() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Shop"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Some stuff here"));\n}\nShop.displayName = "Shop";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Shop.jsx?'
+          '__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (/* binding */ Shop)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");\n/* harmony import */ var _Pay_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pay.jsx */ "./client/components/Pay.jsx");\n/* harmony import */ var _Cart_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Cart.jsx */ "./client/components/Cart.jsx");\n\n\n\nfunction Shop() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "Shop"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Some stuff here"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Pay_jsx__WEBPACK_IMPORTED_MODULE_1__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Cart_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null));\n}\nShop.displayName = "Shop";\n\n//# sourceURL=webpack://mern-boilerplate/./client/components/Shop.jsx?'
         );
 
         /***/
