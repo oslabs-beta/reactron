@@ -3,10 +3,13 @@ const path = require('path');
 
 const getRoot = require('./puppeteer.js');
 
+let results;
+
 getRoot('http://localhost:5000').then((result) => {
   // result.forEach(el => {
   //   console.log("this is a getRoote in server el", el)
   // })
+  results = result;
   console.log(result);
 });
 
@@ -79,3 +82,5 @@ iframeApp.use((err, req, res, next) => {
 iframeApp.listen(IFRAME_PORT, () => {
   console.log(`iFrame server listening on port ${IFRAME_PORT}`);
 });
+
+module.exports = results;
