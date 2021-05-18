@@ -9,8 +9,10 @@ export default function RenderedPage() {
   return (
     <div className='renderedPage'>
       <Header />
-      <ComponentTree />
-      <Visualizer />
+      <div className="container">
+        <ComponentTree />
+        <Visualizer />
+      </div>
     </div>
   );
 }
