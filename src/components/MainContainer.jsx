@@ -25,7 +25,7 @@ export default function MainContainer() {
       ) : (
         <LandingPage useLoadStatus={useLoadStatus} />
       )} */}
-
+      <LandingPage />
     </div>
   );
 }
