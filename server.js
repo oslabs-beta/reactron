@@ -7,7 +7,7 @@ getRoot('http://localhost:5000').then((result) => {
   // result.forEach(el => {
   //   console.log("this is a getRoote in server el", el)
   // })
-  console.log(result);
+  // console.log(result);
 });
 
 const fileSysRouters = require('./routers/fileSysRouters.js');

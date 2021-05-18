@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
 // - children
 
 module.exports = async function getRoot(url) {
-  const browser = await puppeteer.launch({ headless: false, devTools: true });
+  const browser = await puppeteer.launch({ headless: true, devTools: true });
   const page = await browser.newPage();
   page.setUserAgent(
     'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36'
@@ -40,10 +40,10 @@ module.exports = async function getRoot(url) {
 
         function traversal(root, level, parentId) {
           // if Element has a sibling, recursively calls traversal again
-          console.log('the root itself: ', root);
-          console.log('the root sibling: ', root.sibling);
-          console.log('the root child: ', root.child);
-          console.log('the root child name: ', root.child.type.name);
+          // console.log('the root itself: ', root);
+          // console.log('the root sibling: ', root.sibling);
+          // console.log('the root child: ', root.child);
+          // console.log('the root child name: ', root.child.type.name);
           if (root.sibling !== null) {
             mainID += 1;
             dataArr.push({

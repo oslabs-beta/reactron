@@ -1,28 +1,104 @@
-// body {
-//   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//     sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+$background: rgb(202, 202, 202);
+$header: rgba(26, 35, 158, 0.164);
+
+* {
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: $background;
+
+}
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 // code {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 //     monospace;
 // }
 
+
+
 /* MAIN CONTAINER */
 .mainContainer {
   color: black;
+  display: grid;
 }
 
 /* LANDING PAGE */
 .landingPage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  display: grid;
+  grid-template:
+  1fr
+  1fr
+  1fr
+  1fr
+  1fr/ 1fr 30vw 1fr 30vw 1fr;
+  grid-template-areas:
+  '. header header header .'
+  '. instru instru instru .'
+  '. SInstr .....  CInstr .'
+  '. static ..... component .'
+  '. ...... next   ......  . ';
+  place-items: center;
+  grid-row-gap: 3vh;
+  margin: 5%;
+  margin-bottom: 100px;
+
+  .header {
+    display: grid;
+    color: $header;
+    grid-area: header;
+
+    h1{
+      font-size: 100px;
+    }
+
+  }
+  .instructions {
+    display: grid;
+    grid-area: instru;
+    place-items: center;
+  }
+
+  .staticInstr {
+    display: grid;
+    grid-area: SInstr;
+    place-items: center;
+  }
+
+  .staticFiles {
+    display: grid;
+    grid-area: static;
+    place-items: center;
+  }
+
+  .componentInstr{
+    display: grid;
+    grid-area: CInstr;
+    place-items: center;
 }
+  .componentFiles {
+    display: grid;
+    grid-area: component;
+    place-items: center;
+  }
+
+  .next {
+    display: grid;
+    grid-area: next;
+    place-items: center;
+  }
+
+}
+
+
 
 /* RENDERED PAGE */
 .renderedPage {
