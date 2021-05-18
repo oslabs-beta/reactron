@@ -6,7 +6,7 @@ $button-text: white;
 $button-hover: rgb(70, 77, 134);
 
 * {
-  margin:0;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: $background;
@@ -14,7 +14,6 @@ $button-hover: rgb(70, 77, 134);
   height: auto;
   overflow: auto;
 }
-
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -29,30 +28,32 @@ body {
 //     monospace;
 // }
 
-
-
 /* MAIN CONTAINER */
 .mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: black;
 }
 
-
 /* LANDING PAGE */
 .landingPage {
+  max-width: 850px;
   display: grid;
+  align-items: center;
+  justify-content: center;
   grid-template:
-  1fr
-  1fr
-  1fr
-  1fr
-  1fr/ 1fr 1fr 5vw 1fr 1fr;
+    1fr
+    1fr
+    1fr
+    1fr
+    1fr/ 1fr 1fr 5vw 1fr 1fr;
   grid-template-areas:
-  'header header header header header'
-  '. instru instru instru .'
-  'SInstr SInstr .  CInstr CInstr'
-  'static static . component component'
-  '. next next next  . ';
-  place-items: center;
+    'header header header header header'
+    '. instru instru instru .'
+    'SInstr SInstr .  CInstr CInstr'
+    'static static . component component'
+    '. next next next  . ';
   grid-row-gap: 3vh;
   margin: 5%;
   margin-bottom: 100px;
@@ -62,10 +63,10 @@ body {
     color: $header;
     grid-area: header;
 
-    h1{
+    h1 {
       font-size: 100px;
+      text-align: center;
     }
-
   }
   .instructions {
     display: grid;
@@ -85,7 +86,7 @@ body {
     place-items: center;
   }
 
-  .componentInstr{
+  .componentInstr {
     display: grid;
     grid-area: CInstr;
     place-items: center;
@@ -99,7 +100,8 @@ body {
   .next {
     display: grid;
     grid-area: next;
-    place-items: center;
+    // place-items: center;
+    text-align: center;
   }
 
   button {
@@ -110,28 +112,26 @@ body {
     background-color: $button-background;
     color: $button-text;
     box-shadow: 0 9px #999;
-
   }
 
-  .button:hover{
+  .button:hover {
     background-color: $button-hover;
   }
 
   .button:active {
-  background-color: $button-hover;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+    background-color: $button-hover;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 }
-
-
-}
-
-
 
 /* RENDERED PAGE */
+.renderedPage {
+  min-width: 1000px;
+}
 
 .renderedPage h1 {
-  display:grid;
+  display: grid;
   width: 100%;
   // border: 2px solid black;
   font-size: 100px;
@@ -140,22 +140,26 @@ body {
 }
 
 .container {
-  display: grid; 
-  grid-template: 
-  1fr/ 1fr 1fr;
+  display: grid;
+  grid-template: 1fr/ 1fr 1fr;
 }
 
 /* COMPONENT TREE */
 .componentTree {
+  display: grid;
   grid-column: 1 / span 1;
   min-height: 700px;
   // border: 2px solid blue;
+  margin-top: 20px;
 }
 
 .treeGraph {
-  margin-top: 15vh;
+  //margin-top: 15vh;
+  // text {
+  //   writing-mode: vertical-lr;
+  //   text-orientation: mixed;
+  // }
 }
-
 
 .node {
   color: black;
@@ -188,7 +192,7 @@ body {
 }
 
 iframe {
-  // border: 1px solid black;
+  border: none;
   width: 100%;
   height: 500px;
 }
