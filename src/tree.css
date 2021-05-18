@@ -1,3 +1,7 @@
+.treeGraph {
+  margin-top: 15vh;
+}
+
 .node circle {
 	fill: rgb(247, 106, 214);
 	stroke: rgb(184, 37, 81);
