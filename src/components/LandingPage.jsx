@@ -84,7 +84,7 @@ export default function LandingPage(props) {
               } directory has been uploaded`
               : ''}
           </p>
-          <button id='static' onClick={staticOnClick}>
+          <button className="button" id='static' onClick={staticOnClick}>
             Select File Here
           </button>
         </div>
@@ -98,22 +98,22 @@ export default function LandingPage(props) {
               } directory has been uploaded`
               : ''}
           </p>
-          <button id='component' onClick={componentOnClick}>
+          <button className="button" id='component' onClick={componentOnClick}>
             Select File Here
           </button>
       </div>
+    {staticFile && components ? (
       <div className="next">
-        {staticFile && components ? (
           <p>
             Your files have been successfully uploaded. Hit the next button for
             Reactron to begin the rendering process.
             <br />
             <button onClick={submitDirs}>Next</button>
           </p>
+      </div>
         ) : (
           ''
           )}
-      </div>
     </div>
   );
 }
