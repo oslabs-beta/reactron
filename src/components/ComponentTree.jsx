@@ -2,9 +2,8 @@ import React from 'react';
 import HeadNode from './HeadNode.jsx';
 import Node from './Node.jsx';
 import Tree from 'react-tree-graph';
-//import data from '/Users/kerricrawford/Desktop/coding/production-project/reactron/src/data.ts';
-import results from '../../server.js';
-import '/Users/kerricrawford/Desktop/coding/production-project/reactron/src/tree.css';
+import data from '../data.ts';
+import '../tree.css';
 
 // Component Tree for React Fiber Tree
 // Currently renders a head node and a node component
@@ -13,20 +12,22 @@ import '/Users/kerricrawford/Desktop/coding/production-project/reactron/src/tree
 export default function ComponentTree() {
   return (
     <div className='componentTree'>
-      <Tree
-        svgProps={{
-          transform: 'rotate(90)',
-        }}
-        animated={true}
-        data={results}
-        nodeRadius={15}
-        margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
-        gProps={{
-          className: 'node',
-        }}
-        height={300}
-        width={500}
-      />
+      <div className='treeGraph'>
+        <Tree
+          // svgProps={{
+          //   transform: '',
+          // }}
+          animated={true}
+          data={results}
+          nodeRadius={15}
+          margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
+          gProps={{
+            className: 'node',
+          }}
+          height={400}
+          width={400}
+        />
+      </div>
       {/* <HeadNode />
       <Node /> */}
     </div>

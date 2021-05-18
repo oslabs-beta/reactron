@@ -1,9 +1,13 @@
 const express = require('express');
 const path = require('path');
-
+const fs = require('fs')
 const getRoot = require('./puppeteer.js');
 
+<<<<<<< HEAD
 let results;
+=======
+let data;
+>>>>>>> c2f06d94698a6225aeb8d38b421a3a7cbed484f2
 
 getRoot('http://localhost:5000').then((result) => {
   // result.forEach(el => {
@@ -11,6 +15,7 @@ getRoot('http://localhost:5000').then((result) => {
   // })
   results = result;
   console.log(result);
+  fs.writeFileSync(path.join(__dirname, './src/data.ts'), 'export default ' + JSON.stringify(result))
 });
 
 const fileSysRouters = require('./routers/fileSysRouters.js');
