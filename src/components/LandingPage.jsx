@@ -108,7 +108,7 @@ export default function LandingPage(props) {
             Your files have been successfully uploaded. Hit the next button for
             Reactron to begin the rendering process.
             <br />
-            <button onClick={submitDirs}>Next</button>
+            <button className="button" onClick={submitDirs}>Next</button>
           </p>
       </div>
         ) : (
