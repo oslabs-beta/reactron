@@ -1,5 +1,6 @@
 node_modules
 .DS_Store
 package-lock.json
-data.ts
-bundle.js
+data/*
+bundle/*
+/build
