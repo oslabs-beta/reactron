@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const getRoot = require('./puppeteer.js');
+const awsController = require('./awsController.js');
 
 getRoot('http://localhost:5000').then((result) => {
   // result.forEach(el => {
@@ -32,6 +33,8 @@ mainApp.use(express.static(__dirname + '/public'));
 mainApp.get('/', (req, res) => {
   res.send(200);
 });
+
+mainApp.post('/', awsController.placeFile);
 
 mainApp.use('/fs', fileSysRouters);
 

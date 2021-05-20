@@ -40,7 +40,7 @@ export default function LandingPage(props) {
         );
       });
 
-    props.useLoadStatus(true);
+    props.useLoadStatus(true); //calls useloadStatus to change state to true
   };
 
   return (
@@ -48,14 +48,14 @@ export default function LandingPage(props) {
       <div className='header'>
         <h1>Reactron</h1>
       </div>
-      <div className="instructions">
+      <div className='instructions'>
         <p>
-          For Reactron to properly read your React application, please upload your
-          project below. Your static files and React components should each be
-          placed in their own separate directory as shown below.
+          For Reactron to properly read your React application, please upload
+          your project below. Please upload any CSS/SCSS files in a static
+          directory and your React project's <b>development</b> bundle.
         </p>
       </div>
-      <div className="staticInstr">
+      <div className='staticInstr'>
         <p>
           <b>StaticDirectory</b>
           <br /> - index.html
@@ -65,55 +65,52 @@ export default function LandingPage(props) {
           <br />
         </p>
       </div>
-      <div className="componentInstr">
-          <p>
-            <b>ComponentDirectory</b>
-            <br /> - App.jsx
-            <br /> - Home.jsx
-            <br /> - Shop.jsx
-            <br /> - Blog.jsx
-          </p>
+      <div className='componentInstr'>
+        <p>
+          <b>Bundle File</b>
+          <br /> - bundle.js
+        </p>
       </div>
-        <div className="staticFiles">
-          <b>Static Files</b>
-          <p>Please upload your static directory here.</p>
-          <p>
-            {staticFile
-              ? `The ${
+      <div className='staticFiles'>
+        <b>Static Files</b>
+        <p>Please upload your static directory here.</p>
+        <p>
+          {staticFile
+            ? `The ${
                 staticFile[Object.keys(staticFile)[0]].handle.name
               } directory has been uploaded`
-              : ''}
-          </p>
-          <button className="button" id='static' onClick={staticOnClick}>
-            Select File Here
-          </button>
-        </div>
-        <div className="componentFiles">
-          <b>Component Files</b>
-          <p>Please upload your component directory here.</p>
-          <p>
-            {components
-              ? `The ${
+            : ''}
+        </p>
+        <button className='button' id='static' onClick={staticOnClick}>
+          Select File Here
+        </button>
+      </div>
+      <div className='componentFiles'>
+        <b>Bundle File</b>
+        <p>Please upload your bundle file here.</p>
+        <p>
+          {components
+            ? `The ${
                 components[Object.keys(components)[0]].handle.name
               } directory has been uploaded`
-              : ''}
-          </p>
-          <button className="button" id='component' onClick={componentOnClick}>
-            Select File Here
-          </button>
+            : ''}
+        </p>
+        <button className='button' id='component' onClick={componentOnClick}>
+          Select File Here
+        </button>
       </div>
-    {staticFile && components ? (
-      <div className="next">
+      {staticFile && components ? (
+        <div className='next'>
           <p>
             Your files have been successfully uploaded. Hit the next button for
             Reactron to begin the rendering process.
             <br />
             <button className="button" onClick={submitDirs}>Next</button>
           </p>
-      </div>
-        ) : (
-          ''
-          )}
+        </div>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
