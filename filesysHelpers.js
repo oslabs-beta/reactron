@@ -23,31 +23,26 @@ fsHelpers.directoryLogger = async (fileHandle) => {
   return fileObj;
 };
 
-fsHelpers.fileDisplay = async (filesArray, type) => {
-  const fileAdded = filesArray[Object.keys(filesArray)[0]].files;
-  const fileObj = [];
+//files array is actually an object
+fsHelpers.fileDisplay = async (filesObject, type) => {
+  const fileAdded = filesObject[Object.keys(filesObject)[0]].files; //gives array of keys
+  const fileArr = [];
+
   fileAdded.forEach((elem) => {
+    //gets first key in object
     if (elem.kind) {
+      //if element has a kind it means its a regular file
       // these are regular files
-      fileObj.push(elem);
+      fileArr.push(elem);
     } else if (elem[Object.keys(elem)[0]].handle.kind) {
+      //this checks if the object is a directory
       // these are directories
-      const res = fsHelpers.fileDisplay(elem);
-      res.then((data) => fileObj.push(...data));
+      const res = fsHelpers.fileDisplay(elem); //this returns a promise and recursively calls filedisplay on the nested directory
+      res.then((data) => fileArr.push(...data));
     }
   });
-  fsHelpers.result[type] = fileObj;
-  return fileObj;
-};
-
-// .getfile
-// .text
-
-fsHelpers.compileResults = async (components) => {};
-
-fsHelpers.addTransform = async (component) => {
-  const file = await component.getFile();
-  return await file.text();
+  fsHelpers.result[type] = fileArr;
+  return fileArr;
 };
 
 export default fsHelpers;
