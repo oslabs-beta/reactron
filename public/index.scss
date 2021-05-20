@@ -71,9 +71,10 @@ body {
   .instructions {
     display: grid;
     grid-area: instru;
+    text-align: center;
     place-items: center;
   }
- 
+
   .staticInstr {
     display: grid;
     grid-area: SInstr;

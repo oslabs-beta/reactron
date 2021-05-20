@@ -22,10 +22,12 @@ fsHelpers.directoryLogger = async (fileHandle) => {
   }
   return fileObj;
 };
+
 //files array is actually an object
 fsHelpers.fileDisplay = async (filesObject, type) => {
-  const fileAdded = filesObject[Object.keys(filesObject[0])].files; //gives array of keys
+  const fileAdded = filesObject[Object.keys(filesObject)[0]].files; //gives array of keys
   const fileArr = [];
+
   fileAdded.forEach((elem) => {
     //gets first key in object
     if (elem.kind) {
@@ -41,16 +43,6 @@ fsHelpers.fileDisplay = async (filesObject, type) => {
   });
   fsHelpers.result[type] = fileArr;
   return fileArr;
-};
-
-// .getfile
-// .text
-
-fsHelpers.compileResults = async (components) => {};
-
-fsHelpers.addTransform = async (component) => {
-  const file = await component.getFile();
-  return await file.text();
 };
 
 export default fsHelpers;

@@ -31,4 +31,9 @@ fsController.uploadFiles = async (req, res, next) => {
   next();
 };
 
+fsController.stylesheet = (req, res, next) => {
+  fs.writeFileSync('./userInfo/style.css', req.body.item);
+  next();
+};
+
 module.exports = fsController;

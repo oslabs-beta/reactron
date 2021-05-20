@@ -2,14 +2,9 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const getRoot = require('./puppeteer.js');
-const awsController = require('./awsController.js');
 
 getRoot('http://localhost:5000').then((result) => {
-  // result.forEach(el => {
-  //   console.log("this is a getRoote in server el", el)
-  // })
-
-  console.log(result);
+  //console.log(result);
   fs.writeFileSync(
     path.join(__dirname, './src/data.ts'),
     'export default ' + JSON.stringify(result)
@@ -17,7 +12,7 @@ getRoot('http://localhost:5000').then((result) => {
 });
 
 const fileSysRouters = require('./routers/fileSysRouters.js');
-const bodyParser = require('body-parser');
+const awsRouter = require('./routers/awsRouter.js');
 
 // For Main Server
 const MAIN_PORT = 3000;
@@ -34,7 +29,7 @@ mainApp.get('/', (req, res) => {
   res.send(200);
 });
 
-mainApp.post('/', awsController.placeFile);
+mainApp.use('/aws', awsRouter);
 
 mainApp.use('/fs', fileSysRouters);
 
