@@ -23,7 +23,6 @@ export default function ComponentTree() {
           margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
           gProps={{
             className: 'node',
-            transform: 'rotate(-90)',
           }}
           height={400}
           width={400}

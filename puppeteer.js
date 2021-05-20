@@ -42,12 +42,13 @@ module.exports = async function getRoot(url) {
         'blue',
         'indigo',
         'violet',
+        'orange',
       ];
-
 
       // Math.floor(Math.random() * objColors.length)
       function findColor() {
-        return objColors[Math.floor(Math.random() * objColors.length)];
+        // return objColors[Math.floor(Math.random() * objColors.length)];
+        return objColors[5];
       }
 
       let rootObj;
@@ -61,7 +62,6 @@ module.exports = async function getRoot(url) {
             (this.color = findColor()),
             (this.pathProps = { className: findColor() }),
             (this.textProps = { x: -25, y: 25 });
-
         }
       }
 
@@ -77,10 +77,16 @@ module.exports = async function getRoot(url) {
           fiberFinder(node.sibling);
         }
         if (node.child !== null) {
+          if (node.child.type.name) {
+            const parent = parentFinder(node.child);
+            treeNodes.push(new Node(node.child.type.name, parent));
+          }
           fiberFinder(node.child);
         }
       }
       fiberFinder(_rootNode);
+
+      console.log(_rootNode);
 
       for (let i = 0; i < treeNodes.length; i += 1) {
         // if node parent prop exist, assign node name to child of parent property
