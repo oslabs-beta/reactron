@@ -16,8 +16,10 @@ export default function LandingPage(props) {
     fileHandle
       .then((data) => data[0].getFile())
       .then((res) => res.text())
-      .then((data) => axios.post('/fs/stylesheet', { item: data }));
-    useStaticFile(fileHandle);
+      .then((data) => {
+        axios.post('/fs/stylesheet', { item: data });
+        useStaticFile(fileHandle);
+      });
   };
 
   const componentOnClick = async () => {
@@ -27,18 +29,28 @@ export default function LandingPage(props) {
   };
 
   const submitDirs = async () => {
-    // const componentResults = filesysHelpers
-    //   .fileDisplay(components, 'componentFiles')
-    //   .then((data) => {
-    //     const tempArr = [];
-    //     data.forEach((elem) => {
-    //       tempArr.push(elem.getFile().then((res) => res.text()));
-    //     });
-    //     Promise.all(tempArr).then((res) => {
-    //       console.log(res);
-    //       axios.post('/aws/upload', { item: res });
-    //     });
-    //   });
+    filesysHelpers
+      .fileDisplay(components, 'componentFiles')
+      .then(async (data) => {
+        const tempArr = [];
+        const nameArr = [];
+        data.forEach(async (elem) => {
+          nameArr.push(elem.getFile().then((res) => res.name));
+          tempArr.push(elem.getFile().then((res) => res.text()));
+        });
+        const fileContents = await Promise.all(tempArr);
+        const nameContents = await Promise.all(nameArr);
+
+        const resultArr = [];
+
+        for (let i = 0; i < fileContents.length; i += 1) {
+          // when user authentication is implemeneted, file name needs to be updated:
+          // 'username'/'projectname'/'filename'
+          resultArr.push({ name: nameContents[i], contents: fileContents[i] });
+        }
+
+        // axios.post('/aws/upload', { item: resultArr });
+      });
     props.useLoadStatus(true); //calls useloadStatus to change state to true
   };
 

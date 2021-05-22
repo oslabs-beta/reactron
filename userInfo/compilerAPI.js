@@ -7,3 +7,5 @@ compiler.run((err, stats) => {
   if (err) console.log(`There was an error: ${err}`);
   else console.log(`There was not an error: ${stats}`);
 });
+
+module.exports = compiler;

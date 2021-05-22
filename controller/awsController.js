@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 const S3 = require('aws-sdk/clients/s3');
+// const compiler = require('../userInfo/compilerAPI.js');
+const fs = require('fs');
 
 const bucketName = process.env.BUCKET_NAME;
 const region = process.env.REGION;
@@ -11,44 +13,79 @@ const s3 = new S3({ region, accessKeyId, secretAccessKey });
 
 const awsController = {};
 
+// once user auth is implemented, key should be:
+// 'username'/'projectname'/'filename'
+
 awsController.placeFile = async function (req, res, next) {
   console.log(req.body.item);
-  next();
+  const files = req.body.item;
+  let str = '';
+  files.forEach((file) => {
+    const body = JSON.stringify(file.contents);
+    // const uploadParams = {
+    //   Bucket: bucketName,
+    //   Key: 'testApp/' + file.name,
+    //   Body: body,
+    // };
+    // s3.upload(uploadParams, (err, data) => {
+    //   if (err) console.log(err);
+    //   else console.log(data);
+    // });
+    str = str + file.contents;
+    // const regex = /"/g;
+    // const regex2 = /(\r\n|\n|\r)/gm;
+    // str = str.replace(regex, ' ');
+    // str = str.replace(regex2, ' ');
+  });
+  str.toString();
+  console.log(str);
+  fs.writeFileSync(
+    '/Users/kerricrawford/Desktop/coding/production-project/reactron/userInfo/index.js',
+    str
+  );
+
   // // body is body of file
   // // key is name of file
-  // const uploadParams = {
-  //   Bucket: bucketName,
-  //   Body: 'Pls Work',
-  //   Key: 'Bye.txt',
-  // };
-  // s3.upload(uploadParams, (err, data) => {
-  //   if (err) console.log(err);
-  //   else console.log(data);
-  // });
-  // res.send(200);
+
+  next();
 };
+
 //Logz: maybe this is the right way to do this?
 awsController.getFile = function (req, res, next) {
-  console.log(req.params.key);
-  s3.getFile(req.params.key) //maybe this will work? but we need to change our request path
-    // i haven't looked at all into get file so i believe you. i just sort of finished the css file and am about to start on the components,
-    //you mean about to start being able tosend components to s3?
-    // yes and i thought that they were related to getting files.. and then realized that they are the exact opposite lol
-    // should we do sending to s3 first?
-    //i dunno.
-    //tellyou the truth I woldn't be sad if we did it first thing tomorrow.....
-    //Ithink I have old man energy tonight
-    // i am glad you said that because i am also very tired lol first thing tomorrow is a ok with me
-    //greats, lets leave this convo in the production version of the proj <-- yes
-    //itll really confuse people.
-    //sleep tight
-    // you too!!!The
-    .then((result) => {
-      res.status(200).json(result);
-    })
-    .catch((err) => {
-      console.log(`error getting file at key  ${key} from s3, ${err}`);
-    });
+  console.log('here?');
+  // const key = req.params.key;
+  // const searchParams = {
+  //   Bucket: bucketName,
+  //   Key: 'testApp/' + key,
+  // };
+
+  // s3.getObject(searchParams, (err, data) => {
+  //   if (err) console.log(err);
+  //   else res.locals.data = data;
+  // });
+
+  next();
+
+  // console.log(req.params.key);
+  // s3.getFile(req.params.key) //maybe this will work? but we need to change our request path
+  //   // i haven't looked at all into get file so i believe you. i just sort of finished the css file and am about to start on the components,
+  //   //you mean about to start being able tosend components to s3?
+  //   // yes and i thought that they were related to getting files.. and then realized that they are the exact opposite lol
+  //   // should we do sending to s3 first?
+  //   //i dunno.
+  //   //tellyou the truth I woldn't be sad if we did it first thing tomorrow.....
+  //   //Ithink I have old man energy tonight
+  //   // i am glad you said that because i am also very tired lol first thing tomorrow is a ok with me
+  //   //greats, lets leave this convo in the production version of the proj <-- yes
+  //   //itll really confuse people.
+  //   //sleep tight
+  //   // you too!!!The
+  //   .then((result) => {
+  //     res.status(200).json(result);
+  //   })
+  //   .catch((err) => {
+  //     console.log(`error getting file at key  ${key} from s3, ${err}`);
+  //   });
 };
 
 module.exports = awsController;
