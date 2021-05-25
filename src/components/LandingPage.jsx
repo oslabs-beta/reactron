@@ -46,10 +46,19 @@ export default function LandingPage(props) {
         for (let i = 0; i < fileContents.length; i += 1) {
           // when user authentication is implemeneted, file name needs to be updated:
           // 'username'/'projectname'/'filename'
-          resultArr.push({ name: nameContents[i], contents: fileContents[i] });
+          resultArr.push({
+            name: nameContents[i],
+            contents: fileContents[i],
+          });
         }
 
-        // axios.post('/aws/upload', { item: resultArr });
+        props.useFilesArr(resultArr);
+
+        axios.post('/fs/upload', {
+          files: resultArr,
+          username: 'sample',
+          project: 'sampleApp',
+        });
       });
     props.useLoadStatus(true); //calls useloadStatus to change state to true
   };
