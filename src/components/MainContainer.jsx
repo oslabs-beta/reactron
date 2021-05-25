@@ -1,5 +1,6 @@
 import LandingPage from './LandingPage.jsx';
 import RenderedPage from './RenderedPage.jsx';
+import TestRender from './TestRender.jsx';
 import React from 'react';
 import { useState } from 'react';
 
@@ -9,22 +10,17 @@ import { useState } from 'react';
 
 export default function MainContainer() {
   const [loadStatus, useLoadStatus] = useState(false);
-
-  // const App: React.FC = (props: any) => {
-  //   const handleClick = (event: any, node: any) => {
-  //     console.log('handle click ', event);
-  //     console.log('handle click node', node);
-  //     alert(`${node} got clicked`);
-  //   }
+  const [filesArr, useFilesArr] = useState([]);
 
   return (
     <div className='mainContainer'>
-      {/* <RenderedPage /> */}
-      {loadStatus ? (
+      <RenderedPage />
+      {/* {loadStatus ? (
         <RenderedPage />
       ) : (
-        <LandingPage useLoadStatus={useLoadStatus} />
-      )}
+        // <TestRender filesArr={filesArr} />
+        <LandingPage useLoadStatus={useLoadStatus} useFilesArr={useFilesArr} />
+      )} */}
       {/* <LandingPage /> */}
     </div>
   );

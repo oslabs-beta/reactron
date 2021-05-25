@@ -1,17 +1,8 @@
 const path = require('path');
-const BUILD_DIR = path.resolve(__dirname, 'build');
-const APP_DIR = path.resolve(__dirname);
 
 //Reactron App webpack builder
 module.exports = {
   mode: 'development',
-  entry: {
-    main: APP_DIR + '/index.js',
-  },
-  output: {
-    filename: 'bundle.js',
-    path: BUILD_DIR,
-  },
   target: 'node',
   resolve: {
     fallback: {
