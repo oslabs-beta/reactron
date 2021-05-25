@@ -19,7 +19,7 @@ export default function MainContainer() {
 
   return (
     <div className='mainContainer'>
-      {/* <RenderedPage /> */}
+      {/* <RenderedPage  /> */}
       {loadStatus ? (
         <RenderedPage />
       ) : (
