@@ -64,7 +64,7 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className='landingPage'>
+    <div className='landingPage' data-testid="LandingPage" >
       <div className='header'>
         <h1>Reactron</h1>
       </div>
