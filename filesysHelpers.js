@@ -2,21 +2,28 @@ const fsHelpers = {};
 
 fsHelpers.result = {};
 
+// accepts a directory handle and returns an object with all files and directories contained within
 fsHelpers.directoryLogger = async (fileHandle) => {
   const fileObj = {};
+  // sets a key on fileObj equal to name of initial directory
   fileObj[fileHandle.name] = {
     handle: fileHandle,
     files: [],
   };
+  // iterates over fileHandle
   for await (let [name, handle] of fileHandle) {
+    // if the current handle is a directory, is not a hidden file, and is not node modules
     if (
       handle.kind === 'directory' &&
       handle.name[0] !== '.' &&
       handle.name !== 'node_modules'
     ) {
+      // recursive call to directory logger
       const result = await fsHelpers.directoryLogger(handle);
+      // results of recursive call pushed to files array on object
       fileObj[fileHandle.name].files.push(result);
-    } else if (handle.kind === 'file' && handle.name !== '.DS_Store') {
+    } // if the file is a file and the name is not DS_Store, push to files array
+    else if (handle.kind === 'file' && handle.name !== '.DS_Store') {
       fileObj[fileHandle.name].files.push(handle);
     }
   }
@@ -25,6 +32,7 @@ fsHelpers.directoryLogger = async (fileHandle) => {
 
 //files array is actually an object
 fsHelpers.fileDisplay = async (filesObject, type) => {
+  // fileAdded is set to the value of the first key on fileObject
   const fileAdded = filesObject[Object.keys(filesObject)[0]].files; //gives array of keys
   const fileArr = [];
 
@@ -46,56 +54,3 @@ fsHelpers.fileDisplay = async (filesObject, type) => {
 };
 
 export default fsHelpers;
-
-// Fake File Structure
-// plainHTMLapp
-// - index.html
-// - fakeFolder
-//    - style.css
-// - script.js
-
-//directoryLogger results
-// {
-//   plainHTMLapp: {
-//     handle: **fileHandle uploaded from API - has a kind {directory} and name {plainHTMLapp} property**,
-//     files: [
-//       {**full fileHandle uploaded from API. some props blw**
-//         kind: file,
-//         name: index.html
-//       },
-//       {fakeFolder: {
-//         handle: **fileHandle uploaded from API - has a kind {directory} and name {fakeFolder} property**,
-//         files: [
-//           {**full fileHandle uploaded from API. some props blw**
-//             kind: file,
-//             name: style.css
-//           },
-//         ]
-//       }
-//       },
-//       {**full fileHandle uploaded from API. some props blw**
-//         kind: file,
-//         name: script.js
-//       },
-//     ]
-//   }
-// }
-
-// fileDisplay results
-// result object
-// {
-//   static or Component based on what uploaded: [
-//     {**full fileHandle uploaded from API. some props blw**
-//      kind: file,
-//      name: index.html
-//     },
-//     {**full fileHandle uploaded from API. some props blw**
-//      kind: file,
-//      name: style.css
-//     },
-//     {**full fileHandle uploaded from API. some props blw**
-//      kind: file,
-//      name: script.js
-//     },
-//   ],
-// }
