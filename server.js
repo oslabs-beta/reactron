@@ -8,9 +8,17 @@ const awsRouter = require('./routers/awsRouter.js');
 const MAIN_PORT = 3000;
 const mainApp = express();
 
-// For iFrame Server
+// For iFrame Full-App Server
 const IFRAME_PORT = 5000;
 const iframeApp = express();
+
+// For iFrame Ind-Comp Server
+const IND_COMP_PORT = 8000;
+const indCompApp = express();
+
+const getRoot = require('./puppeteer.js');
+
+getRoot('http://localhost:5000');
 
 mainApp.use(express.json({ limit: '50mb', extended: true }));
 mainApp.use(express.static(__dirname + '/public'));
@@ -46,7 +54,6 @@ mainApp.listen(MAIN_PORT, () => {
 iframeApp.use(express.static(__dirname + '/userInfo'));
 iframeApp.use(express.json());
 
-// get path needs decided
 iframeApp.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './userInfo/test.html'));
 });
@@ -71,4 +78,29 @@ iframeApp.use((err, req, res, next) => {
 
 iframeApp.listen(IFRAME_PORT, () => {
   console.log(`iFrame server listening on port ${IFRAME_PORT}`);
+});
+
+indCompApp.use(express.static(__dirname + '/indComp'));
+indCompApp.use(express.json());
+
+indCompApp.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, './indComp/index.html'));
+});
+
+indCompApp.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+
+  const errObj = Object.assign({}, defaultErr, err);
+
+  console.log(errObj.log);
+
+  return res.status(errObj.status).json(errObj.message);
+});
+
+indCompApp.listen(IND_COMP_PORT, () => {
+  console.log(`Individual Component server listening on port ${IND_COMP_PORT}`);
 });

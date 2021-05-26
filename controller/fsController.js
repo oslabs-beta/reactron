@@ -36,6 +36,8 @@ fsController.saveFiles = (req, res, next) => {
     );
   }
 
+  console.log(files);
+
   // for each file in array, creates file in username/project directory
   files.forEach((file) => {
     fs.writeFileSync(
@@ -71,19 +73,58 @@ fsController.saveFiles = (req, res, next) => {
 
 // runs puppeteer once files have been bundled
 fsController.runPuppeteer = (req, res, next) => {
-  getRoot('http://localhost:5000').then((result) => {
+  getRoot('http://localhost:5000').then(async (result) => {
     //console.log(result);
     fs.writeFileSync(
       path.join(__dirname, '../src/data.ts'),
       'export default ' + JSON.stringify(result)
     );
+    return next();
   });
-  return next();
 };
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);
   next();
+};
+
+fsController.individualComponent = (req, res, next) => {
+  console.log(req.body.name);
+  const username = 'sample';
+  const project = 'sampleApp';
+
+  const createComponent = (name) => {
+    let newName = name.replace(/.jsx?/g, '');
+    const reactComponent = `import React from 'react'; import ReactDOM from 'react-dom'; import ${newName} from '../userInfo/${username}/${project}/${name}'; ReactDOM.render(<${newName} />, document.getElementById('root'))`;
+    return reactComponent;
+  };
+  const file = createComponent(req.body.name);
+
+  fs.writeFileSync(path.join(__dirname, '../indComp/index.js'), file);
+
+  // config object for webpack
+  const configOptions = {
+    ...webpackConfig,
+    entry: {
+      main: path.join(__dirname, `../indComp/index.js`),
+    },
+    output: {
+      path: path.join(__dirname, `../indComp/build`),
+      filename: 'bundle.js',
+    },
+  };
+
+  // creates webpack compiler
+  const compiler = webpack(configOptions);
+
+  // runs compiler and bundles
+  compiler.run((err, stats) => {
+    if (err) console.log(`There was an error: ${err}`);
+    else {
+      console.log('success');
+      return next();
+    }
+  });
 };
 
 module.exports = fsController;

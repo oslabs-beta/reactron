@@ -27,6 +27,8 @@ export default function ComponentTree() {
           height={400}
           width={400}
         />
+        <br />
+        <button>Refresh Tree</button>
       </div>
       {/* <HeadNode />
       <Node /> */}
