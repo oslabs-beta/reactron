@@ -7,7 +7,7 @@ import filesysHelpers from '../../filesysHelpers.js';
 // Page that will show once directory has been imported
 export default function RenderedPage() {
   return (
-    <div className='renderedPage'>
+    <div className='renderedPage' data-testid="RenderedPage" >
       <Header />
       <div className="container">
         <ComponentTree />
