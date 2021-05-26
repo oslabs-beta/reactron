@@ -1,10 +1,8 @@
 import {render, cleanup, screen} from '@testing-library/react';
-import React from 'react';
-import ReactDOM from 'react-dom';
-import HeadNode from '../HeadNode';
-import MainContainer from '../MainContainer';
+import renderer from 'react-test-renderer';
 import '@testing-library/jest-dom';
-import App from '../App';
+import React from 'react';
+import LandingPage from '../LandingPage';
 
 afterEach(() => {
   cleanup();
@@ -15,13 +13,19 @@ test('test', () => {
 });
 
 test('should render LandingPage', () => {
-  render(<MainContainer />);
+  render(<LandingPage />);
   const landing = screen.getByTestId('LandingPage');
   expect(landing).toBeInTheDocument();
   expect(landing).toContainHTML('div');
   expect(landing).toContainHTML('p');
   expect(landing).toContainHTML('h1');
   expect(landing).toContainHTML('button');
-  expect(landing).toHaveTextContent('Static Directory')
-  expect(landing).toHaveTextContent('Component Directory')
+  expect(landing).toHaveTextContent('Reactron');
+  expect(landing).toHaveTextContent('Static Directory');
+  expect(landing).toHaveTextContent('Component Directory');
+});
+
+test('should match LandingPage snapshot', () => {
+  const snap = renderer.create(<LandingPage />).toJSON();
+  expect(snap).toMatchSnapshot();
 });
