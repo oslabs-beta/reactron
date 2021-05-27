@@ -5,11 +5,14 @@ Current React component architecture
     - LandingPage (if file not imported)
     - RenderedPage (if file imported)
       - Header
-      - ComponentTree
-        - Head Node
-        - Node
-      - Visualizer
-        - StateContainer
-          - StateItem
-        - RenderedContainer
-          - ReactComponent
+        - If Full App View:
+          - ComponentTree
+          - Visualizer
+            - StateContainer
+              - StateItem
+            - RenderedContainer
+              - ReactComponent
+        - If Indv Component View:
+          - FileList
+            - File
+          - IndividualComponent

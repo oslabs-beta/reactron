@@ -71,19 +71,64 @@ fsController.saveFiles = (req, res, next) => {
 
 // runs puppeteer once files have been bundled
 fsController.runPuppeteer = (req, res, next) => {
-  getRoot('http://localhost:5000').then((result) => {
-    //console.log(result);
+  getRoot('http://localhost:5000').then(async (result) => {
     fs.writeFileSync(
       path.join(__dirname, '../src/data.ts'),
       'export default ' + JSON.stringify(result)
     );
+    return next();
   });
-  return next();
 };
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);
   next();
+};
+
+fsController.individualComponent = (req, res, next) => {
+  // takes file name, username and project name from request body
+  const { name, username, project } = req.body;
+
+  const createComponent = () => {
+    // removes .js or .jsx
+    let nameWithoutExtension = name.replace(/.jsx?/g, '');
+
+    // creates string for react component, using file name, username, and project name
+    const reactComponent = `import React from 'react'; import ReactDOM from 'react-dom'; import ${nameWithoutExtension} from '../${username}/${project}/${name}'; ReactDOM.render(<${nameWithoutExtension} />, document.getElementById('root'))`;
+    return reactComponent;
+  };
+
+  // saves react string in variable file
+  const file = createComponent();
+
+  // writes react string to index.js
+  fs.writeFileSync(
+    path.join(__dirname, '../userInfo/individualComponent/index.js'),
+    file
+  );
+
+  // config object for webpack
+  const configOptions = {
+    ...webpackConfig,
+    entry: {
+      main: path.join(__dirname, `../userInfo/individualComponent/index.js`),
+    },
+    output: {
+      path: path.join(__dirname, `../userInfo/individualComponent/build`),
+      filename: 'bundle.js',
+    },
+  };
+
+  // creates webpack compiler
+  const compiler = webpack(configOptions);
+
+  // runs compiler and bundles
+  compiler.run((err, stats) => {
+    if (err) console.log(`There was an error: ${err}`);
+    else {
+      return next();
+    }
+  });
 };
 
 module.exports = fsController;

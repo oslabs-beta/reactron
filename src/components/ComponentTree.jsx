@@ -1,6 +1,4 @@
 import React from 'react';
-import HeadNode from './HeadNode.jsx';
-import Node from './Node.jsx';
 import Tree from 'react-tree-graph';
 import data from '../data.ts';
 import '../tree.css';
@@ -28,6 +26,8 @@ export default function ComponentTree() {
           height={400}
           width={400}
         />
+        <br />
+        <button>Refresh Tree</button>
       </div>
       {/* <HeadNode />
       <Node /> */}
