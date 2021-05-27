@@ -4,7 +4,11 @@ import axios from 'axios';
 
 export default function FileList(props) {
   const renderFile = (name) => {
-    axios.post('/fs/individual', { name });
+    axios.post('/fs/individual', {
+      name,
+      username: 'sample',
+      project: 'sampleApp',
+    });
   };
 
   const returnArr = () => {

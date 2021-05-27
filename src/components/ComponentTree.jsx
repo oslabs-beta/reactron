@@ -1,6 +1,4 @@
 import React from 'react';
-import HeadNode from './HeadNode.jsx';
-import Node from './Node.jsx';
 import Tree from 'react-tree-graph';
 import data from '../data.ts';
 import '../tree.css';

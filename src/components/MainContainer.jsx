@@ -1,6 +1,5 @@
 import LandingPage from './LandingPage.jsx';
 import RenderedPage from './RenderedPage.jsx';
-import TestRender from './TestRender.jsx';
 import React from 'react';
 import { useState } from 'react';
 
@@ -18,7 +17,6 @@ export default function MainContainer() {
       {loadStatus ? (
         <RenderedPage filesArr={filesArr} />
       ) : (
-        // <TestRender filesArr={filesArr} />
         <LandingPage useLoadStatus={useLoadStatus} useFilesArr={useFilesArr} />
       )}
       {/* <LandingPage /> */}

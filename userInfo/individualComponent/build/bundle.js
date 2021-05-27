@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./indComp/index.js":
-/*!**************************!*\
-  !*** ./indComp/index.js ***!
-  \**************************/
+/***/ "./userInfo/individualComponent/index.js":
+/*!***********************************************!*\
+  !*** ./userInfo/individualComponent/index.js ***!
+  \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _userInfo_sample_sampleApp_Home_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../userInfo/sample/sampleApp/Home.jsx */ \"./userInfo/sample/sampleApp/Home.jsx\");\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_userInfo_sample_sampleApp_Home_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack://reactron/./indComp/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _sample_sampleApp_About_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sample/sampleApp/About.jsx */ \"./userInfo/sample/sampleApp/About.jsx\");\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_sample_sampleApp_About_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack://reactron/./userInfo/individualComponent/index.js?");
 
 /***/ }),
 
-/***/ "./userInfo/sample/sampleApp/Home.jsx":
-/*!********************************************!*\
-  !*** ./userInfo/sample/sampleApp/Home.jsx ***!
-  \********************************************/
+/***/ "./userInfo/sample/sampleApp/About.jsx":
+/*!*********************************************!*\
+  !*** ./userInfo/sample/sampleApp/About.jsx ***!
+  \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Home)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction Home() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"Home\");\n}\n\n//# sourceURL=webpack://reactron/./userInfo/sample/sampleApp/Home.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ About)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction About() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"About\");\n}\n\n//# sourceURL=webpack://reactron/./userInfo/sample/sampleApp/About.jsx?");
 
 /***/ }),
 
@@ -180,7 +180,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./indComp/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./userInfo/individualComponent/index.js");
 /******/ 	
 /******/ })()
 ;

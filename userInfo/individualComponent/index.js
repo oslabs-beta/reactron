@@ -1,0 +1,1 @@
+import React from 'react'; import ReactDOM from 'react-dom'; import About from '../sample/sampleApp/About.jsx'; ReactDOM.render(<About />, document.getElementById('root'))

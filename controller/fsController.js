@@ -36,8 +36,6 @@ fsController.saveFiles = (req, res, next) => {
     );
   }
 
-  console.log(files);
-
   // for each file in array, creates file in username/project directory
   files.forEach((file) => {
     fs.writeFileSync(
@@ -74,7 +72,6 @@ fsController.saveFiles = (req, res, next) => {
 // runs puppeteer once files have been bundled
 fsController.runPuppeteer = (req, res, next) => {
   getRoot('http://localhost:5000').then(async (result) => {
-    //console.log(result);
     fs.writeFileSync(
       path.join(__dirname, '../src/data.ts'),
       'export default ' + JSON.stringify(result)
@@ -89,27 +86,35 @@ fsController.stylesheet = (req, res, next) => {
 };
 
 fsController.individualComponent = (req, res, next) => {
-  console.log(req.body.name);
-  const username = 'sample';
-  const project = 'sampleApp';
+  // takes file name, username and project name from request body
+  const { name, username, project } = req.body;
 
-  const createComponent = (name) => {
-    let newName = name.replace(/.jsx?/g, '');
-    const reactComponent = `import React from 'react'; import ReactDOM from 'react-dom'; import ${newName} from '../userInfo/${username}/${project}/${name}'; ReactDOM.render(<${newName} />, document.getElementById('root'))`;
+  const createComponent = () => {
+    // removes .js or .jsx
+    let nameWithoutExtension = name.replace(/.jsx?/g, '');
+
+    // creates string for react component, using file name, username, and project name
+    const reactComponent = `import React from 'react'; import ReactDOM from 'react-dom'; import ${nameWithoutExtension} from '../${username}/${project}/${name}'; ReactDOM.render(<${nameWithoutExtension} />, document.getElementById('root'))`;
     return reactComponent;
   };
-  const file = createComponent(req.body.name);
 
-  fs.writeFileSync(path.join(__dirname, '../indComp/index.js'), file);
+  // saves react string in variable file
+  const file = createComponent();
+
+  // writes react string to index.js
+  fs.writeFileSync(
+    path.join(__dirname, '../userInfo/individualComponent/index.js'),
+    file
+  );
 
   // config object for webpack
   const configOptions = {
     ...webpackConfig,
     entry: {
-      main: path.join(__dirname, `../indComp/index.js`),
+      main: path.join(__dirname, `../userInfo/individualComponent/index.js`),
     },
     output: {
-      path: path.join(__dirname, `../indComp/build`),
+      path: path.join(__dirname, `../userInfo/individualComponent/build`),
       filename: 'bundle.js',
     },
   };
@@ -121,7 +126,6 @@ fsController.individualComponent = (req, res, next) => {
   compiler.run((err, stats) => {
     if (err) console.log(`There was an error: ${err}`);
     else {
-      console.log('success');
       return next();
     }
   });
