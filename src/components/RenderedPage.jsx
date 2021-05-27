@@ -11,7 +11,7 @@ export default function RenderedPage(props) {
   const [view, useView] = useState('full');
 
   return (
-    <div className='renderedPage'>
+    <div className='renderedPage' data-testid="RenderedPage" >
       <Header />
       {view === 'full' ? (
         <div className='container'>

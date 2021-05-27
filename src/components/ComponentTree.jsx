@@ -9,8 +9,9 @@ import '../tree.css';
 
 export default function ComponentTree() {
   return (
-    <div className='componentTree'>
-      <div className='treeGraph'>
+    <div className='componentTree' data-testid="ComponentTree">
+      <div className='treeGraph'
+      data-testid="Tree">
         <Tree
           svgProps={{
             transform: 'rotate(90)',

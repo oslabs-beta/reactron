@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match RenderedPage snapshot 1`] = `
+<div
+  className="renderedPage"
+  data-testid="RenderedPage"
+>
+  <div
+    className="renderedHeader"
+  >
+    <h1>
+      Reactron
+    </h1>
+  </div>
+  <div
+    className="container"
+  >
+    <div
+      className="componentTree"
+    >
+      <div
+        className="treeGraph"
+      >
+        <svg
+          height={400}
+          transform="rotate(90)"
+          width={400}
+        >
+          <g>
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <path
+              className="blue"
+              d="M20,185C20,185 20,185 20,185"
+            />
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                App
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Game
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Board
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+            <g
+              className="node"
+              transform="translate(20, 185)"
+            >
+              <circle
+                r={5}
+              />
+              <text
+                dx={5.5}
+                dy={5}
+                x={-25}
+                y={25}
+              >
+                Square
+              </text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div
+      className="visualizer"
+    >
+      <div
+        className="renderedContainer"
+      >
+        <div
+          className="reactComponent"
+        >
+          <iframe
+            src="http://localhost:5000/"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
