@@ -1,10 +1,12 @@
 import React from 'react';
-import Game from './Game.jsx';
+import Header from './Header.jsx';
+import Nav from './Nav.jsx';
 
-class App extends React.Component {
-  render() {
-    return <Game />;
-  }
+export default function App() {
+  return (
+    <div>
+      <Header />
+      <Nav />
+    </div>
+  );
 }
-
-export default App;
