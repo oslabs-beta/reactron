@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon --ignore userInfo server.js",
     "build": "webpack -w",
     "test": "jest --verbose"
   },
