@@ -7,18 +7,18 @@ import { useState } from 'react';
 // If file has not been imported, landing page should display
 // If file has been imported, rendered page should display
 
-export default function MainContainer() {
+export default function AppContainer() {
   const [loadStatus, useLoadStatus] = useState(false);
   const [filesArr, useFilesArr] = useState([]);
 
   return (
     <div className='mainContainer'>
-      <RenderedPage />
-      {/* {loadStatus ? (
+      {/* <RenderedPage /> */}
+      {loadStatus ? (
         <RenderedPage filesArr={filesArr} />
       ) : (
         <LandingPage useLoadStatus={useLoadStatus} useFilesArr={useFilesArr} />
-      )} */}
+      )}
       {/* <LandingPage /> */}
     </div>
   );
