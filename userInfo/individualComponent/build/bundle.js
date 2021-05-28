@@ -16,17 +16,17 @@
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _sample_sampleApp_About_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sample/sampleApp/About.jsx */ \"./userInfo/sample/sampleApp/About.jsx\");\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_sample_sampleApp_About_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack://reactron/./userInfo/individualComponent/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _sample_sampleApp_Header_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../sample/sampleApp/Header.jsx */ \"./userInfo/sample/sampleApp/Header.jsx\");\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_sample_sampleApp_Header_jsx__WEBPACK_IMPORTED_MODULE_2__.default, null), document.getElementById('root'));\n\n//# sourceURL=webpack://reactron/./userInfo/individualComponent/index.js?");
 
 /***/ }),
 
-/***/ "./userInfo/sample/sampleApp/About.jsx":
-/*!*********************************************!*\
-  !*** ./userInfo/sample/sampleApp/About.jsx ***!
-  \*********************************************/
+/***/ "./userInfo/sample/sampleApp/Header.jsx":
+/*!**********************************************!*\
+  !*** ./userInfo/sample/sampleApp/Header.jsx ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ About)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction About() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"div\", null, \"About\");\n}\n\n//# sourceURL=webpack://reactron/./userInfo/sample/sampleApp/About.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Header)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction Header() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h1\", null, \"This is a Header!\");\n}\n\n//# sourceURL=webpack://reactron/./userInfo/sample/sampleApp/Header.jsx?");
 
 /***/ }),
 

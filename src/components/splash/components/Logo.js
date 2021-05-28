@@ -1,15 +1,14 @@
 import React from 'react';
-import logo from '../assets/logo.png';
+import logo from '../../../../assets/logo.png';
 
-console.log('logo')
+console.log('logo');
 
 export default function Logo() {
   return (
-    <div className="logo">
+    <div className='logo'>
       <div className='logoWrapper'>
-        <img id="logo" src={logo} alt={'Logo'} />
+        <img id='logo' src={logo} alt={'Logo'} />
       </div>
     </div>
-
   );
 }
