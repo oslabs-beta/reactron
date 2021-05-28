@@ -76,11 +76,12 @@ You can download the extension directly from the [Marketplace](https://marketpla
 ReactION is currently in beta release. Please let us know about bugs and suggestions at the [issue](https://github.com/ReactION-js/ReactION/issues) section.  Feel free to fork this repo and submit pull requests! -->
 
 ## Team
-[Jimmy Lin](http://github.com/CarsonCYChen) |
-[Kerri Crawford](http://github.com/wdanni) |
-[Logan Coale](http://github.com/jsliapark) |
-[Nathaniel Armstrong](http://github.com/andyxtran) |
-[Romelo Gilbert](http://github.com/jsliapark)
+[Jimmy Lin](https://github.com/odylic) |
+[Kerri Crawford](https://github.com/kerriannercrawford) |
+[Logan Coale](https://github.com/SteeleCoale) |
+<a href="https://github.com/n8innate" target="_blank">Nathaniel Armstrong</a>
+[Nathaniel Armstrong](https://github.com/n8innate) |
+[Romelo Gilbert](https://github.com/Seymour-creates)
 
 ## License
-MIT - check out [license](https://github.com/ReactION-js/ReactION/LICENSE) page for more details
+MIT - check out [license](https://github.com/oslabs-beta/reactron/LICENSE) page for more details
