@@ -7,6 +7,9 @@ import '../tree.css';
 // Currently renders a head node and a node component
 // Probably will need to change once we figure out how to show the tree
 
+//button needs to send a get request to server and call puppeteer as middle ware.
+//or could try to figure out why the 
+
 export default function ComponentTree() {
   return (
     <div className='componentTree' data-testid="ComponentTree">
