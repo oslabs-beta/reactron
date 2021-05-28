@@ -1,27 +1,25 @@
 const express = require('express');
 const path = require('path');
 
-const getRoot = require('./puppeteer.js')
-
-getRoot('http://localhost:3000')
-.then(result => {
-  // result.forEach(el => {
-  //   console.log("this is a getRoote in server el", el)
-  // })
-   console.log(result)
-})
-
 const fileSysRouters = require('./routers/fileSysRouters.js');
-const bodyParser = require('body-parser');
-
 
 // For Main Server
 const MAIN_PORT = 3000;
 const mainApp = express();
 
-// For iFrame Server
+// For iFrame Full-App Server
 const IFRAME_PORT = 5000;
 const iframeApp = express();
+
+// For iFrame Ind-Comp Server
+const IND_COMP_PORT = 8000;
+const indCompApp = express();
+
+const getRoot = require('./puppeteer.js');
+
+// getRoot('http://localhost:5000');
+
+// MAIN APP
 
 mainApp.use(express.json({ limit: '50mb', extended: true }));
 mainApp.use(express.static(__dirname + '/public'));
@@ -31,8 +29,6 @@ mainApp.get('/', (req, res) => {
 });
 
 mainApp.use('/fs', fileSysRouters);
-
-//mainApp.use('*', (req, res) => res.status(400).send('Page Not Found'));
 
 mainApp.use((err, req, res, next) => {
   const defaultErr = {
@@ -52,12 +48,17 @@ mainApp.listen(MAIN_PORT, () => {
   console.log(`Main server listening on port ${MAIN_PORT}`);
 });
 
+// IFRAME FOR FULL APP RENDER
+
 iframeApp.use(express.static(__dirname + '/userInfo'));
 iframeApp.use(express.json());
 
-// get path needs decided
 iframeApp.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './userInfo/test.html'));
+});
+
+iframeApp.get('/api', (req, res) => {
+  res.send(200);
 });
 
 iframeApp.use((err, req, res, next) => {
@@ -75,5 +76,34 @@ iframeApp.use((err, req, res, next) => {
 });
 
 iframeApp.listen(IFRAME_PORT, () => {
-  console.log(`iFrame server listening on port ${IFRAME_PORT}`);
+  console.log(`Full App server listening on port ${IFRAME_PORT}`);
+});
+
+// IFRAME FOR INDIVIDUAL COMPONENT RENDER
+
+indCompApp.use(express.static(__dirname + '/userInfo/individualComponent'));
+indCompApp.use(express.json());
+
+indCompApp.get('/', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, './userInfo/individualComponent/index.html')
+  );
+});
+
+indCompApp.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 500,
+    message: { err: 'An error occurred' },
+  };
+
+  const errObj = Object.assign({}, defaultErr, err);
+
+  console.log(errObj.log);
+
+  return res.status(errObj.status).json(errObj.message);
+});
+
+indCompApp.listen(IND_COMP_PORT, () => {
+  console.log(`Individual Component server listening on port ${IND_COMP_PORT}`);
 });

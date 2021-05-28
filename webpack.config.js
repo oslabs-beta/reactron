@@ -2,6 +2,7 @@ const path = require('path');
 const BUILD_DIR = path.resolve(__dirname, 'public/build');
 const APP_DIR = path.resolve(__dirname, './src');
 
+//Reactron App webpack builder
 module.exports = {
   entry: {
     main: APP_DIR + '/index.js',

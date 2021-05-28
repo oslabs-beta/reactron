@@ -6,8 +6,8 @@ import RenderedContainer from './RenderedContainer.jsx';
 
 export default function Visualizer() {
   return (
-    <div className='visualizer'>
-      <StateContainer />
+    <div className='visualizer' data-testid="Visualizer" >
+      {/* <StateContainer /> */}
       <RenderedContainer />
     </div>
   );
