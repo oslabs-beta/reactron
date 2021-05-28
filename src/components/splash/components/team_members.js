@@ -11,24 +11,24 @@
 //   })
 //   //console.log((info));
 //   return await info;
-  
+
 // }
 
 // console.log(getUser());
 
 import React from 'react';
 import TeamMemberComponent from './TeamMemberComponent';
-import Kerripfp from '../assets/Kerripfp.png';
-import Jimmypfp from '../assets/Jimmypfp.jpeg';
-import Loganpfp from '../assets/Loganpfp.jpeg';
-import Natepfp from '../assets/Natepfp.jpg';
-import Romelopfp from '../assets/Romelopfp.jpeg';
+import Kerripfp from '../../../../assets/Kerripfp.png';
+import Jimmypfp from '../../../../assets/Jimmypfp.jpeg';
+import Loganpfp from '../../../../assets/Loganpfp.jpeg';
+import Natepfp from '../../../../assets/Natepfp.jpg';
+import Romelopfp from '../../../../assets/Romelopfp.jpeg';
 
 export default function team_members() {
   return (
-    <div className="TeamMembersWrapper">
+    <div className='TeamMembersWrapper'>
       <h2>Meet the Reactron Team</h2>
-      <div className="TeamMembersDiv">
+      <div className='TeamMembersDiv'>
         <TeamMemberComponent
           test={1}
           image={Kerripfp}

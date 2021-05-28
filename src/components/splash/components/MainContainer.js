@@ -1,25 +1,25 @@
 import React from 'react';
-import {NavBar} from './navbar';
+import { NavBar } from './navbar';
 import AboutReactron from './AboutReactron';
 import Logo from './Logo';
 import TeamMembers from './team_members';
 import GifDisplay from './gif_display';
 
-export default function MainContainer() {
+export default function MainContainer(props) {
   return (
-    <div className="Wrapper">
-      <div className="MainContainerDiv">
-        <div className="App">
-            <Logo />
-          <header className="header">
-            <NavBar />
+    <div className='Wrapper'>
+      <div className='MainContainerDiv'>
+        <div className='App'>
+          <Logo />
+          <header className='header'>
+            <NavBar useView={props.useView} />
           </header>
           <main>
             <AboutReactron />
           </main>
-            <GifDisplay />
-            {/* <footer className="footer"><TeamMembers /></footer> */}
-            <TeamMembers />
+          <GifDisplay />
+          {/* <footer className="footer"><TeamMembers /></footer> */}
+          <TeamMembers />
         </div>
       </div>
     </div>

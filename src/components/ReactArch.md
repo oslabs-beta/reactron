@@ -1,7 +1,10 @@
 Current React component architecture
 
 - App
-  - MainContainer
+  - Splash Page
+    - Log In
+      - Oauth
+    - LandingPage
     - LandingPage (if file not imported)
     - RenderedPage (if file imported)
       - Header
