@@ -13,12 +13,12 @@ export default function MainContainer() {
 
   return (
     <div className='mainContainer'>
-      {/* <RenderedPage /> */}
-      {loadStatus ? (
+      <RenderedPage />
+      {/* {loadStatus ? (
         <RenderedPage filesArr={filesArr} />
       ) : (
         <LandingPage useLoadStatus={useLoadStatus} useFilesArr={useFilesArr} />
-      )}
+      )} */}
       {/* <LandingPage /> */}
     </div>
   );

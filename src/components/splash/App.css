@@ -1,0 +1,268 @@
+* {
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+
+body {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* lighter option */
+  /* background-color: rgba(226, 226, 226, 0.103); */
+  /* dark option */
+  background-color: rgba(31, 31, 31, 0.986);
+}
+
+#root {
+  /* border: #68828a solid 15px; */
+  min-height: 100vh;
+  height: auto;
+  /* width: 80%; */
+  width: clamp(200px, 80%, 80%);
+
+  /* display: grid;
+  grid-template-areas: 
+  "head head"; */
+  /* "nav  main"
+  "nav  foot"; */
+  grid-template-columns: 1fr;
+}
+
+#main-container-div {
+  /* grid-area: head; */
+}
+
+.header {
+  /* box-shadow: 0px 8px 24px 0px rgb(149, 157, 165, 0.411); */
+  grid-area: header;
+  /* background-color: #282c34; */
+  /* min-height: 100vh; */
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white; */
+  margin-bottom: 100px; 
+}
+
+.main{
+  box-shadow: 0px 8px 24px 0px rgb(149, 157, 165, 0.411);
+  grid-area: main;
+
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+
+
+.footer{
+  border: #a1e0f1 solid 5px;
+  grid-area: footer;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+
+.NavBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "team_link website_link" ;
+  place-items: center;
+
+}
+
+.NavBar > a{
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: bold;
+  background-color: rgba(102, 0, 0, 0.678);
+  width: 200px;
+  border-radius: 5px;
+  padding: 8px 0;
+}
+
+.NavBar >a:hover{
+  color: grey;
+  background-color: rgba(100, 0, 0, 0.897);
+}
+
+.website_link {
+  grid-area: 'website_link';
+}
+
+.team_link {
+  grid-area: 'team_link';
+}
+
+.AboutReactron {
+  /* border: 1px solid blue; */
+  display: grid;
+  place-items: center;
+  box-shadow: 0px 8px 24px 0px rgb(149, 157, 165, 0.411);
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 70px;
+}
+
+
+.GifDisplayDiv {
+  /* border: 1px solid red; */
+  /* height: 200px; */
+  box-shadow: 0px 8px 24px 0px rgb(149, 157, 165, 0.411);
+  border-radius: 5px;
+  margin: 20px 0;
+  
+}
+
+img {
+  width: 100%;
+
+}
+
+.TeamMembersWrapper > h2 {
+  padding: 15px;
+}
+
+h2 {
+  animation: 10s slidein-left;
+
+}
+
+.TeamMemberComponentDiv {
+  padding: 3px;
+  border-radius: 7px;
+  box-shadow: 0px 8px 24px 0px rgb(149, 157, 165, 0.411);
+  background-color: rgba(31, 31, 31, 0.603);
+  margin: 3px;
+}
+
+.TeamMemberComponentDiv > a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 10px;
+  
+}
+
+.TeamMemberComponentDiv > a:hover{
+  color: grey;
+}
+
+
+
+.TeamMembersDiv {
+  /* border: 1px solid black; */
+  display: grid;
+  grid-template: 1fr/ 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+  border-radius: 5px;
+  box-shadow: 0px 8px 24px 0px rgb(149, 157, 165, 0.411);
+  background-color: rgba(20, 20, 20, 0.699);
+}
+
+
+.Wrapper {
+  display: flex;
+  justify-content: center;
+
+}
+
+
+.MainContainerDiv{
+  max-width: 850px;
+  text-align: center;
+}
+
+
+
+.profileImage {
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+  padding: 5px;
+}
+
+
+
+
+/* mobile */
+@media (max-width: 650px) {
+  .TeamMembersDiv {
+    grid-template:
+      1fr
+      1fr/ 1fr 1fr;
+    height: 800px;
+  }
+}
+
+@media (max-width: 450px) {
+  .TeamMembersDiv {
+    display: flex;
+    flex-flow: column;
+    height: 1200px;
+  }
+}
+
+
+@media (min-width: 850px) {
+
+  .MainContainerDiv{
+    max-width: 1500px;
+  }
+
+ .profileImage {
+  height: 270px;
+  width: 270px;
+}
+
+h2 {
+  font-size: 70px;
+  margin-bottom: 40px;
+}
+
+p {
+  font-size: 30px;
+}
+ 
+
+.GifDisplayDiv {
+  margin-top: 50px;
+  margin-bottom: 400px;
+  padding: 20px 0;
+}
+
+.TeamMembersWrapper {
+  margin-bottom: 300px;
+}
+
+
+.AboutReactron {
+  margin-bottom: 200px;
+}
+
+.header {
+  margin-bottom: 300px;
+}
+
+.NavBar > a{
+  font-size: 50px;
+  width: 300px;
+}
+
+}
