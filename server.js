@@ -20,7 +20,7 @@ const indCompApp = express();
 
 const getRoot = require('./puppeteer.js');
 
-getRoot('http://localhost:5000');
+// getRoot('http://localhost:5000');
 
 // MAIN APP
 mainApp.use(passport.initialize())
