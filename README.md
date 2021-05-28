@@ -8,8 +8,8 @@
   <br>
 </h1>
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/ReactION-js/ReactION/pulls)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/ReactION-js/ReactION/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/oslabs-beta/reactron/pulls)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/oslabs-beta/reactron/LICENSE)
 
 <h4 align="center">A tool for the complete and total visualization of your React application</h4>
 
@@ -51,7 +51,7 @@ Reactron is currently in active development so we welcome any constructive feedb
 In order to utilize Reactron, you will first need to sign in with your [GitHub account](https://github.com/)
 ###### Otherwise view a demo of our application by pressing 'Demo!'
 
-##### After loggin in:
+##### After logging in:
 1. Upload your application when prompted
 2. Soon after you should your application broken down into it's different parts
 3. Select the component you wish to see rendered
@@ -76,11 +76,11 @@ You can download the extension directly from the [Marketplace](https://marketpla
 ReactION is currently in beta release. Please let us know about bugs and suggestions at the [issue](https://github.com/ReactION-js/ReactION/issues) section.  Feel free to fork this repo and submit pull requests! -->
 
 ## Team
-[Jimmy Lin](http://github.com/CarsonCYChen) |
-[Kerri Crawford](http://github.com/wdanni) |
-[Logan Coale](http://github.com/jsliapark) |
-[Nathaniel Armstrong](http://github.com/andyxtran) |
-[Romelo Gilbert](http://github.com/jsliapark)
+[Jimmy Lin](https://github.com/odylic) |
+[Kerri Crawford](https://github.com/kerriannercrawford) |
+[Logan Coale](https://github.com/SteeleCoale) |
+[Nathaniel Armstrong](https://github.com/n8innate) |
+[Romelo Gilbert](https://github.com/Seymour-creates)
 
 ## License
-MIT - check out [license](https://github.com/ReactION-js/ReactION/LICENSE) page for more details
+MIT - check out [license](https://github.com/oslabs-beta/reactron/LICENSE) page for more details
