@@ -79,7 +79,6 @@ ReactION is currently in beta release. Please let us know about bugs and suggest
 [Jimmy Lin](https://github.com/odylic) |
 [Kerri Crawford](https://github.com/kerriannercrawford) |
 [Logan Coale](https://github.com/SteeleCoale) |
-<a href="https://github.com/n8innate" target="_blank">Nathaniel Armstrong</a>
 [Nathaniel Armstrong](https://github.com/n8innate) |
 [Romelo Gilbert](https://github.com/Seymour-creates)
 
