@@ -1,15 +1,16 @@
-$background: rgb(202, 202, 202);
-$header: #1a239e2a;
-$pfont: rgb(12, 12, 12);
-$button-background: rgb(105, 109, 133);
+$background: rgba(31, 31, 31, 0.986);
+$header: rgba(119, 172, 183, 0.76);
+$pfont: white;
+$button-background: rgb(81,16,13);
 $button-text: white;
-$button-hover: rgb(70, 77, 134);
+$button-hover: rgba(95, 0, 0, 0.897);
+$button-text-hover: grey;
+$container-background: white;
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: $background;
   width: auto;
   height: auto;
   overflow: auto;
@@ -21,6 +22,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $background;
+
 }
 
 // code {
@@ -33,7 +36,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: $pfont;
+  background-color: $background;
+
 }
 
 /* LANDING PAGE */
@@ -57,6 +62,7 @@ body {
   grid-row-gap: 3vh;
   margin: 5%;
   margin-bottom: 100px;
+  padding: 10px;
 
   .header {
     display: grid;
@@ -73,29 +79,46 @@ body {
     grid-area: instru;
     text-align: center;
     place-items: center;
+    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    padding: 20px;
+    border-radius: 5px;
   }
 
   .staticInstr {
     display: grid;
     grid-area: SInstr;
     place-items: center;
+    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    padding: 20px;
+    border-radius: 5px;
+
   }
 
   .staticFiles {
     display: grid;
     grid-area: static;
     place-items: center;
+    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    padding: 20px;
+    border-radius: 5px;
+
   }
 
   .componentInstr {
     display: grid;
     grid-area: CInstr;
     place-items: center;
+    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+
   }
   .componentFiles {
     display: grid;
     grid-area: component;
     place-items: center;
+    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    padding: 20px;
+    border-radius: 5px;
+
   }
 
   .next {
@@ -103,6 +126,10 @@ body {
     grid-area: next;
     // place-items: center;
     text-align: center;
+    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    padding: 20px;
+    border-radius: 5px;
+
   }
 
   .button {
@@ -113,16 +140,17 @@ body {
     border: none;
     background-color: $button-background;
     color: $button-text;
-    box-shadow: 0 9px #999;
+    margin-top: 10px;
+
   }
 
   .button:hover {
     background-color: $button-hover;
+    color: $button-text-hover;
   }
 
   .button:active {
     background-color: $button-hover;
-    box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
 }
@@ -144,6 +172,8 @@ body {
 .container {
   display: grid;
   grid-template: 1fr/ 1fr 1fr;
+  background-color:$container-background;
+  border: 1px solid black;
 }
 
 /* COMPONENT TREE */
@@ -153,6 +183,8 @@ body {
   min-height: 700px;
   // border: 2px solid blue;
   margin-top: 20px;
+  
+
 }
 
 .treeGraph {
@@ -161,6 +193,8 @@ body {
   //   writing-mode: vertical-lr;
   //   text-orientation: mixed;
   // }
+  background-color: $container-background;
+
 }
 
 .node {
