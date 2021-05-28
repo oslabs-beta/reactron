@@ -51,7 +51,7 @@ Reactron is currently in active development so we welcome any constructive feedb
 In order to utilize Reactron, you will first need to sign in with your [GitHub account](https://github.com/)
 ###### Otherwise view a demo of our application by pressing 'Demo!'
 
-##### After loggin in:
+##### After logging in:
 1. Upload your application when prompted
 2. Soon after you should your application broken down into it's different parts
 3. Select the component you wish to see rendered
