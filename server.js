@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const fileSysRouters = require('./routers/fileSysRouters.js');
+const authRouter = require('./routers/authRouter.js')
 
 // For Main Server
 const MAIN_PORT = 3000;
@@ -29,6 +30,8 @@ mainApp.get('/', (req, res) => {
 });
 
 mainApp.use('/fs', fileSysRouters);
+mainApp.use('/auth', authRouter);
+
 
 mainApp.use((err, req, res, next) => {
   const defaultErr = {

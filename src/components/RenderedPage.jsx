@@ -12,6 +12,8 @@ export default function RenderedPage(props) {
 
   return (
     <div className='renderedPage' data-testid="RenderedPage" >
+      <h3>Logout</h3>
+      <a href="/logout">Sign out of Reactron</a>
       <Header />
       {view === 'full' ? (
         <div className='container'>
