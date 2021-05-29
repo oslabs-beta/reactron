@@ -1,32 +1,3 @@
-#bookDisplay {
-    width:1000px;
-    display: flex;
-    flex-direction:row;
-    align-items:center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-
-#bookComponent {
-    width:200px;
-    padding: 25px;
-}
-#navContainer {
-    display:flex;
-    justify-content:space-between;
-}
-
-#navList{
-    display:flex;
-    list-style-type:none;
-
-}
-
-#navList li{
-    padding:5px;
-}
-
 body {
-    background-color:bisque;
+  background-color: gray;
 }

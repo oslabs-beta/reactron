@@ -7,20 +7,20 @@ router.post(
   fsController.saveFiles,
   // fsController.runPuppeteer,
   (req, res) => {
-    res.status(200);
+    return res.status(200).send('OK');
   }
 );
 
 router.post('/stylesheet', fsController.stylesheet, (req, res) => {
-  res.status(200);
+  return res.status(200).send('OK');
 });
 
 router.get('/rerender', fsController.runPuppeteer, (req, res) => {
-  res.status(200);
+  return res.status(200).send('OK');
 });
 
 router.post('/individual', fsController.individualComponent, (req, res) => {
-  res.status(200);
+  return res.status(200).send('OK');
 });
 
 module.exports = router;

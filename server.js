@@ -4,7 +4,7 @@ const session = require('express-session');
 const passport = require('passport');
 
 const fileSysRouters = require('./routers/fileSysRouters.js');
-const authRouter = require('./routers/authRouter.js')
+const authRouter = require('./routers/authRouter.js');
 
 // For Main Server
 const MAIN_PORT = 3000;
@@ -23,7 +23,7 @@ const getRoot = require('./puppeteer.js');
 // getRoot('http://localhost:5000');
 
 // MAIN APP
-mainApp.use(passport.initialize())
+mainApp.use(passport.initialize());
 mainApp.use(express.json({ limit: '50mb', extended: true }));
 mainApp.use(express.static(__dirname + '/public'));
 
@@ -33,7 +33,6 @@ mainApp.get('/', (req, res) => {
 
 mainApp.use('/fs', fileSysRouters);
 mainApp.use('/auth', authRouter);
-
 
 mainApp.use((err, req, res, next) => {
   const defaultErr = {
