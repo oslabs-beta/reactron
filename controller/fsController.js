@@ -63,7 +63,6 @@ fsController.saveFiles = (req, res, next) => {
   compiler.run((err, stats) => {
     if (err) console.log(`There was an error: ${err}`);
     else {
-      console.log('success');
       return next();
     }
   });
@@ -82,7 +81,7 @@ fsController.runPuppeteer = (req, res, next) => {
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);
-  next();
+  return next();
 };
 
 fsController.individualComponent = (req, res, next) => {
