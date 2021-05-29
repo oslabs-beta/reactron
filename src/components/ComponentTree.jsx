@@ -8,13 +8,12 @@ import '../tree.css';
 // Probably will need to change once we figure out how to show the tree
 
 //button needs to send a get request to server and call puppeteer as middle ware.
-//or could try to figure out why the 
+//or could try to figure out why the
 
 export default function ComponentTree() {
   return (
-    <div className='componentTree' data-testid="ComponentTree">
-      <div className='treeGraph'
-      data-testid="Tree">
+    <div className='componentTree' data-testid='ComponentTree'>
+      <div className='treeGraph' data-testid='Tree'>
         <Tree
           svgProps={{
             transform: 'rotate(90)',
