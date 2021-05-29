@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Header from '../sample/sampleApp/Header.jsx'; ReactDOM.render(<Header />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import app from '../sample/sampleApp/app.jsx'; ReactDOM.render(<app />, document.getElementById('root'))
