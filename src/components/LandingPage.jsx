@@ -65,13 +65,13 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className='landingPage' data-testid="LandingPage" >
+    <div className='landingPage' data-testid='LandingPage'>
       <div className='header'>
         <h1>Reactron</h1>
       </div>
       <div className='githublogin'>
         <h3>Login</h3>
-        <a href="/auth/github">Login With Github</a>
+        <a href='/auth/github'>Login With Github</a>
       </div>
       <div className='instructions'>
         <p>

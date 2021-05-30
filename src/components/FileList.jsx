@@ -4,9 +4,7 @@ import axios from 'axios';
 
 export default function FileList(props) {
   const renderFile = (name) => {
-    console.log('got into render file');
     try {
-      console;
       axios
         .post('/fs/individual', {
           name,
@@ -14,6 +12,8 @@ export default function FileList(props) {
           project: 'sampleApp',
         })
         .then(() => {
+          // This is like pressing refresh on the iframe
+          // HOT MOD RE LOD
           let iframe = document.getElementById('indcomp');
           iframe.src = iframe.src;
         })
@@ -21,7 +21,6 @@ export default function FileList(props) {
     } catch (err) {
       console.log(err);
     }
-    console.log('after post');
   };
 
   const returnArr = () => {
@@ -31,5 +30,6 @@ export default function FileList(props) {
     });
     return arr;
   };
+  // TODO: remove index.js file
   return <div className='componentTree'>{returnArr()}</div>;
 }
