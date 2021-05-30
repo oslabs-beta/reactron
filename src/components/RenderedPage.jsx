@@ -5,17 +5,22 @@ import ComponentTree from './ComponentTree.jsx';
 import Visualizer from './Visualizer.jsx';
 import FileList from './FileList.jsx';
 import IndividualComponent from './IndividualComponent.jsx';
+import NavBarContainer from './NavBar/NavBarContainer'
+import DashBoard from './DashBoard'
 
 // Page that will show once directory has been imported
 export default function RenderedPage(props) {
-  const [view, useView] = useState('full');
+  // const [view, useView] = useState('full');
 
   return (
     <div className='renderedPage' data-testid="RenderedPage" >
-      <h3>Logout</h3>
-      <a href="/auth/logout">Sign out of Reactron</a>
       <Header />
-      {view === 'full' ? (
+      <NavBarContainer />
+      <DashBoard />
+      {/* <h3>Logout</h3>
+      <a href="/auth/logout">Sign out of Reactron</a>
+      <Header /> */}
+      {/* {view === 'full' ? (
         <div className='container'>
           <p>
             Below is your entire application rendered as well as a fiber tree
@@ -41,7 +46,7 @@ export default function RenderedPage(props) {
           <FileList files={props.filesArr} />
           <IndividualComponent />
         </div>
-      )}
+      )} */}
     </div>
   );
 }
