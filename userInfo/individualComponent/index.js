@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Header from '../sample/sampleApp/Header.jsx'; ReactDOM.render(<Header />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import Task from '../sample/sampleApp/Task.js'; ReactDOM.render(<Task />, document.getElementById('root'))
