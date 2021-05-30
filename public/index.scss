@@ -468,3 +468,86 @@ h2 {
 // }
 
 // }
+
+
+
+
+.LoginPageWrapper {
+  display: grid;
+  place-items: center;
+
+  .LoginPage {
+  display: grid;
+  grid: repeat(12, 1fr) / repeat(12, 1fr);
+  max-width: 1200px;
+  height: 100vh;
+  width: 100vw;
+
+    .LoginContainer {
+      grid-area: 3/4 / span 7 / span 6;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+
+    }
+
+
+    .Login {
+      grid-area: 8/5 / span 1 / span 2;
+      border: 1px solid white;
+      display: grid;
+      place-items: center;
+      margin: 10px;
+
+    }
+
+    .Demo {
+      grid-area: 8/7 / span 1 / span 2;
+      border: 1px solid white;
+      display: grid;
+      place-items: center;
+      margin: 10px; 
+
+    }
+
+    .Login .Demo {
+      background-color: grey;
+    }
+
+    .BackToSplash {
+      grid-area: 3/4 / span 1 / span 2;
+      margin: 10px;
+
+    }
+
+    .Logo {
+      grid-area: 4/5/7/9;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+      img{
+        height: 100%;
+        width: 100%;
+      }
+
+    }
+  }
+}
+
+
+
+.NavBarContainer {
+  grid-area: 1/1 / span 12 / span 2;
+  border-right: 1px solid white;
+  display: grid;
+  grid: repeat(12, 1fr) / 1fr;
+
+
+  .Profile {
+    grid-area: 1/1 / span 4 / span 1;
+
+  }
+
+  .Signout {
+    grid-area: 12/1 / span 1 / span 1;
+  }
+
+
+}
+
