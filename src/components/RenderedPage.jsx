@@ -5,17 +5,17 @@ import ComponentTree from './ComponentTree.jsx';
 import Visualizer from './Visualizer.jsx';
 import FileList from './FileList.jsx';
 import IndividualComponent from './IndividualComponent.jsx';
-import NavBarContainer from './NavBar/NavBarContainer'
-import DashBoard from './DashBoard'
+import NavBarContainer from './NavBar/NavBarContainer';
+import DashBoard from './DashBoard';
 
 // Page that will show once directory has been imported
 export default function RenderedPage(props) {
   // const [view, useView] = useState('full');
 
   return (
-    <div className='renderedPage' data-testid="RenderedPage" >
+    <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
-      <NavBarContainer />
+      <NavBarContainer files={props.filesArr} />
       <DashBoard />
       {/* <h3>Logout</h3>
       <a href="/auth/logout">Sign out of Reactron</a>

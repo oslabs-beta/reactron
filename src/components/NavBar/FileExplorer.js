@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
 
-export default function FileExplorer() {
-  return (
-    <div className="FileExplorer">
-      File Explorer
-    </div>
-  )
+export default function FileExplorer(props) {
+  const returnArr = () => {
+    const arr = [];
+    props.files.forEach((file) => {
+      arr.push(<b>{file.name}</b>);
+    });
+    return arr;
+  };
+  return <div className='FileExplorer'>{returnArr()}</div>;
 }
