@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
+import NavBarContainer from './NavBar/NavBarContainer'
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -65,14 +66,13 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className='landingPage' data-testid='LandingPage'>
+
+    <div className='landingPage' data-testid="LandingPage" >
+      <NavBarContainer />
       <div className='header'>
         <h1>Reactron</h1>
       </div>
-      <div className='githublogin'>
-        <h3>Login</h3>
-        <a href='/auth/github'>Login With Github</a>
-      </div>
+
       <div className='instructions'>
         <p>
           In order for Reactron to process your application files correctly,
