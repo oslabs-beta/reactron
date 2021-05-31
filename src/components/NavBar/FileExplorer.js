@@ -4,9 +4,12 @@ export default function FileExplorer(props) {
   const returnArr = () => {
     const arr = [];
     props.files.forEach((file) => {
-      arr.push(<b>{file.name}</b>);
+      if (file !== 'index.js') {
+        arr.push(<b>{file.name}</b>);
+        arr.push(<br />);
+      }
     });
     return arr;
   };
-  return <div className='FileExplorer'>{returnArr()}</div>;
+  return <div className='FileExplorer'>{props.files ? returnArr() : ''}</div>;
 }
