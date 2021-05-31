@@ -70,6 +70,7 @@ fsController.saveFiles = (req, res, next) => {
 
 // runs puppeteer once files have been bundled
 fsController.runPuppeteer = (req, res, next) => {
+  console.log('in runPuppeteer')
   getRoot('http://localhost:5000').then(async (result) => {
     fs.writeFileSync(
       path.join(__dirname, '../src/data.ts'),
