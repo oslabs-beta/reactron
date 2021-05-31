@@ -7,7 +7,7 @@ router.get('/github', authController.authenticate, (req, res) => {
 });
 
 router.get('/github/callback', authController.callback, (req, res) => {
-  res.redirect('/#');
+  res.redirect('/');
 });
 
 router.get('/logout', authController.logout, (req, res) => {

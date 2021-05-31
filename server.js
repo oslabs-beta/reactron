@@ -18,7 +18,7 @@ const iframeApp = express();
 const IND_COMP_PORT = 8000;
 const indCompApp = express();
 
-const getRoot = require('./puppeteer.js');
+// const getRoot = require('./puppeteer.js');
 
 // getRoot('http://localhost:5000');
 

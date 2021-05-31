@@ -5,8 +5,7 @@ import React from 'react';
 
 export default function Header() {
   return (
-    <div
-      className="renderedHeader">
+    <div className="header">
       <h1>Reactron</h1>
     </div>
     )

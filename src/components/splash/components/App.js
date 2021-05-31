@@ -1,8 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
 import MainContainer from './MainContainer';
 import AppContainer from '../../AppContainer.jsx';
 // import username from '/Users/kerricrawford/Desktop/coding/production-project/reactron/userInfo/currUser.js';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 789a1ddcbdda1f339dc1e23c39e369961ca98f84
 
 function App() {
   const [view, useView] = useState('splash');

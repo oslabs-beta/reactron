@@ -34,11 +34,6 @@ passport.use(
       callbackURL: 'http://localhost:3000/auth/github/callback', //will need to change this later to to reactron.io/auth/github/callback
     },
     (accessToken, refreshToken, profile, cb) => {
-      // const str = `const username = '${profile.username}'; export default username`;
-      // fs.appendFileSync(
-      //   '/Users/kerricrawford/Desktop/coding/production-project/reactron/userInfo/currUser.js',
-      //   str
-      // );
       //this is where we'd send a datapase request to store user id?
       console.log(profile.username);
       return cb(null, profile);
