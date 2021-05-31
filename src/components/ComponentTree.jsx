@@ -11,10 +11,46 @@ import '../tree.css';
 //or could try to figure out why the
 
 export default function ComponentTree() {
+  let tree = (
+    <Tree
+      svgProps={{
+        transform: 'rotate(90)',
+      }}
+      animated={true}
+      data={data}
+      nodeRadius={15}
+      margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
+      gProps={{
+        className: 'node',
+      }}
+      height={400}
+      width={400}
+    />
+  );
+
+  const renderTree = () => {
+    tree = (
+      <Tree
+        svgProps={{
+          transform: 'rotate(90)',
+        }}
+        animated={true}
+        data={data}
+        nodeRadius={15}
+        margins={{ top: 20, bottom: 10, left: 20, right: 20 }}
+        gProps={{
+          className: 'node',
+        }}
+        height={400}
+        width={400}
+      />
+    );
+  };
   return (
     <div className='componentTree' data-testid='ComponentTree'>
       <div className='treeGraph' data-testid='Tree'>
-        <Tree
+        {tree}
+        {/* <Tree
           svgProps={{
             transform: 'rotate(90)',
           }}
@@ -27,9 +63,9 @@ export default function ComponentTree() {
           }}
           height={400}
           width={400}
-        />
+        /> */}
         <br />
-        <button>Refresh Tree</button>
+        <button onClick={renderTree}>Refresh Tree</button>
       </div>
       {/* <HeadNode />
       <Node /> */}

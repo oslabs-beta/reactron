@@ -78,6 +78,8 @@ module.exports = async function getRoot(url) {
       // Ends up being an array with react component objects that point to their parent
       const treeNodes = [new Node('App', null)];
 
+      const state = [];
+
       // Traverses react fiber nodes similar to a linked list
       function fiberFinder(node) {
         if (node.sibling !== null) {
@@ -100,7 +102,7 @@ module.exports = async function getRoot(url) {
       }
       fiberFinder(_rootNode);
 
-      console.log(treeNodes);
+      console.log(state);
 
       // App
       //  - Header
