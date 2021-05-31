@@ -146,19 +146,34 @@ body {
     grid-area: 2/3/13/13;
     display: grid;
     grid: repeat(12, 1fr) / repeat(12, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
     overflow: scroll;
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+    }
 
     .IndividualComponent {
       grid-area: 1/1/7/7;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+
     }
     .visualizer {
       grid-area: 7/1/13/7;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+
     }
     .componentTree {
       grid-area: 7/7/13/13;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+
     }
     .Blurb {
       grid-area: 1/7/7/13;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+
     }
   }
 }
@@ -321,6 +336,7 @@ body {
 .NavBar > a:hover {
   color: grey;
   background-color: rgba(100, 0, 0, 0.897);
+  cursor: pointer;
 }
 
 .website_link {
@@ -355,10 +371,6 @@ img {
 
 .TeamMembersWrapper > h2 {
   padding: 15px;
-}
-
-h2 {
-  animation: 10s slidein-left;
 }
 
 .TeamMemberComponentDiv {

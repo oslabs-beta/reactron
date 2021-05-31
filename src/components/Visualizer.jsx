@@ -7,6 +7,7 @@ import RenderedContainer from './RenderedContainer.jsx';
 export default function Visualizer() {
   return (
     <div className='visualizer' data-testid="Visualizer" >
+      <h2 className="Componentlabel">Entire Application</h2>
       {/* <StateContainer /> */}
       <RenderedContainer />
     </div>
