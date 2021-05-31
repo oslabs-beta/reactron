@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header.jsx';
 import NavBarContainer from './NavBar/NavBarContainer';
 import DashBoard from './DashBoard';
@@ -8,7 +8,7 @@ export default function RenderedPage(props) {
   const [view, useView] = useState('full');
   const [refresh, setRefresh] = useState(0);
 
-  let tree = ComponentTree;
+  
   const refreshTree = () => {
     fetch('/fs/rerender')
     .then(res => {
@@ -17,7 +17,7 @@ export default function RenderedPage(props) {
     .then(res => {
       setRefresh(refresh + 1)
       console.log('tree click', refresh)
-      tree = ComponentTree;
+      
     })
     .catch(err => console.log('error in tree rerender', err))
 
@@ -27,7 +27,7 @@ export default function RenderedPage(props) {
     <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
       <NavBarContainer files={props.filesArr} />
-      <DashBoard />
+      <DashBoard refresh={refresh}onClick={refreshTree}/>
     </div>
   );
 }

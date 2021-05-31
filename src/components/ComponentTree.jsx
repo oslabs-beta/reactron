@@ -20,6 +20,7 @@ export default function ComponentTree(props) {
           text-transform={{transform: 'rotate(-90)'}}
           svgProps={{
             transform: 'rotate(90)',
+            text: 'rotate(90)'
           }}
           animated={true}
           data={data}
