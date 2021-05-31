@@ -24,7 +24,6 @@ export default function ComponentTree(props) {
           animated={true}
           data={data}
           nodeRadius={15}
-
           margins={{ top: 20, bottom: 80, left: 20, right: 60 }}
           gProps={{
             className: 'node',
