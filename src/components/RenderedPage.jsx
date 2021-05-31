@@ -9,7 +9,23 @@ import IndividualComponent from './IndividualComponent.jsx';
 // Page that will show once directory has been imported
 export default function RenderedPage(props) {
   const [view, useView] = useState('full');
+  const [refresh, setRefresh] = useState(0);
 
+  let tree = ComponentTree;
+  const refreshTree = () => {
+    fetch('/fs/rerender')
+    .then(res => {
+      console.log('response in tree rerender',res)
+    })
+    .then(res => {
+      setRefresh(refresh + 1)
+      console.log('tree click', refresh)
+      tree = ComponentTree;
+    })
+    .catch(err => console.log('error in tree rerender', err))
+
+
+  }
   return (
     <div className='renderedPage' data-testid="RenderedPage" >
       <h3>Logout</h3>
@@ -25,7 +41,7 @@ export default function RenderedPage(props) {
           <button onClick={() => useView('individual')}>
             Individual Components
           </button>
-          <ComponentTree />
+          <ComponentTree refresh={refresh}onClick={refreshTree}/>
           <Visualizer />
         </div>
       ) : (

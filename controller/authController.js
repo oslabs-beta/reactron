@@ -70,9 +70,9 @@ authController.callback = (req, res, next) => {
 // }
 
 authController.logout = (req, res, next) => {
-  req.session = null;
   req.logout();
-  next();
+  delete req.session;
+  return next();
 };
 
 module.exports = authController;
