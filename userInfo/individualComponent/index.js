@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Task from '../sample/sampleApp/Task.js'; ReactDOM.render(<Task />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import Body from '../sample/sampleApp/Body.js'; ReactDOM.render(<Body />, document.getElementById('root'))
