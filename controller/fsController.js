@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackConfig = require('../userInfo/webpack.user.config');
 const getRoot = require('../puppeteer.js');
+const getIFrameRoot = require('../puppeteerforIframe.js')
 
 const fsController = {};
 
@@ -79,6 +80,19 @@ fsController.runPuppeteer = (req, res, next) => {
     return next();
   });
 };
+
+fsController.runPuppeteerIFrame = (req, res, next) => {
+  console.log('in runPuppeteerIFrame')
+  getIFrameRoot('http://localhost:3000').then(async (result) => {
+    console.log('result of iframe pup', result)
+    fs.writeFileSync(
+      path.join(__dirname, '../src/data.ts'),
+      'export default ' + JSON.stringify(result)
+    );
+    return next();
+  })
+  .catch(err => console.log('this is error in pupIframe', err))
+}
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);

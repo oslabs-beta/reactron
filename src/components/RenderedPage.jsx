@@ -12,7 +12,7 @@ export default function RenderedPage(props) {
   const refreshTree = () => {
     fetch('/fs/rerender')
     .then(res => {
-      console.log('response in tree rerender',res)
+      // console.log('response in tree rerender',res)
     })
     .then(res => {
       setRefresh(refresh + 1)
