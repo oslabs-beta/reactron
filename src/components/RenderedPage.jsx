@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from './Header.jsx';
 import NavBarContainer from './NavBar/NavBarContainer';
+import FileExplorer from './NavBar/FileExplorer';
 import DashBoard from './DashBoard';
 
 // Page that will show once directory has been imported
@@ -22,7 +23,8 @@ export default function RenderedPage(props) {
   return (
     <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
-      <NavBarContainer files={props.filesArr} username={props.username} />
+      <NavBarContainer />
+      <FileExplorer files={props.filesArr} />
       <DashBoard refresh={refresh} onClick={refreshTree} />
     </div>
   );
