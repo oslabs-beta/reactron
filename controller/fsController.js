@@ -169,14 +169,14 @@ fsController.prevProjects = (req, res, next) => {
   const { username } = req.body;
 
   const userDirExists = fs.existsSync(
-    path.resolve(__dirname, `../userInfo/sample`)
+    path.resolve(__dirname, `../userInfo/${username}`)
   );
 
   console.log(userDirExists);
 
   if (userDirExists) {
     const result = fs.readdirSync(
-      path.resolve(__dirname, `../userInfo/sample`)
+      path.resolve(__dirname, `../userInfo/${username}`)
     );
     res.locals.projects = result;
     return next();
@@ -184,6 +184,18 @@ fsController.prevProjects = (req, res, next) => {
 
   res.locals.projects = [];
   return next();
+};
+
+fsController.prevProjectUpload = (req, res, next) => {
+  const { projName, username } = req.body;
+
+  const confirmDirExists = fs.existsSync(
+    path.resolve(__dirname, `../userInfo/${username}/${projName}`)
+  );
+
+  if (!confirmDirExists) return res.status(400);
+
+  next();
 };
 
 module.exports = fsController;

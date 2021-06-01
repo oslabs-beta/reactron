@@ -36,4 +36,8 @@ router.post('/prevprojs', fsController.prevProjects, (req, res) => {
   res.status(200).json(res.locals.projects);
 });
 
+router.post('/prevupload', fsController.prevProjectUpload, (req, res) => {
+  res.status(200);
+});
+
 module.exports = router;

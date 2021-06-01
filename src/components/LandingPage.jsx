@@ -5,6 +5,7 @@ import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
 import NavBarContainer from './NavBar/NavBarContainer';
 import PreviousFiles from './NavBar/PreviousFiles';
+import Header from './Header.jsx';
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -20,7 +21,7 @@ export default function LandingPage(props) {
       .then((data) => data[0].getFile())
       .then((res) => res.text())
       .then((data) => {
-        axios.post('/fs/stylesheet', { item: data });
+        axios.post('/fs/stylesheet', { item: data, username: props.username });
         useStaticFile(fileHandle);
       });
   };
@@ -59,7 +60,7 @@ export default function LandingPage(props) {
 
         axios.post('/fs/upload', {
           files: resultArr,
-          username: 'sample',
+          username: props.username,
           project: 'sampleApp',
         });
 
