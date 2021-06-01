@@ -55,6 +55,14 @@ body {
       color: $header !important;
     }
   }
+
+  .PreviousFiles {
+  grid-area: 3/1/12/3;
+  display: flex;
+  flex-flow: column;
+
+  }
+
   .instructions {
     display: grid;
     grid-area: 3/4/5/12;
@@ -140,6 +148,12 @@ body {
       text-align: center;
       color: $header !important;
     }
+  }
+
+  .FileExplorer {
+    grid-area: 3/1/12/3;
+    display: flex;
+    flex-flow: column;
   }
 
   .DashBoard {

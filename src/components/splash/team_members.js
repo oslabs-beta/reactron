@@ -25,37 +25,46 @@ import Natepfp from '../../../assets/Natepfp.jpg';
 import Romelopfp from '../../../assets/Romelopfp.jpeg';
 
 export default function team_members() {
+
+
   return (
-    <div className='TeamMembersWrapper'>
+    <div className="TeamMembersWrapper">
       <h2>Meet the Reactron Team</h2>
-      <div className='TeamMembersDiv'>
+      <div className="TeamMembersDiv">
         <TeamMemberComponent
           test={1}
           image={Kerripfp}
+          name={'Kerri Crawford'}
           linkedin={'https://linkedin.com/in/kerriannercrawford'}
           github={'https://github.com/kerriannercrawford'}
         />
+        Kerri Crawford
         <TeamMemberComponent
           test={2}
           image={Jimmypfp}
+          test2={3}
+          name={'Jimmy Lin'}
           linkedin={'https://www.linkedin.com/in/jimmylindpt/'}
           github={'https://github.com/odylic'}
         />
         <TeamMemberComponent
           test={3}
           image={Loganpfp}
+          name={'Logan Coale'}
           linkedin={''}
           github={'https://github.com/SteeleCoale'}
         />
         <TeamMemberComponent
           test={4}
           image={Natepfp}
+          name={'Nathaniel Armstrong'}
           linkedin={''}
           github={'https://github.com/n8innate'}
         />
         <TeamMemberComponent
           test={5}
           image={Romelopfp}
+          name={'Romelo Gilbert'}
           linkedin={''}
           github={'https://github.com/Seymour-creates'}
         />

@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export default function Profile() {
   return (
     <div className="Profile">
-      Profile
+      <h2>Profile</h2>
     </div>
-  )
+  );
 }

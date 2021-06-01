@@ -1,21 +1,21 @@
 import React from 'react';
 
-export default function TeamMemberComponent({ test, image, github, linkedin }) {
+export default function TeamMemberComponent({ name, test, image, github, linkedin}) {
   return (
-    <div className='TeamMemberComponentDiv'>
+    <div className="TeamMemberComponentDiv">
       <img
-        className='profileImage'
+        className="profileImage"
         src={image}
         alt={`image${test}`}
-        target='_blank'
+        target="_blank"
       ></img>
       <br></br>
-
-      <a href={github} target='_blank'>
+      <br></br>
+      <a href={github} target="_blank">
         Github
       </a>
       <br></br>
-      <a href={linkedin} target='_blank'>
+      <a href={linkedin} target="_blank">
         Linkedin
       </a>
     </div>

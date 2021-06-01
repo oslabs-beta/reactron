@@ -11,5 +11,10 @@ export default function FileExplorer(props) {
     });
     return arr;
   };
-  return <div className='FileExplorer'>{props.files ? returnArr() : ''}</div>;
+  return (
+    <div className="FileExplorer">
+      <h2>Files Uploaded</h2>
+      {props.files ? returnArr() : ''}
+    </div>
+  );
 }
