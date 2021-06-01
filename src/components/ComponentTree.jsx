@@ -14,18 +14,17 @@ export default function ComponentTree(props) {
   
   return (
     <div className='componentTree' data-testid='ComponentTree'>
+      <h2 className="Componentlabel">Component Tree</h2>
       <div className='treeGraph' data-testid='Tree'>
         <Tree
           duration={3000}
-          text-transform={{transform: 'rotate(-90)'}}
           svgProps={{
-            transform: 'rotate(90)',
-            text: 'rotate(90)'
+            transform: 'rotate(90)'
           }}
           animated={true}
           data={data}
           nodeRadius={15}
-          margins={{ top: 20, bottom: 60, left: 20, right: 60 }}
+          margins={{ top: 20, bottom: 80, left: 20, right: 60 }}
           gProps={{
             className: 'node',
           }}

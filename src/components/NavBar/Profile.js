@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-export default function Profile() {
+export default function Profile(props) {
   return (
-    <div className="Profile">
-      Profile
+    <div className='Profile'>
+      {props.username ? `Welcome, ${props.username}` : 'Welcome'}
     </div>
-  )
+  );
 }

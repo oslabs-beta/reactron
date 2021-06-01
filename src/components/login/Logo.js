@@ -1,10 +1,10 @@
-import React from 'react'
-import logo from '../splash/Reactron_Logo.png'
+import React from 'react';
+import logo from '../../../assets/logo.png';
 
 export default function Logo() {
   return (
-    <div className="Logo">
-       <img src={logo}></img>
+    <div className='Logo'>
+      <img src={logo}></img>
     </div>
-  )
+  );
 }
