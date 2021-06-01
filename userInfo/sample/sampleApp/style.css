@@ -1,0 +1,28 @@
+body {
+  margin: 40px 60px;
+}
+
+.container {
+  padding: 0 2.5%;
+}
+
+
+.box {
+  border: 2px black double;
+  height: 100px;
+  width: 100px;
+  display: grid;
+  place-content: center;
+}
+
+.letter {
+  font-size: 60px;
+}
+
+.rows {
+  display:flex;
+}
+
+.board {
+  
+}
