@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
@@ -69,11 +70,14 @@ export default function LandingPage(props) {
     <div className='landingPage' data-testid='LandingPage'>
       <NavBarContainer username={props.username} />
       <div className='header'>
-        <h1>Reactron</h1>
+      <img src={logo} alt={'Logo'} style={{opacity: 0.2}} />
       </div>
-
       <div className='instructions'>
         <p>
+          Select a Previous Project from the Side<br />
+          - OR - <br />
+          Upload a New Project Below
+          {/* <br />
           In order for Reactron to process your application files correctly,
           please follow these instructions. <br />
           If you have a CSS or SCSS file you would like processed, please upload
@@ -81,10 +85,10 @@ export default function LandingPage(props) {
           Reactron will look for an <b>index.js</b> file that connects to an{' '}
           <b>App.jsx</b> component. Please upload your index.js, App.jsx, and
           any other component files in one directory under the Component
-          Directory below.
+          Directory below. */}
         </p>
       </div>
-      <div className='staticInstr'>
+      {/* <div className='staticInstr'>
         <p>
           <b>StaticDirectory</b>
           <br /> <i>Example</i>
@@ -104,18 +108,19 @@ export default function LandingPage(props) {
           <br /> - Component1.jsx
           <br /> - Component2.jsx
         </p>
-      </div>
+      </div> */}
       <div className='staticFiles'>
-        <b>Static Files</b>
-        <p>Please upload your static directory here.</p>
-        <p>{staticFile ? `The  directory has been uploaded` : ''}</p>
+        <b>Upload Styling</b>
         <button className='button' id='static' onClick={staticOnClick}>
-          Select File Here
+          Select File
         </button>
+        <p>{staticFile ? `The  file has been uploaded` : ''}</p>
       </div>
       <div className='componentFiles'>
-        <b>Component Files</b>
-        <p>Please upload your component files here.</p>
+        <b>Upload Components</b>
+        <button className='button' id='component' onClick={componentOnClick}>
+          Select Folder
+        </button>
         <p>
           {components
             ? `The ${
@@ -123,9 +128,6 @@ export default function LandingPage(props) {
               } directory has been uploaded`
             : ''}
         </p>
-        <button className='button' id='component' onClick={componentOnClick}>
-          Select File Here
-        </button>
       </div>
       {staticFile && components ? (
         <div className='next'>
