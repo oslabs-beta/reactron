@@ -12,9 +12,10 @@ export default function App() {
   const [filesArr, useFilesArr] = useState([]);
   const [loadStatus, useLoadStatus] = useState(false);
 
-  if (username === undefined) return <LoginPage useUsername={useUsername} />;
+  if (username === undefined)
+    return <LoginPage useUsername={useUsername} useFilesArr={useFilesArr} />;
   if (username === 'demo')
-    return <RenderedPage username={'Demo'} filesArr={filesArr} />;
+    return <RenderedPage username={'Demo User'} filesArr={filesArr} />;
   else
     return (
       <div>

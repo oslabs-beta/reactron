@@ -13,7 +13,7 @@ export default function LoginPage(props) {
         <LoginContainer />
         <Logo />
         <Login />
-        <Demo useUsername={props.useUsername} />
+        <Demo useUsername={props.useUsername} useFilesArr={props.useFilesArr} />
         <BackToSplash />
         {/* <NavBarContainer /> */}
       </div>

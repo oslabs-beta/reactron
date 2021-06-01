@@ -70,7 +70,7 @@ fsController.saveFiles = (req, res, next) => {
 
 // runs puppeteer once files have been bundled
 fsController.runPuppeteer = (req, res, next) => {
-  console.log('in runPuppeteer')
+  console.log('in runPuppeteer');
   getRoot('http://localhost:5000').then(async (result) => {
     fs.writeFileSync(
       path.join(__dirname, '../src/data.ts'),
@@ -82,6 +82,7 @@ fsController.runPuppeteer = (req, res, next) => {
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);
+  fs.writeFileSync('./userInfo/individualComponent/style.css', req.body.item);
   return next();
 };
 
@@ -100,7 +101,7 @@ fsController.individualComponent = (req, res, next) => {
 
   // saves react string in variable file
   const file = createComponent();
-console.log(file)
+  console.log(file);
   // writes react string to index.js
   fs.writeFileSync(
     path.join(__dirname, '../userInfo/individualComponent/index.js'),
@@ -115,6 +116,39 @@ console.log(file)
     },
     output: {
       path: path.join(__dirname, `../userInfo/individualComponent/build`),
+      filename: 'bundle.js',
+    },
+  };
+
+  // creates webpack compiler
+  const compiler = webpack(configOptions);
+
+  // runs compiler and bundles
+  compiler.run((err, stats) => {
+    if (err) console.log(`There was an error: ${err}`);
+    else {
+      return next();
+    }
+  });
+};
+
+fsController.runDemo = (req, res, next) => {
+  const stylesheet = fs.readFileSync(
+    path.join(__dirname, `../userInfo/demo/index.css`),
+    'utf8'
+  );
+
+  fs.writeFileSync('./userInfo/style.css', stylesheet);
+  fs.writeFileSync('./userInfo/individualComponent/style.css', stylesheet);
+
+  // config object for webpack
+  const configOptions = {
+    ...webpackConfig,
+    entry: {
+      main: path.join(__dirname, `../userInfo/demo/components/index.js`),
+    },
+    output: {
+      path: path.join(__dirname, `../userInfo/build`),
       filename: 'bundle.js',
     },
   };
