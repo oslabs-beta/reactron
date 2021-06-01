@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fsController = require('../controller/fsController.js');
 
-router.post(
+router.post( 
   '/upload',
   fsController.saveFiles,
   fsController.runPuppeteer,
