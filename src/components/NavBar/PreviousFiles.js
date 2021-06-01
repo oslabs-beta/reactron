@@ -3,7 +3,7 @@ import React from 'react'
 export default function PreviousFiles() {
   return (
     <div className="PreviousFiles">
-      PreviousFiles
+      <h2>PreviousFiles</h2>
     </div>
-  )
+  );
 }
