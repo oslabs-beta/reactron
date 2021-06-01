@@ -40,7 +40,7 @@ mainApp.use('/fs', fileSysRouters);
 
 let token;
 
-mainApp.get('/newauth', (req, res) => {
+mainApp.get('/auth', (req, res) => {
   res.redirect(
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`
   );
@@ -66,7 +66,7 @@ mainApp.get('/oauth-callback', (req, res) => {
         .then((data) => {
           console.log(data);
           res.cookie('username', data.data.login);
-          return res.send('200');
+          res.redirect('/');
         })
         .catch((err) => console.log(err));
     })
