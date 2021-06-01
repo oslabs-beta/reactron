@@ -7,7 +7,6 @@ export default function NavBarContainer(props) {
   return (
     <div className='NavBarContainer'>
       <Profile username={props.username} />
-      <FileExplorer files={props.files} />
       <Signout />
     </div>
   );

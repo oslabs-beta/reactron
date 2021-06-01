@@ -3,6 +3,7 @@ import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
 import NavBarContainer from './NavBar/NavBarContainer';
+import PreviousFiles from './NavBar/PreviousFiles';
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -62,12 +63,13 @@ export default function LandingPage(props) {
         });
       });
 
-      props.useLoadStatus(true)
+    props.useLoadStatus(true);
   };
 
   return (
     <div className='landingPage' data-testid='LandingPage'>
       <NavBarContainer username={props.username} />
+      <PreviousFiles />
       <div className='header'>
         <h1>Reactron</h1>
       </div>
@@ -118,8 +120,9 @@ export default function LandingPage(props) {
         <p>Please upload your component files here.</p>
         <p>
           {components
-            ? `The ${components[Object.keys(components)[0]].handle.name
-            } directory has been uploaded`
+            ? `The ${
+                components[Object.keys(components)[0]].handle.name
+              } directory has been uploaded`
             : ''}
         </p>
         <button className='button' id='component' onClick={componentOnClick}>

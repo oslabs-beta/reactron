@@ -44,11 +44,11 @@ mainApp.get('/secret/build', (req, res) => {
 })
 
 mainApp.use('/fs', fileSysRouters);
-// mainApp.use('/auth', authRouter);.
+// mainApp.use('/auth', authRouter);
 
 let token;
 
-mainApp.get('/newauth', (req, res) => {
+mainApp.get('/auth', (req, res) => {
   res.redirect(
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`
   );
@@ -74,7 +74,7 @@ mainApp.get('/oauth-callback', (req, res) => {
         .then((data) => {
           console.log(data);
           res.cookie('username', data.data.login);
-          res.redirect('/')
+          res.redirect('/');
         })
         .catch((err) => console.log(err));
     })
@@ -83,7 +83,7 @@ mainApp.get('/oauth-callback', (req, res) => {
 
 mainApp.get('/logout', (req, res) => {
   res.clearCookie('username');
-  res.redirect('/')
+  res.redirect('/');
 });
 
 mainApp.use((err, req, res, next) => {
