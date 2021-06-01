@@ -71,12 +71,14 @@ export default function LandingPage(props) {
   return (
     <div className='landingPage' data-testid='LandingPage'>
       <NavBarContainer username={props.username} />
-      <Header />
-      <PreviousFiles />
-
+      <PreviousFiles username={props.username} />
+      <div className='header'>
+        {/* <img src={logo} alt={'Logo'} style={{ opacity: 0.2 }} /> */}
+      </div>
       <div className='instructions'>
         <p>
-          Select a Previous Project from the Side<br />
+          Select a Previous Project from the Side
+          <br />
           - OR - <br />
           Upload a New Project Below
           {/* <br />
