@@ -21,10 +21,12 @@ export default function RenderedPage(props) {
       })
       .catch((err) => console.log('error in tree rerender', err));
   };
+
+  
   return (
     <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
-      <NavBarContainerRendered  />
+      <NavBarContainerRendered files={props.filesArr} />
       <DashBoard refresh={refresh}onClick={refreshTree}/>
     </div>
   );
