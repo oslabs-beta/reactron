@@ -1,8 +1,9 @@
 const puppeteer = require('puppeteer');
 
-module.exports = async function getiFrameRoot(url) {
+module.exports = async function getIFrameRoot(url) {
+  console.log('inGetIFrameRoot')
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     devTools: true,
     args: ['--no-sandbox'],
   });
@@ -21,7 +22,7 @@ module.exports = async function getiFrameRoot(url) {
       // Locates the root React node and returns
       const _rootNode = (() => {
         // Finds all children of body tag
-        const iframeDocument = document.getElementsByTagName("iframe")[0].contentDocument;
+        const iframeDocument = document.getElementsByTagName("iframe")[1].contentDocument;
         const elems = iframeDocument.querySelector('body').children;
         for (let el of elems) {
           if (el._reactRootContainer) {
