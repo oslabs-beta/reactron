@@ -13,8 +13,17 @@ import '../tree.css';
 export default function ComponentTree(props) {
 
   const findTheDom = () => {
-    const domChildren = document.getElementById('root').children
-    console.log('domChildren', domChildren)
+    const _rootNode = (() => {
+      // Finds all children of body tag
+      const iframeDocument = document.getElementsByTagName("iframe")[1].contentDocument;
+      const elems = iframeDocument.querySelector('body').children;
+      for (let el of elems) {
+        if (el._reactRootContainer) {
+          // Returns root React node
+          console.log(el._reactRootContainer._internalRoot.current);
+        }
+      }
+    })
   }
   
   return (
@@ -39,8 +48,8 @@ export default function ComponentTree(props) {
         />
         <br />
         <button onClick={() => {
-          props.onClick();
           findTheDom();
+          props.onClick();
         }}>Refresh Tree</button>
         <p className='refresh'>{props.refresh}</p>
       </div>
