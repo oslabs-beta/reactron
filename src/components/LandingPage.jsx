@@ -5,6 +5,7 @@ import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
 import NavBarContainer from './NavBar/NavBarContainer';
 import PreviousFiles from './NavBar/PreviousFiles';
+import Header from './Header.jsx'
 
 // Will house the landing page / initial render page
 // Will import files from here

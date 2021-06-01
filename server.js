@@ -40,9 +40,8 @@ mainApp.get('/secret', (req, res) => {
 });
 
 mainApp.get('/secret/build', (req, res) => {
-  res.sendFile(path.join(__dirname, './userInfo/build/bundle.js'));
-});
-
+  res.sendFile(path.join(__dirname, './userInfo/build/bundle.js'))
+})
 mainApp.get('/secret/style', (req, res) => {
   res.sendFile(path.join(__dirname, './userInfo/style.css'));
 });
