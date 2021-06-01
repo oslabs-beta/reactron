@@ -75,7 +75,7 @@ mainApp.get('/oauth-callback', (req, res) => {
 
 mainApp.get('/logout', (req, res) => {
   res.clearCookie('username');
-  res.send(200);
+  res.redirect('/');
 });
 
 mainApp.use((err, req, res, next) => {
