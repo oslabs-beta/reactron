@@ -100,7 +100,7 @@ fsController.individualComponent = (req, res, next) => {
 
   // saves react string in variable file
   const file = createComponent();
-
+console.log(file)
   // writes react string to index.js
   fs.writeFileSync(
     path.join(__dirname, '../userInfo/individualComponent/index.js'),

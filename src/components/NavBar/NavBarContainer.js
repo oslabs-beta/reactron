@@ -6,7 +6,12 @@ import Signout from './Signout';
 export default function NavBarContainer(props) {
   return (
     <div className='NavBarContainer'>
+<<<<<<< HEAD
       <Profile />
+=======
+      <Profile username={props.username} />
+      <FileExplorer files={props.files} />
+>>>>>>> main
       <Signout />
     </div>
   );

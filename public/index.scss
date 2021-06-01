@@ -172,22 +172,18 @@ body {
     .IndividualComponent {
       grid-area: 1/1/7/7;
       box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-
     }
     .visualizer {
       grid-area: 7/1/13/7;
       box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-
     }
     .componentTree {
       grid-area: 7/7/13/13;
       box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-
     }
     .Blurb {
       grid-area: 1/7/7/13;
       box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-
     }
   }
 }
@@ -540,9 +536,7 @@ img {
 
     .Logo {
       grid-area: 4/5/7/9;
-      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
       img {
-        height: 100%;
         width: 100%;
       }
     }

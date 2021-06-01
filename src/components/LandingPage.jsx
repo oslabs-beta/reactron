@@ -2,8 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
+<<<<<<< HEAD
 import NavBarContainer from './NavBar/NavBarContainer'
 import PreviousFiles from './NavBar/PreviousFiles'
+=======
+import NavBarContainer from './NavBar/NavBarContainer';
+>>>>>>> main
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -67,10 +71,15 @@ export default function LandingPage(props) {
   };
 
   return (
+<<<<<<< HEAD
 
     <div className='landingPage' data-testid="LandingPage" >
       <NavBarContainer />
       <PreviousFiles />
+=======
+    <div className='landingPage' data-testid='LandingPage'>
+      <NavBarContainer username={props.username} />
+>>>>>>> main
       <div className='header'>
         <h1>Reactron</h1>
       </div>
