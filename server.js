@@ -36,7 +36,7 @@ mainApp.get('/', (req, res) => {
 });
 
 mainApp.use('/fs', fileSysRouters);
-// mainApp.use('/auth', authRouter);
+// mainApp.use('/auth', authRouter);.
 
 let token;
 
@@ -66,7 +66,7 @@ mainApp.get('/oauth-callback', (req, res) => {
         .then((data) => {
           console.log(data);
           res.cookie('username', data.data.login);
-          return res.send('200');
+          res.redirect('/')
         })
         .catch((err) => console.log(err));
     })
@@ -75,7 +75,7 @@ mainApp.get('/oauth-callback', (req, res) => {
 
 mainApp.get('/logout', (req, res) => {
   res.clearCookie('username');
-  res.send(200);
+  res.redirect('/')
 });
 
 mainApp.use((err, req, res, next) => {
