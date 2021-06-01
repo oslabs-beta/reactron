@@ -2,13 +2,8 @@ import React from 'react';
 
 export default function Profile(props) {
   return (
-<<<<<<< HEAD
-    <div className="Profile">
-      <h2>Profile</h2>
-=======
     <div className='Profile'>
-      {props.username ? `Welcome, ${props.username}` : 'Welcome'}
->>>>>>> main
+      <h2>Welcome, {props.username}</h2>
     </div>
   );
 }
