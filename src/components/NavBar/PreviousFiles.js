@@ -24,14 +24,17 @@ export default class PreviousFiles extends React.Component {
     const returnArr = [];
     for (let i = 0; i < this.state.prevFiles.length; i += 1) {
       returnArr.push(
-        <button onClick={() => this.handlePrevious(this.state.prevFiles[i])}>
+        <button
+          className="PreviousFilesButton"
+          onClick={() => this.handlePrevious(this.state.prevFiles[i])}
+        >
           {this.state.prevFiles[i]}
         </button>
       );
     }
     return (
-      <div className='PreviousFiles'>
-        Previous Projects
+      <div className="PreviousFiles">
+        <h2>Previous Projects </h2>
         <br />
         {this.state.prevFiles.length > 0
           ? returnArr

@@ -6,8 +6,9 @@ import PreviousFiles from './PreviousFiles'
 
 export default function NavBarContainer(props) {
   return (
-    <div className='NavBarContainer'>
+    <div className="NavBarContainer">
       <Profile username={props.username} />
+      <PreviousFiles username={props.username} />
       <Signout />
     </div>
   );

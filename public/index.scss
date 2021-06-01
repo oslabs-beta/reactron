@@ -56,6 +56,15 @@ body {
     }
   }
 
+  .PreviousFilesButton {
+    width: 9em;
+    color: black;
+    background-color: white;
+    border-radius: 5%;
+    border: none;
+    height: 30px;
+  }
+
   .PreviousFiles {
     grid-area: 3/1/12/3;
     display: flex;
@@ -557,7 +566,6 @@ img {
   grid: repeat(12, 1fr) / 1fr;
   max-height: 100vh;
   position: fixed;
-  width: 11em;
   z-index: 1;
 
   .Profile {
