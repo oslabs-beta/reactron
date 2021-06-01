@@ -14,7 +14,7 @@ export default function App() {
 
   if (username === undefined) return <LoginPage useUsername={useUsername} />;
   if (username === 'demo')
-    return <RenderedPage username={username} filesArr={filesArr} />;
+    return <RenderedPage username={'Demo'} filesArr={filesArr} />;
   else
     return (
       <div>

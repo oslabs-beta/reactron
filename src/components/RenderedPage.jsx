@@ -23,7 +23,7 @@ export default function RenderedPage(props) {
   return (
     <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
-      <NavBarContainer />
+      <NavBarContainer username={props.username} />
       <FileExplorer files={props.filesArr} />
       <DashBoard refresh={refresh} onClick={refreshTree} />
     </div>
