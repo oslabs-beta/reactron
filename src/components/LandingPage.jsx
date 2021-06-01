@@ -4,6 +4,7 @@ import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
 import NavBarContainer from './NavBar/NavBarContainer';
+import PreviousFiles from './NavBar/PreviousFiles';
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -71,7 +72,7 @@ export default function LandingPage(props) {
       <NavBarContainer username={props.username} />
       <PreviousFiles username={props.username} />
       <div className='header'>
-        <img src={logo} alt={'Logo'} style={{ opacity: 0.2 }} />
+        {/* <img src={logo} alt={'Logo'} style={{ opacity: 0.2 }} /> */}
       </div>
       <div className='instructions'>
         <p>

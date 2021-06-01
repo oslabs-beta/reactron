@@ -7,6 +7,11 @@ export default class PreviousFiles extends React.Component {
     this.state = {
       prevFiles: [],
     };
+    this.handlePrevious = this.handlePrevious.bind(this);
+  }
+
+  handlePrevious(name) {
+    console.log(name);
   }
 
   componentDidMount() {
@@ -18,7 +23,11 @@ export default class PreviousFiles extends React.Component {
   render() {
     const returnArr = [];
     for (let i = 0; i < this.state.prevFiles.length; i += 1) {
-      returnArr.push(<button>{this.state.prevFiles[i]}</button>);
+      returnArr.push(
+        <button onClick={() => this.handlePrevious(this.state.prevFiles[i])}>
+          {this.state.prevFiles[i]}
+        </button>
+      );
     }
     return (
       <div className='PreviousFiles'>

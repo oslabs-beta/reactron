@@ -169,14 +169,14 @@ fsController.prevProjects = (req, res, next) => {
   const { username } = req.body;
 
   const userDirExists = fs.existsSync(
-    path.resolve(__dirname, `../userInfo/${username}`)
+    path.resolve(__dirname, `../userInfo/sample`)
   );
 
   console.log(userDirExists);
 
   if (userDirExists) {
     const result = fs.readdirSync(
-      path.resolve(__dirname, `../userInfo/${username}`)
+      path.resolve(__dirname, `../userInfo/sample`)
     );
     res.locals.projects = result;
     return next();
