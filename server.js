@@ -35,6 +35,14 @@ mainApp.get('/', (req, res) => {
   res.send(200);
 });
 
+mainApp.get('/secret', (req, res) => {
+  res.sendFile(path.join(__dirname, './secret.html'));
+});
+
+mainApp.get('/secret/build', (req, res) => {
+  res.sendFile(path.join(__dirname, './userInfo/build/bundle.js'))
+})
+
 mainApp.use('/fs', fileSysRouters);
 // mainApp.use('/auth', authRouter);
 

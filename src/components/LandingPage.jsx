@@ -61,9 +61,9 @@ export default function LandingPage(props) {
           username: 'sample',
           project: 'sampleApp',
         });
-
-        props.useLoadStatus(true); //calls useloadStatus to change state to true
       });
+
+    props.useLoadStatus(true);
   };
 
   return (
