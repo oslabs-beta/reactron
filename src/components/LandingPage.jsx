@@ -77,7 +77,7 @@ export default function LandingPage(props) {
       </div>
       <div className='instructions'>
         <p>
-          Select a Previous Project from the Side
+          Select a Previous Project from the Sid
           <br />
           - OR - <br />
           Upload a New Project Below
