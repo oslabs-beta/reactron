@@ -5,6 +5,7 @@ import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
 import NavBarContainer from './NavBar/NavBarContainer';
 import PreviousFiles from './NavBar/PreviousFiles';
+import Header from './Header.jsx'
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -70,17 +71,14 @@ export default function LandingPage(props) {
   return (
     <div className='landingPage' data-testid='LandingPage'>
       <NavBarContainer username={props.username} />
-      <PreviousFiles username={props.username} />
-      <div className='header'>
-        {/* <img src={logo} alt={'Logo'} style={{ opacity: 0.2 }} /> */}
-      </div>
+      <Header />
       <div className='instructions'>
         <p>
           Select a Previous Project from the Side
           <br />
           - OR - <br />
           Upload a New Project Below
-          {/* <br />
+          <br />
           In order for Reactron to process your application files correctly,
           please follow these instructions. <br />
           If you have a CSS or SCSS file you would like processed, please upload
@@ -91,7 +89,7 @@ export default function LandingPage(props) {
           Directory below. */}
         </p>
       </div>
-      {/* <div className='staticInstr'>
+      <div className='staticInstr'>
         <p>
           <b>StaticDirectory</b>
           <br /> <i>Example</i>
@@ -111,7 +109,7 @@ export default function LandingPage(props) {
           <br /> - Component1.jsx
           <br /> - Component2.jsx
         </p>
-      </div> */}
+      </div>
       <div className='staticFiles'>
         <b>Upload Styling</b>
         <button className='button' id='static' onClick={staticOnClick}>
