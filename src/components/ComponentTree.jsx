@@ -11,6 +11,11 @@ import '../tree.css';
 //or could try to figure out why the
 
 export default function ComponentTree(props) {
+
+  const findTheDom = () => {
+    const domChildren = document.getElementById('root').children
+    console.log('domChildren', domChildren)
+  }
   
   return (
     <div className='componentTree' data-testid='ComponentTree'>
@@ -33,7 +38,10 @@ export default function ComponentTree(props) {
           refresh={props.refresh}
         />
         <br />
-        <button onClick={props.onClick}>Refresh Tree</button>
+        <button onClick={() => {
+          props.onClick();
+          findTheDom();
+        }}>Refresh Tree</button>
         <p className='refresh'>{props.refresh}</p>
       </div>
       {/* <HeadNode />

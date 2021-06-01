@@ -60,9 +60,9 @@ export default function LandingPage(props) {
           username: 'sample',
           project: 'sampleApp',
         });
-
-        props.useLoadStatus(true); //calls useloadStatus to change state to true
       });
+
+      props.useLoadStatus(true)
   };
 
   return (
@@ -118,9 +118,8 @@ export default function LandingPage(props) {
         <p>Please upload your component files here.</p>
         <p>
           {components
-            ? `The ${
-                components[Object.keys(components)[0]].handle.name
-              } directory has been uploaded`
+            ? `The ${components[Object.keys(components)[0]].handle.name
+            } directory has been uploaded`
             : ''}
         </p>
         <button className='button' id='component' onClick={componentOnClick}>
