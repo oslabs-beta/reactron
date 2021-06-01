@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
@@ -69,7 +69,7 @@ export default function LandingPage(props) {
   return (
     <div className='landingPage' data-testid='LandingPage'>
       <NavBarContainer username={props.username} />
-      <PreviousFiles />
+      <PreviousFiles username={props.username} />
       <div className='header'>
         <h1>Reactron</h1>
       </div>

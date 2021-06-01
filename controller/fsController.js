@@ -165,4 +165,25 @@ fsController.runDemo = (req, res, next) => {
   });
 };
 
+fsController.prevProjects = (req, res, next) => {
+  const { username } = req.body;
+
+  const userDirExists = fs.existsSync(
+    path.resolve(__dirname, `../userInfo/${username}`)
+  );
+
+  console.log(userDirExists);
+
+  if (userDirExists) {
+    const result = fs.readdirSync(
+      path.resolve(__dirname, `../userInfo/${username}`)
+    );
+    res.locals.projects = result;
+    return next();
+  }
+
+  res.locals.projects = [];
+  return next();
+};
+
 module.exports = fsController;
