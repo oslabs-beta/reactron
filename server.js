@@ -35,12 +35,20 @@ mainApp.get('/', (req, res) => {
   res.send(200);
 });
 
+mainApp.get('/secret', (req, res) => {
+  res.sendFile(path.join(__dirname, './secret.html'));
+});
+
+mainApp.get('/secret/build', (req, res) => {
+  res.sendFile(path.join(__dirname, './userInfo/build/bundle.js'))
+})
+
 mainApp.use('/fs', fileSysRouters);
-// mainApp.use('/auth', authRouter);.
+// mainApp.use('/auth', authRouter);
 
 let token;
 
-mainApp.get('/newauth', (req, res) => {
+mainApp.get('/auth', (req, res) => {
   res.redirect(
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`
   );
@@ -66,7 +74,7 @@ mainApp.get('/oauth-callback', (req, res) => {
         .then((data) => {
           console.log(data);
           res.cookie('username', data.data.login);
-          res.redirect('/')
+          res.redirect('/');
         })
         .catch((err) => console.log(err));
     })
@@ -75,7 +83,7 @@ mainApp.get('/oauth-callback', (req, res) => {
 
 mainApp.get('/logout', (req, res) => {
   res.clearCookie('username');
-  res.redirect('/')
+  res.redirect('/');
 });
 
 mainApp.use((err, req, res, next) => {

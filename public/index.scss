@@ -55,6 +55,14 @@ body {
       color: $header !important;
     }
   }
+
+  .PreviousFiles {
+  grid-area: 3/1/12/3;
+  display: flex;
+  flex-flow: column;
+
+  }
+
   .instructions {
     display: grid;
     grid-area: 3/4/5/12;
@@ -131,6 +139,13 @@ body {
   display: grid;
   grid: repeat(12, 1fr) / repeat(12, 1fr);
 
+
+  .ScrollableRenderedContainer {
+    grid-area: 1/3/13/13;
+    max-height: 800px;
+    overflow: scroll;
+  }
+
   .header {
     display: grid;
     grid-area: 1/3/3/13;
@@ -142,6 +157,12 @@ body {
     }
   }
 
+  .FileExplorer {
+    grid-area: 3/1/12/3;
+    display: flex;
+    flex-flow: column;
+  }
+
   .DashBoard {
     grid-area: 2/3/13/13;
     display: grid;
@@ -149,6 +170,7 @@ body {
     grid-gap: 20px;
     padding: 20px;
     overflow: scroll;
+    max-height: 1200px;
 
     h2 {
       text-align: center;
@@ -534,6 +556,9 @@ img {
   border-right: 1px solid white;
   display: grid;
   grid: repeat(12, 1fr) / 1fr;
+  max-height: 100vh;
+  position: fixed;
+  width: 11em;
 
   .Profile {
     grid-area: 1/1 / span 4 / span 1;
