@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fsController = require('../controller/fsController.js');
 
-router.post( 
+router.post(
   '/upload',
   fsController.saveFiles,
   fsController.runPuppeteer,
@@ -22,5 +22,14 @@ router.post('/stylesheet', fsController.stylesheet, (req, res) => {
 router.post('/individual', fsController.individualComponent, (req, res) => {
   return res.status(200).send('OK');
 });
+
+router.get(
+  '/demo',
+  fsController.runDemo,
+  fsController.runPuppeteer,
+  (req, res) => {
+    res.status(200);
+  }
+);
 
 module.exports = router;

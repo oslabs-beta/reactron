@@ -3,8 +3,7 @@ import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
 import NavBarContainer from './NavBar/NavBarContainer';
-import PreviousFiles from './NavBar/PreviousFiles'
-import Header from './Header.jsx'
+import PreviousFiles from './NavBar/PreviousFiles';
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -62,16 +61,23 @@ export default function LandingPage(props) {
           username: 'sample',
           project: 'sampleApp',
         });
-
-        props.useLoadStatus(true); //calls useloadStatus to change state to true
       });
+
+    props.useLoadStatus(true);
   };
 
   return (
     <div className='landingPage' data-testid='LandingPage'>
       <NavBarContainer username={props.username} />
+<<<<<<< HEAD
       <Header />
       <PreviousFiles />
+=======
+      <PreviousFiles />
+      <div className='header'>
+        <h1>Reactron</h1>
+      </div>
+>>>>>>> main
 
       <div className='instructions'>
         <p>
