@@ -10,6 +10,10 @@ fsHelpers.directoryLogger = async (fileHandle) => {
     handle: fileHandle,
     files: [],
   };
+
+  // intended structure of file obj
+  // fileObj = {container: {handle: FILEHANDLE, files: [{name: something, file: something}]}}
+
   // iterates over fileHandle
   for await (let [name, handle] of fileHandle) {
     // if the current handle is a directory, is not a hidden file, and is not node modules
@@ -49,7 +53,6 @@ fsHelpers.fileDisplay = async (filesObject, type) => {
       res.then((data) => fileArr.push(...data));
     }
   });
-  fsHelpers.result[type] = fileArr;
   return fileArr;
 };
 

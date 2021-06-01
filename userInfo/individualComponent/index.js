@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Home from '../sample/sampleApp/Home.jsx'; ReactDOM.render(<Home />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import App from '../sample/sampleApp/App.js'; ReactDOM.render(<App />, document.getElementById('root'))

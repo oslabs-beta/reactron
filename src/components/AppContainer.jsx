@@ -8,7 +8,7 @@ import { useState } from 'react';
 // If file has been imported, rendered page should display
 
 export default function AppContainer() {
-  const [loadStatus, useLoadStatus] = useState(false);
+  const [loadStatus, useLoadStatus] = useState(true);
   const [filesArr, useFilesArr] = useState([]);
 
   return (
