@@ -649,6 +649,28 @@ img {
   }
 }
 
+@media (min-width: 1500px) {
+  .renderedPage .DashBoard {
+    grid-area: 2/3/13/13;
+  }
+
+  .LandingPageDashboard {
+    grid-column: 1/13 !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .LandingPageDashboard {
+    grid-column: 5/13 !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .LandingPageDashboard {
+    grid-column: 6/13 !important;
+  }
+}
+
 @media (min-width: 1000px) {
   .renderedPage .DashBoard {
     grid-area: 2/3/13/13;

@@ -77,27 +77,28 @@ export default function ComponentTree(props) {
     function fiberFinder(node) {
       if (node.sibling !== null) {
         // If it has a sibling, and the sibling has a type property with a name, it is a React component
-        console.log(node.sibling);
-        // if (node.sibling.type.name && node.sibling.type.name !== null) {
-        if (false) {
-          const parent = parentFinder(node.sibling);
+        console.log('node tpye', node.type);
+        console.log('sibling type', node.sibling.type);
+        if (node.sibling.type) {
+          const parent = parentFinder(node);
           treeNodes.push(new Node(node.sibling.type.name, parent));
-          console.log('here');
         }
         fiberFinder(node.sibling);
       }
       if (node.child !== null) {
         // If it has a child, and the child has a type property with a name, it is a React component
-        if (node.child.type.name && node.child.type.name !== null) {
-          const parent = parentFinder(node.child);
+        console.log('node tpye', node.type);
+        console.log('child type', node.child.type);
+        if (node.child.type) {
+          const parent = parentFinder(node);
           treeNodes.push(new Node(node.child.type.name, parent));
-          console.log('there');
         }
         fiberFinder(node.child);
       }
+      fiberFinder(node.child);
     }
-    console.log('this is tree nodes', treeNodes);
     fiberFinder(_rootNode);
+    console.log('this is tree nodes', treeNodes);
 
     // console.log(state);
 
@@ -105,17 +106,19 @@ export default function ComponentTree(props) {
     //  - Header
     //  - Nav
     for (let i = 0; i < treeNodes.length; i += 1) {
-      // if node parent prop exist, assign node name to child of parent property
-      console.log('which loop trough treeNodes', i);
-      if (treeNodes[i].parent) {
-        // Header -> App
-        const parent = treeNodes[i].parent;
-        // search through array to find elem in array where that parent val exists
-        // if treeNodes[j] === App, push Header to App's children array
-        for (let j = 0; j < treeNodes.length; j += 1) {
-          if (treeNodes[j].name === parent) {
-            treeNodes[j].children.push(treeNodes[i]);
-            break;
+      if (treeNodes[i].name) {
+        // if node parent prop exist, assign node name to child of parent property
+        console.log('which loop trough treeNodes', i);
+        if (treeNodes[i].parent) {
+          // Header -> App
+          const parent = treeNodes[i].parent;
+          // search through array to find elem in array where that parent val exists
+          // if treeNodes[j] === App, push Header to App's children array
+          for (let j = 0; j < treeNodes.length; j += 1) {
+            if (treeNodes[j].name === parent) {
+              treeNodes[j].children.push(treeNodes[i]);
+              break;
+            }
           }
         }
       }
@@ -123,9 +126,9 @@ export default function ComponentTree(props) {
 
     rootObj = treeNodes[0];
     console.log('rootObj', rootObj);
-
-    // return rootObj;
   };
+
+  // return rootObj;
 
   return (
     <div className='componentTree' data-testid='ComponentTree'>

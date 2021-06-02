@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Board from '../kerriannercrawford/tictactoe/Board.jsx'; ReactDOM.render(<Board />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import Winner from '../kerriannercrawford/testererere/Winner.jsx'; ReactDOM.render(<Winner />, document.getElementById('root'))

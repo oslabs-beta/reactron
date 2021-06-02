@@ -54,6 +54,18 @@ fsController.saveFiles = (req, res, next) => {
     console.log(err);
   }
 
+  try {
+    fs.writeFileSync(
+      path.join(
+        __dirname,
+        `../userInfo/${username}/${project}/style/style.css`
+      ),
+      style.toString()
+    );
+  } catch (err) {
+    console.log(err);
+  }
+
   // for each file in array, creates file in username/project directory
   files.forEach((file) => {
     fs.writeFileSync(
