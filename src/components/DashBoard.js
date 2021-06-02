@@ -9,7 +9,7 @@ export default function DashBoard(props) {
     <div className='DashBoard'>
       <IndividualComponent />
       <Visualizer />
-      <ComponentTree refresh={props.refresh}onClick={props.onClick}/>
+      <ComponentTree refresh={props.refresh} onClick={props.onClick} />
       <Blurb />
     </div>
   );

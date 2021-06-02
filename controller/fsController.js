@@ -54,6 +54,18 @@ fsController.saveFiles = (req, res, next) => {
     console.log(err);
   }
 
+  try {
+    fs.writeFileSync(
+      path.join(
+        __dirname,
+        `../userInfo/${username}/${project}/style/style.css`
+      ),
+      style.toString()
+    );
+  } catch (err) {
+    console.log(err);
+  }
+
   // for each file in array, creates file in username/project directory
   files.forEach((file) => {
     fs.writeFileSync(
@@ -84,19 +96,49 @@ fsController.saveFiles = (req, res, next) => {
       return next();
     }
   });
+  res.locals.username = username;
+  res.locals.project = project;
 };
 
-// runs puppeteer once files have been bundled
-fsController.runPuppeteer = (req, res, next) => {
-  console.log('in runPuppeteer');
-  getRoot('http://localhost:5000').then(async (result) => {
-    fs.writeFileSync(
-      path.join(__dirname, '../src/data.ts'),
-      'export default ' + JSON.stringify(result)
-    );
-    return next();
+fsController.individualBundle = (req, res, next) => {
+  // config object for webpack
+  const configOptions = {
+    ...webpackConfig,
+    entry: {
+      main: path.join(
+        __dirname,
+        `../userInfo/${res.locals.username}/${res.locals.project}/index.js`
+      ),
+    },
+    output: {
+      path: path.join(__dirname, `../userInfo/individualComponent/build`),
+      filename: 'bundle.js',
+    },
+  };
+
+  // creates webpack compiler
+  const compiler = webpack(configOptions);
+
+  // runs compiler and bundles
+  compiler.run((err, stats) => {
+    if (err) console.log(`There was an error: ${err}`);
+    else {
+      return next();
+    }
   });
 };
+
+// // runs puppeteer once files have been bundled
+// fsController.runPuppeteer = (req, res, next) => {
+//   console.log('in runPuppeteer');
+//   getRoot('http://localhost:5000').then(async (result) => {
+//     fs.writeFileSync(
+//       path.join(__dirname, '../src/data.ts'),
+//       'export default ' + JSON.stringify(result)
+//     );
+//     return next();
+//   });
+// };
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);
@@ -232,6 +274,9 @@ fsController.prevProjectUpload = (req, res, next) => {
   fileObjs.forEach((file) => {
     res.locals.files.push({ name: file });
   });
+
+  res.locals.username = username;
+  res.locals.project = projName;
 
   // config object for webpack
   const configOptions = {
