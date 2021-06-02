@@ -572,8 +572,10 @@ img {
   display: grid;
   grid: repeat(12, 1fr) / 1fr;
   max-height: 100vh;
+  width: 250px;
   position: fixed;
   z-index: 1;
+  overflow: hidden;
 
   .Profile {
     grid-area: 1/1 / span 4 / span 1;
@@ -582,6 +584,7 @@ img {
 
   .Profile h2 {
     padding: 10px;
+    font-size: 16px;
   }
 
   .Signout {
