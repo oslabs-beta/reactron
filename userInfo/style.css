@@ -1,21 +1,52 @@
 body {
-  background-color: rgb(210, 210, 210);
-  color: black;
+  font: 14px 'Century Gothic', Futura, sans-serif;
+  margin: 20px;
+  background-color: #999;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
   text-align: center;
+  width: 34px;
 }
 
-.task {
-  border: 1px solid black;
-  background-color: white;
-  margin: 0 25% 1% 25%;
-  padding: 10px;
+.square:focus {
+  outline: none;
 }
 
-.task button {
-  margin-left: 5px;
-  margin-right: 5px;
+.kbd-navigation .square:focus {
+  background: #ddd;
 }
 
-h2 {
-  margin-bottom: 0;
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
 }
