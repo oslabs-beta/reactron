@@ -11,20 +11,28 @@ fsController.saveFiles = (req, res, next) => {
   // take username, project name and files from request body
   const { username, project, files, style } = req.body;
 
+  console.log('Before checking if User Directory Exists');
+
   // check if directory for username exists at userInfo/username
   const userDirExists = fs.existsSync(
     path.resolve(__dirname, `../userInfo/${username}`)
   );
+
+  console.log('Value of directory existing', userDirExists);
 
   // if not exist, create
   if (!userDirExists) {
     fs.mkdirSync(path.join(__dirname, `../userInfo/${username}`));
   }
 
+  console.log('Before checking if Project Directory Exists');
+
   // check if directory for proj exists at userInfo/projname
   const projDirExists = fs.existsSync(
     path.resolve(__dirname, `../userInfo/${username}/${project}`)
   );
+
+  console.log('Value of proj dir existing', projDirExists);
 
   //  if not, create
   if (!projDirExists) {
@@ -36,23 +44,24 @@ fsController.saveFiles = (req, res, next) => {
     path.resolve(__dirname, `../userInfo/${username}/${project}/style`)
   );
 
+  console.log('Before checking if Style Directory Exists');
+
   if (!styleDirExists) {
     fs.mkdirSync(
       path.join(__dirname, `../userInfo/${username}/${project}/style`)
     );
   }
 
-  try {
-    fs.writeFileSync(
-      path.join(
-        __dirname,
-        `../userInfo/${username}/${project}/style/style.css`
-      ),
-      style.toString()
-    );
-  } catch (err) {
-    console.log(err);
-  }
+  console.log('Value of proj dir existing', styleDirExists);
+
+  console.log('Writes stylesheet');
+
+  fs.writeFileSync(
+    path.join(__dirname, `../userInfo/${username}/${project}/style/style.css`),
+    style.toString()
+  );
+
+  console.log('Writes files');
 
   // for each file in array, creates file in username/project directory
   files.forEach((file) => {
@@ -81,6 +90,7 @@ fsController.saveFiles = (req, res, next) => {
   compiler.run((err, stats) => {
     if (err) console.log(`There was an error: ${err}`);
     else {
+      console.log('Ran webpack successfully');
       return next();
     }
   });
@@ -94,11 +104,14 @@ fsController.runPuppeteer = (req, res, next) => {
       path.join(__dirname, '../src/data.ts'),
       'export default ' + JSON.stringify(result)
     );
+    console.log('Inside of get root, file should be written');
     return next();
   });
 };
 
 fsController.stylesheet = (req, res, next) => {
+  console.log('Stylesheets written');
+
   fs.writeFileSync('./userInfo/style.css', req.body.item);
   fs.writeFileSync('./userInfo/individualComponent/style.css', req.body.item);
   return next();
@@ -178,6 +191,7 @@ fsController.runDemo = (req, res, next) => {
   compiler.run((err, stats) => {
     if (err) console.log(`There was an error: ${err}`);
     else {
+      console.log('Webpack ran for demo');
       return next();
     }
   });
@@ -255,6 +269,7 @@ fsController.prevProjectUpload = (req, res, next) => {
   compiler.run((err, stats) => {
     if (err) console.log(`There was an error: ${err}`);
     else {
+      console.log('webpack ran for Previous');
       return next();
     }
   });
