@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Header from '../Demo User/undefined/Header.js'; ReactDOM.render(<Header />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import SubjectContainer from '../n8innate/Basic/SubjectContainer.jsx'; ReactDOM.render(<SubjectContainer />, document.getElementById('root'))

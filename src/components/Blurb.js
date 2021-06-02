@@ -4,6 +4,7 @@ export default function Blurb() {
   return (
     <div className="Blurb">
       <h2 className="Componentlabel">Blurb</h2>
+      {/* <div className="Blurb-Container"></div> */}
     </div>
   );
 }
