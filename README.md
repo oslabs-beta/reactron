@@ -69,10 +69,8 @@ In order to utilize Reactron, you will first need to sign in with your [GitHub a
 - [Jest](https://jestjs.io/) - Testing
 - Love ❤️
 
-<!-- ## Contributing
-ReactION is currently in beta release. Please let us know about bugs and suggestions at the [issue](https://github.com/ReactION-js/ReactION/issues) section.  Feel free to fork this repo and submit pull requests! --> 
-Always Growing!
-Reactron is currently in active development and welcomes any contributions to this product or constructive feedback towards improvements. If using Reactron has inspired or improved your designs, please find us on GitHub for ways you can get involved. 
+## Contributing
+Reactron is currently in active development and welcomes any contributions to this product or constructive feedback towards improvements. If while using Reactron to improve your designs inspired your towards updates, please feel free to fork this repo and submit pull requests! 
 
 ## Team
 [Jimmy Lin](https://github.com/odylic) |
