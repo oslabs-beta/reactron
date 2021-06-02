@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import Header from './Header.jsx';
 import NavBarContainer from './NavBar/NavBarContainer';
 import NavBarContainerRendered from './NavBar/NavBarContainerRendered';
-import FileExplorer from './NavBar/FileExplorer'
+import FileExplorer from './NavBar/FileExplorer';
 import DashBoard from './DashBoard';
 
 // Page that will show once directory has been imported
 export default function RenderedPage(props) {
-  const [view, useView] = useState('full');
   const [refresh, setRefresh] = useState(0);
 
   const refreshTree = () => {
@@ -21,11 +20,17 @@ export default function RenderedPage(props) {
       })
       .catch((err) => console.log('error in tree rerender', err));
   };
+
   return (
     <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
-      <NavBarContainerRendered  />
-      <DashBoard refresh={refresh}onClick={refreshTree}/>
+      <NavBarContainerRendered
+        files={props.filesArr}
+        username={props.username}
+        useLoadStatus={props.useLoadStatus}
+        project={props.project}
+      />
+      <DashBoard refresh={refresh} onClick={refreshTree} />
     </div>
   );
 }

@@ -5,7 +5,8 @@ const fsController = require('../controller/fsController.js');
 router.post(
   '/upload',
   fsController.saveFiles,
-  fsController.runPuppeteer,
+  fsController.individualBundle,
+  // fsController.runPuppeteer,
   (req, res) => {
     return res.status(200).send('OK');
   }
@@ -26,7 +27,7 @@ router.post('/individual', fsController.individualComponent, (req, res) => {
 router.get(
   '/demo',
   fsController.runDemo,
-  fsController.runPuppeteer,
+  // fsController.runPuppeteer,
   (req, res) => {
     res.status(200);
   }
@@ -35,5 +36,15 @@ router.get(
 router.post('/prevprojs', fsController.prevProjects, (req, res) => {
   res.status(200).json(res.locals.projects);
 });
+
+router.post(
+  '/prevupload',
+  fsController.prevProjectUpload,
+  fsController.individualBundle,
+  // fsController.runPuppeteer,
+  (req, res) => {
+    res.status(200).json(res.locals.files);
+  }
+);
 
 module.exports = router;

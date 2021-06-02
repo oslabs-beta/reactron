@@ -1,21 +1,31 @@
-body {
-  background-color: rgb(210, 210, 210);
-  color: black;
-  text-align: center;
-}
-
-.task {
-  border: 1px solid black;
-  background-color: white;
-  margin: 0 25% 1% 25%;
-  padding: 10px;
-}
-
-.task button {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-h2 {
-  margin-bottom: 0;
+{
+  "name": "mern-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "webpack": "./node_modules/.bin/webpack -w"
+  },
+  "babel": {
+    "plugins": [
+      "add-react-displayname"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-add-react-displayname": "0.0.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.4",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
+  }
 }

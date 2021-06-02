@@ -5,9 +5,14 @@ import Signout from './Signout';
 
 export default function NavBarContainer(props) {
   return (
-    <div className="NavBarContainer">
+    <div className='NavBarContainer'>
       <Profile username={props.username} />
-      <FileExplorer files={props.files} />
+      <FileExplorer
+        files={props.files}
+        username={props.username}
+        project={props.project}
+        useLoadStatus={props.useLoadStatus}
+      />
       <Signout />
     </div>
   );
