@@ -99,8 +99,8 @@ export default function LandingPage(props) {
           Directory below. */}
         </p>
       </div>
-      <div className='staticInstr'>
-        <p>
+      <div className='staticFiles'>
+          <p>
           <b>StaticDirectory</b>
           <br /> <i>Example</i>
           <br /> - style.css
@@ -109,8 +109,14 @@ export default function LandingPage(props) {
           <br />
           <br />
         </p>
+
+        <b>Upload Styling</b>
+        <button className='button' id='static' onClick={staticOnClick}>
+          Select File
+        </button>
+        <p>{staticFile ? `The file has been uploaded` : ''}</p>
       </div>
-      <div className='componentInstr'>
+      <div className='componentFiles'>
         <p>
           <b>Component Directory</b>
           <br /> <i>Example</i>
@@ -119,15 +125,6 @@ export default function LandingPage(props) {
           <br /> - Component1.jsx
           <br /> - Component2.jsx
         </p>
-      </div>
-      <div className='staticFiles'>
-        <b>Upload Styling</b>
-        <button className='button' id='static' onClick={staticOnClick}>
-          Select File
-        </button>
-        <p>{staticFile ? `The file has been uploaded` : ''}</p>
-      </div>
-      <div className='componentFiles'>
         <b>Upload Components</b>
         <button className='button' id='component' onClick={componentOnClick}>
           Select Folder
@@ -146,9 +143,9 @@ export default function LandingPage(props) {
             Your files have been successfully uploaded. Give your project a name
             and hit the next button for Reactron to begin the rendering process.
           </p>
-          <br />
           <form onSubmit={submitDirs}>
             <input
+              className="NextInputField"
               required
               type='text'
               placeholder='Give your project a name...'
