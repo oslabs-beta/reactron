@@ -40,8 +40,8 @@ mainApp.get('/secret', (req, res) => {
 });
 
 mainApp.get('/secret/build', (req, res) => {
-  res.sendFile(path.join(__dirname, './userInfo/build/bundle.js'))
-})
+  res.sendFile(path.join(__dirname, './userInfo/build/bundle.js'));
+});
 mainApp.get('/secret/style', (req, res) => {
   res.sendFile(path.join(__dirname, './userInfo/style.css'));
 });
@@ -68,14 +68,12 @@ mainApp.get('/oauth-callback', (req, res) => {
     .post('https://github.com/login/oauth/access_token', body, opts)
     .then((res) => res.data['access_token'])
     .then((_token) => {
-      console.log('here');
       token = _token;
       axios
         .get(`https://api.github.com/user`, {
           headers: { Authorization: `token ${token}` },
         })
         .then((data) => {
-          console.log(data);
           res.cookie('username', data.data.login);
           res.redirect('/');
         })

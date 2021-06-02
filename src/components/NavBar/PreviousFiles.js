@@ -11,7 +11,16 @@ export default class PreviousFiles extends React.Component {
   }
 
   handlePrevious(name) {
-    console.log(name);
+    axios
+      .post('/fs/prevupload', {
+        projName: name,
+        username: this.props.username,
+      })
+      .then((res) => {
+        this.props.useLoadStatus(true);
+        this.props.useFilesArr(res.data);
+        this.props.useProjName(name);
+      });
   }
 
   componentDidMount() {
@@ -25,7 +34,7 @@ export default class PreviousFiles extends React.Component {
     for (let i = 0; i < this.state.prevFiles.length; i += 1) {
       returnArr.push(
         <button
-          className="PreviousFilesButton"
+          className='PreviousFilesButton'
           onClick={() => this.handlePrevious(this.state.prevFiles[i])}
         >
           {this.state.prevFiles[i]}
@@ -33,7 +42,7 @@ export default class PreviousFiles extends React.Component {
       );
     }
     return (
-      <div className="PreviousFiles">
+      <div className='PreviousFiles'>
         <h2>Previous Projects </h2>
         <br />
         {this.state.prevFiles.length > 0

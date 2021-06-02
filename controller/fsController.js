@@ -9,7 +9,7 @@ const fsController = {};
 // user will upload files:
 fsController.saveFiles = (req, res, next) => {
   // take username, project name and files from request body
-  const { username, project, files } = req.body;
+  const { username, project, files, style } = req.body;
 
   // check if directory for username exists at userInfo/username
   const userDirExists = fs.existsSync(
@@ -28,12 +28,30 @@ fsController.saveFiles = (req, res, next) => {
 
   //  if not, create
   if (!projDirExists) {
-    fs.mkdir(
-      path.join(__dirname, `../userInfo/${username}/${project}`),
-      (err) => {
-        if (err) console.log(err);
-      }
+    fs.mkdirSync(path.join(__dirname, `../userInfo/${username}/${project}`));
+  }
+
+  // check if style directory for proj exists at userInfo/projname/style
+  const styleDirExists = fs.existsSync(
+    path.resolve(__dirname, `../userInfo/${username}/${project}/style`)
+  );
+
+  if (!styleDirExists) {
+    fs.mkdirSync(
+      path.join(__dirname, `../userInfo/${username}/${project}/style`)
     );
+  }
+
+  try {
+    fs.writeFileSync(
+      path.join(
+        __dirname,
+        `../userInfo/${username}/${project}/style/style.css`
+      ),
+      style.toString()
+    );
+  } catch (err) {
+    console.log(err);
   }
 
   // for each file in array, creates file in username/project directory
@@ -101,7 +119,7 @@ fsController.individualComponent = (req, res, next) => {
 
   // saves react string in variable file
   const file = createComponent();
-  console.log(file);
+
   // writes react string to index.js
   fs.writeFileSync(
     path.join(__dirname, '../userInfo/individualComponent/index.js'),
@@ -169,14 +187,12 @@ fsController.prevProjects = (req, res, next) => {
   const { username } = req.body;
 
   const userDirExists = fs.existsSync(
-    path.resolve(__dirname, `../userInfo/sample`)
+    path.resolve(__dirname, `../userInfo/${username}`)
   );
-
-  console.log(userDirExists);
 
   if (userDirExists) {
     const result = fs.readdirSync(
-      path.resolve(__dirname, `../userInfo/sample`)
+      path.resolve(__dirname, `../userInfo/${username}`)
     );
     res.locals.projects = result;
     return next();
@@ -184,6 +200,64 @@ fsController.prevProjects = (req, res, next) => {
 
   res.locals.projects = [];
   return next();
+};
+
+fsController.prevProjectUpload = (req, res, next) => {
+  const { projName, username } = req.body;
+
+  console.log('in prev proj upload controller');
+
+  const confirmDirExists = fs.existsSync(
+    path.resolve(__dirname, `../userInfo/${username}/${projName}`)
+  );
+
+  if (!confirmDirExists) return res.status(400).send('Error');
+
+  const stylesheet = fs.readFileSync(
+    path.join(__dirname, `../userInfo/${username}/${projName}/style/style.css`),
+    'utf8'
+  );
+
+  fs.writeFileSync('./userInfo/style.css', stylesheet);
+  fs.writeFileSync('./userInfo/individualComponent/style.css', stylesheet);
+
+  const fileObjs = fs.readdirSync(
+    path.join(__dirname, `../userInfo/${username}/${projName}`)
+  );
+
+  res.locals.files = [];
+
+  fileObjs.splice(fileObjs.indexOf('style'), 1);
+
+  fileObjs.forEach((file) => {
+    res.locals.files.push({ name: file });
+  });
+
+  // config object for webpack
+  const configOptions = {
+    ...webpackConfig,
+    entry: {
+      main: path.join(
+        __dirname,
+        `../userInfo/${username}/${projName}/index.js`
+      ),
+    },
+    output: {
+      path: path.join(__dirname, `../userInfo/build`),
+      filename: 'bundle.js',
+    },
+  };
+
+  // creates webpack compiler
+  const compiler = webpack(configOptions);
+
+  // runs compiler and bundles
+  compiler.run((err, stats) => {
+    if (err) console.log(`There was an error: ${err}`);
+    else {
+      return next();
+    }
+  });
 };
 
 module.exports = fsController;

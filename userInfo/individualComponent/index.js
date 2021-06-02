@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Header from '../sample/sampleApp/Header.js'; ReactDOM.render(<Header />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import Square from '../kerriannercrawford/TicTacToe/Square.jsx'; ReactDOM.render(<Square />, document.getElementById('root'))
