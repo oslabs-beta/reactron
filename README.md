@@ -52,16 +52,13 @@ In order to utilize Reactron, you will first need to sign in with your [GitHub a
 ###### Otherwise view a demo of our application by pressing 'Demo!'
 
 ##### After logging in:
-1. Upload your application when prompted
-2. Soon after you should your application broken down into it's different parts
-3. Select the component you wish to see rendered
-4. Your screen will now feature all three visualizations at this point
-5. Simply repeat this process for any number of your components you wish to view
-6. Once your finished, logout
+1. Upload your application when prompted: first your Styling File, then your Component Folder
+2. Afterwards, you should see a 'Next' button pop-up which will lead to your application 
+4. Your screen will now feature all three visualizations of the project you uploaded
+3. Select individual components you wish to see rendered and broken down into it's different parts
+5. Repeat this process for any number of your components you wish to view
+6. Once you're finished, logout
 7. The next time you log in you will be able to pick back up where you left off
-<!-- 
-#### [Download From VS Code Marketplace]
-You can download the extension directly from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=ReactION-js.ReactION). -->
 
 ## Built With
 - [React](https://reactjs.org/) - Framework
@@ -73,7 +70,9 @@ You can download the extension directly from the [Marketplace](https://marketpla
 - Love ❤️
 
 <!-- ## Contributing
-ReactION is currently in beta release. Please let us know about bugs and suggestions at the [issue](https://github.com/ReactION-js/ReactION/issues) section.  Feel free to fork this repo and submit pull requests! -->
+ReactION is currently in beta release. Please let us know about bugs and suggestions at the [issue](https://github.com/ReactION-js/ReactION/issues) section.  Feel free to fork this repo and submit pull requests! --> 
+Always Growing!
+Reactron is currently in active development and welcomes any contributions to this product or constructive feedback towards improvements. If using Reactron has inspired or improved your designs, please find us on GitHub for ways you can get involved. 
 
 ## Team
 [Jimmy Lin](https://github.com/odylic) |
