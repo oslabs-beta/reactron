@@ -7,7 +7,6 @@ import DashBoard from './DashBoard';
 
 // Page that will show once directory has been imported
 export default function RenderedPage(props) {
-  const [view, useView] = useState('full');
   const [refresh, setRefresh] = useState(0);
 
   const refreshTree = () => {
@@ -25,7 +24,11 @@ export default function RenderedPage(props) {
   return (
     <div className='renderedPage' data-testid='RenderedPage'>
       <Header />
-      <NavBarContainerRendered files={props.filesArr} />
+      <NavBarContainerRendered
+        files={props.filesArr}
+        username={props.username}
+        project={props.project}
+      />
       <DashBoard refresh={refresh} onClick={refreshTree} />
     </div>
   );

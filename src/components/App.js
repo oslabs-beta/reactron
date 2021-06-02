@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 
 export default function App() {
   const [username, useUsername] = useState(Cookies.get('username'));
+  const [projName, useProjName] = useState(undefined);
   const [filesArr, useFilesArr] = useState([]);
   const [loadStatus, useLoadStatus] = useState(false);
 
@@ -20,10 +21,15 @@ export default function App() {
     return (
       <div>
         {loadStatus ? (
-          <RenderedPage filesArr={filesArr} username={username} />
+          <RenderedPage
+            filesArr={filesArr}
+            username={username}
+            project={projName}
+          />
         ) : (
           <LandingPage
             username={username}
+            useProjName={useProjName}
             useFilesArr={useFilesArr}
             useLoadStatus={useLoadStatus}
           />

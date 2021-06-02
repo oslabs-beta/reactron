@@ -21,8 +21,8 @@ export default function LandingPage(props) {
       .then((data) => data[0].getFile())
       .then((res) => res.text())
       .then((data) => {
-        axios.post('/fs/stylesheet', { item: data, username: props.username });
-        useStaticFile(fileHandle);
+        axios.post('/fs/stylesheet', { item: data });
+        useStaticFile(data);
       });
   };
 
@@ -32,7 +32,10 @@ export default function LandingPage(props) {
     useComponents(result);
   };
 
-  const submitDirs = async () => {
+  const submitDirs = async (e) => {
+    e.preventDefault();
+    const projName = e.target[0].value;
+
     filesysHelpers
       .fileDisplay(components, 'componentFiles')
       .then(async (data) => {
@@ -57,11 +60,13 @@ export default function LandingPage(props) {
         }
 
         props.useFilesArr(resultArr);
+        props.useProjName(projName);
 
         axios.post('/fs/upload', {
           files: resultArr,
           username: props.username,
-          project: 'sampleApp',
+          project: projName,
+          style: staticFile,
         });
 
         props.useLoadStatus(true); //calls useloadStatus to change state to true
@@ -70,19 +75,21 @@ export default function LandingPage(props) {
 
   return (
     <div className='landingPage' data-testid='LandingPage'>
-      <NavBarContainer username={props.username} />
-      <PreviousFiles username={props.username} />
-      <div className='header'>
-        {/* <img src={logo} alt={'Logo'} style={{ opacity: 0.2 }} /> */}
-      </div>
+      <NavBarContainer
+        username={props.username}
+        useFilesArr={props.useFilesArr}
+        useProjName={props.useProjName}
+        useLoadStatus={props.useLoadStatus}
+      />
+      <Header />
       <div className='instructions'>
         <p>
-          Select a Previous Project from the Sid
+          Select a Previous Project from the Side
           <br />
           - OR - <br />
           Upload a New Project Below
-          {/* <br />
-          In order for Reactron to process your application files correctly,
+          <br />
+          {/* In order for Reactron to process your application files correctly,
           please follow these instructions. <br />
           If you have a CSS or SCSS file you would like processed, please upload
           it under the Static Directory. <br />
@@ -92,7 +99,7 @@ export default function LandingPage(props) {
           Directory below. */}
         </p>
       </div>
-      {/* <div className='staticInstr'>
+      <div className='staticInstr'>
         <p>
           <b>StaticDirectory</b>
           <br /> <i>Example</i>
@@ -112,13 +119,13 @@ export default function LandingPage(props) {
           <br /> - Component1.jsx
           <br /> - Component2.jsx
         </p>
-      </div> */}
+      </div>
       <div className='staticFiles'>
         <b>Upload Styling</b>
         <button className='button' id='static' onClick={staticOnClick}>
           Select File
         </button>
-        <p>{staticFile ? `The  file has been uploaded` : ''}</p>
+        <p>{staticFile ? `The file has been uploaded` : ''}</p>
       </div>
       <div className='componentFiles'>
         <b>Upload Components</b>
@@ -136,13 +143,21 @@ export default function LandingPage(props) {
       {staticFile && components ? (
         <div className='next'>
           <p>
-            Your files have been successfully uploaded. Hit the next button for
-            Reactron to begin the rendering process.
+            Your files have been successfully uploaded. Give your project a name
+            and hit the next button for Reactron to begin the rendering process.
+          </p>
+          <br />
+          <form onSubmit={submitDirs}>
+            <input
+              required
+              type='text'
+              placeholder='Give your project a name...'
+            />
             <br />
-            <button className='button' onClick={submitDirs}>
+            <button className='button' type='submit'>
               Next
             </button>
-          </p>
+          </form>
         </div>
       ) : (
         ''

@@ -56,11 +56,21 @@ body {
     }
   }
 
+  .PreviousFilesButton {
+    width: 9em;
+    color: black;
+    background-color: white;
+    border-radius: 5%;
+    border: none;
+    height: 30px;
+  }
+
   .PreviousFiles {
     grid-area: 3/1/12/3;
     display: flex;
     flex-flow: column;
     z-index: 2;
+    padding-left: 10px;
   }
 
   .instructions {
@@ -133,6 +143,11 @@ body {
   }
 }
 
+input {
+  color: black;
+  width: 175px;
+}
+
 /* RENDERED PAGE */
 .renderedPage {
   min-width: 1000px;
@@ -160,6 +175,7 @@ body {
     grid-area: 3/1/12/3;
     display: flex;
     flex-flow: column;
+    padding: 10px;
   }
 
   .DashBoard {
@@ -557,12 +573,15 @@ img {
   grid: repeat(12, 1fr) / 1fr;
   max-height: 100vh;
   position: fixed;
-  width: 11em;
   z-index: 1;
 
   .Profile {
     grid-area: 1/1 / span 4 / span 1;
     height: 100px;
+  }
+
+  .Profile h2 {
+    padding: 10px;
   }
 
   .Signout {
