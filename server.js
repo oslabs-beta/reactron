@@ -46,6 +46,24 @@ mainApp.get('/secret/style', (req, res) => {
   res.sendFile(path.join(__dirname, './userInfo/style.css'));
 });
 
+mainApp.get('/individual', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, './userInfo/individualComponent/index.html')
+  );
+});
+
+mainApp.get('/individual/build', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, './userInfo/individualComponent/build/bundle.js')
+  );
+});
+
+mainApp.get('/individual/style', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, './userInfo/individualComponent/style.css')
+  );
+});
+
 mainApp.use('/fs', fileSysRouters);
 // mainApp.use('/auth', authRouter);
 
