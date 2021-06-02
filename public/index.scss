@@ -57,13 +57,17 @@ body {
   }
 
   .PreviousFilesButton {
-    width: 15em;
+    width: 14em;
     color: black;
     background-color: white;
     border-radius: 5px;
     border: none;
     height: 30px;
     margin-bottom: 5px;
+
+    &:hover {
+      background-color: rgb(214, 214, 214);
+    }
   }
 
   .PreviousFiles {
@@ -72,6 +76,10 @@ body {
     flex-flow: column;
     z-index: 2;
     padding-left: 10px;
+
+    h2 {
+      margin-right: 10px;
+    }
   }
 
   .instructions {
@@ -83,31 +91,31 @@ body {
     border-radius: 5px;
   }
 
-  .staticInstr {
-    display: grid;
-    grid-area: 5/4/7/8;
-    place-items: center;
-    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-    border-radius: 5px;
-  }
+  // .staticInstr {
+  //   display: grid;
+  //   grid-area: 5/4/7/8;
+  //   place-items: center;
+  //   box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+  //   border-radius: 5px;
+  // }
 
   .staticFiles {
     display: grid;
-    grid-area: 7/4/9/8;
+    grid-area: 5/4/9/8;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
     border-radius: 5px;
   }
 
-  .componentInstr {
-    display: grid;
-    grid-area: 5/8/7/12;
-    place-items: center;
-    box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-  }
+  // .componentInstr {
+  //   display: grid;
+  //   grid-area: 5/8/7/12;
+  //   place-items: center;
+  //   box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+  // }
   .componentFiles {
     display: grid;
-    grid-area: 7/8/9/12;
+    grid-area: 5/8/9/12;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
     border-radius: 5px;
@@ -115,11 +123,22 @@ body {
 
   .next {
     display: grid;
-    grid-area: 9/6/11/10;
+    grid-area: 9/5/12/11;
     text-align: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
     padding: 20px;
     border-radius: 5px;
+
+    input {
+      color: black;
+      width: 175px;
+      height: 40px;
+      padding: 5px;
+      border: none;
+      border-radius: 5px;
+    }
+
+
   }
 
   .button {
@@ -144,10 +163,7 @@ body {
   }
 }
 
-input {
-  color: black;
-  width: 175px;
-}
+
 
 /* RENDERED PAGE */
 .renderedPage {
@@ -164,6 +180,12 @@ input {
     height: 30px;
     margin-bottom: 5px;
     margin-right: 40px;
+    font-weight: bold;
+
+    &:hover{
+      background-color: rgb(214, 214, 214);
+    }
+
   }
 
 
@@ -621,16 +643,30 @@ img {
     text-align: center;
     padding: 30px 0;
     border-top: 1px solid white;
+
+    a:hover{
+      color: grey;
+    }
   }
 }
 
 
 
-@media (min-width: 1000px) {
+// @media (min-width: 1000px) {
 
-  .renderedPage .DashBoard {
-    grid-area: 2/3/13/13;
-  }
+//   .renderedPage .DashBoard {
+//     grid-area: 2/3/13/13;
+//   }
+
+// }
+
+
+@media (max-width: 850px) {
+    // landingPageContainer
+    // grid-column: 5/13;
 
 }
 
+@media (max-width: 450px) {
+    // grid-column: 6/13;
+}
