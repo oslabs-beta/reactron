@@ -10,11 +10,11 @@ import { useState } from 'react';
 
 export default function MainContainer() {
   const [loadStatus, useLoadStatus] = useState(false);
-  const [filesArr, useFilesArr] = useState([]);
+  const [filesArr, useFilesArr] = useState([{name: 'sup'}, {name: 'tryme'}]);
 
   return (
     <div className='mainContainer'>
-      <RenderedPage />
+      <RenderedPage filesArr={filesArr} />
       {/* {loadStatus ? (
         <RenderedPage />
       ) : (
