@@ -1,9 +1,0 @@
- -App
-    -MainContainer
-        -Header
-          -Reactron.io link
-          -Team member link to bottom
-        -Logo
-        -About Reactron
-        -gif_display
-        -Team Members

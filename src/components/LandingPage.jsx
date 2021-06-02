@@ -1,7 +1,11 @@
 import React from 'react';
+import logo from '../../assets/logo.png';
 import { useState } from 'react';
 import filesysHelpers from '../../filesysHelpers.js';
 import axios from 'axios';
+import NavBarContainer from './NavBar/NavBarContainer';
+import PreviousFiles from './NavBar/PreviousFiles';
+import Header from './Header.jsx';
 
 // Will house the landing page / initial render page
 // Will import files from here
@@ -18,7 +22,7 @@ export default function LandingPage(props) {
       .then((res) => res.text())
       .then((data) => {
         axios.post('/fs/stylesheet', { item: data });
-        useStaticFile(fileHandle);
+        useStaticFile(data);
       });
   };
 
@@ -28,7 +32,10 @@ export default function LandingPage(props) {
     useComponents(result);
   };
 
-  const submitDirs = async () => {
+  const submitDirs = async (e) => {
+    e.preventDefault();
+    const projName = e.target[0].value;
+
     filesysHelpers
       .fileDisplay(components, 'componentFiles')
       .then(async (data) => {
@@ -53,11 +60,13 @@ export default function LandingPage(props) {
         }
 
         props.useFilesArr(resultArr);
+        props.useProjName(projName);
 
         axios.post('/fs/upload', {
           files: resultArr,
-          username: 'sample',
-          project: 'sampleApp',
+          username: props.username,
+          project: projName,
+          style: staticFile,
         });
 
         props.useLoadStatus(true); //calls useloadStatus to change state to true
@@ -65,20 +74,29 @@ export default function LandingPage(props) {
   };
 
   return (
-    <div className='landingPage' data-testid="LandingPage" >
-      <div className='header'>
-        <h1>Reactron</h1>
-      </div>
+    <div className='landingPage' data-testid='LandingPage'>
+      <NavBarContainer
+        username={props.username}
+        useFilesArr={props.useFilesArr}
+        useProjName={props.useProjName}
+        useLoadStatus={props.useLoadStatus}
+      />
+      <Header />
       <div className='instructions'>
         <p>
-          In order for Reactron to process your application files correctly,
+          Select a Previous Project from the Side
+          <br />
+          - OR - <br />
+          Upload a New Project Below
+          <br />
+          {/* In order for Reactron to process your application files correctly,
           please follow these instructions. <br />
           If you have a CSS or SCSS file you would like processed, please upload
           it under the Static Directory. <br />
           Reactron will look for an <b>index.js</b> file that connects to an{' '}
           <b>App.jsx</b> component. Please upload your index.js, App.jsx, and
           any other component files in one directory under the Component
-          Directory below.
+          Directory below. */}
         </p>
       </div>
       <div className='staticInstr'>
@@ -103,16 +121,17 @@ export default function LandingPage(props) {
         </p>
       </div>
       <div className='staticFiles'>
-        <b>Static Files</b>
-        <p>Please upload your static directory here.</p>
-        <p>{staticFile ? `The  directory has been uploaded` : ''}</p>
+        <b>Upload Styling</b>
         <button className='button' id='static' onClick={staticOnClick}>
-          Select File Here
+          Select File
         </button>
+        <p>{staticFile ? `The file has been uploaded` : ''}</p>
       </div>
       <div className='componentFiles'>
-        <b>Component Files</b>
-        <p>Please upload your component files here.</p>
+        <b>Upload Components</b>
+        <button className='button' id='component' onClick={componentOnClick}>
+          Select Folder
+        </button>
         <p>
           {components
             ? `The ${
@@ -120,20 +139,25 @@ export default function LandingPage(props) {
               } directory has been uploaded`
             : ''}
         </p>
-        <button className='button' id='component' onClick={componentOnClick}>
-          Select File Here
-        </button>
       </div>
       {staticFile && components ? (
         <div className='next'>
           <p>
-            Your files have been successfully uploaded. Hit the next button for
-            Reactron to begin the rendering process.
+            Your files have been successfully uploaded. Give your project a name
+            and hit the next button for Reactron to begin the rendering process.
+          </p>
+          <br />
+          <form onSubmit={submitDirs}>
+            <input
+              required
+              type='text'
+              placeholder='Give your project a name...'
+            />
             <br />
-            <button className='button' onClick={submitDirs}>
+            <button className='button' type='submit'>
               Next
             </button>
-          </p>
+          </form>
         </div>
       ) : (
         ''

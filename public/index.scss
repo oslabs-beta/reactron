@@ -1,9 +1,9 @@
 $background: rgba(31, 31, 31, 0.986);
 $header: rgba(119, 172, 183, 0.76);
 $pfont: white;
-$button-background: rgb(81, 16, 13);
+$button-background: #1d3e53;
 $button-text: white;
-$button-hover: rgba(95, 0, 0, 0.897);
+$button-hover: #1d3e53ec;
 $button-text-hover: grey;
 $container-background: white;
 
@@ -11,9 +11,7 @@ $container-background: white;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  width: auto;
-  height: auto;
-  overflow: auto;
+  // overflow: auto;
 }
 
 body {
@@ -23,6 +21,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $background;
+  height: 100vh;
+  width: 100vw;
 }
 
 // code {
@@ -32,39 +32,22 @@ body {
 
 /* MAIN CONTAINER */
 .mainContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
   color: $pfont;
   background-color: $background;
 }
 
 /* LANDING PAGE */
 .landingPage {
-  max-width: 850px;
+  height: 100vh;
+  width: 100vw;
   display: grid;
-  align-items: center;
-  justify-content: center;
-  grid-template:
-    1fr
-    1fr
-    1fr
-    1fr
-    1fr/ 1fr 1fr 5vw 1fr 1fr;
-  grid-template-areas:
-    'header header header header header'
-    '. instru instru instru .'
-    'SInstr SInstr .  CInstr CInstr'
-    'static static . component component'
-    '. next next next  . ';
-  grid-row-gap: 3vh;
-  margin: 5%;
-  margin-bottom: 100px;
-  padding: 10px;
+  grid: repeat(12, 1fr) / repeat(12, 1fr);
+  grid-gap: 15px;
 
   .header {
     display: grid;
-    grid-area: header;
+    grid-area: 1/3/3/13;
 
     h1 {
       font-size: 100px;
@@ -72,53 +55,67 @@ body {
       color: $header !important;
     }
   }
+
+  .PreviousFilesButton {
+    width: 15em;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+
+  .PreviousFiles {
+    grid-area: 3/1/12/3;
+    display: flex;
+    flex-flow: column;
+    z-index: 2;
+    padding-left: 10px;
+  }
+
   .instructions {
     display: grid;
-    grid-area: instru;
+    grid-area: 3/4/5/12;
     text-align: center;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-    padding: 20px;
     border-radius: 5px;
   }
 
   .staticInstr {
     display: grid;
-    grid-area: SInstr;
+    grid-area: 5/4/7/8;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-    padding: 20px;
     border-radius: 5px;
   }
 
   .staticFiles {
     display: grid;
-    grid-area: static;
+    grid-area: 7/4/9/8;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-    padding: 20px;
     border-radius: 5px;
   }
 
   .componentInstr {
     display: grid;
-    grid-area: CInstr;
+    grid-area: 5/8/7/12;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
   }
   .componentFiles {
     display: grid;
-    grid-area: component;
+    grid-area: 7/8/9/12;
     place-items: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
-    padding: 20px;
     border-radius: 5px;
   }
 
   .next {
     display: grid;
-    grid-area: next;
-    // place-items: center;
+    grid-area: 9/6/11/10;
     text-align: center;
     box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
     padding: 20px;
@@ -147,35 +144,101 @@ body {
   }
 }
 
+input {
+  color: black;
+  width: 175px;
+}
+
 /* RENDERED PAGE */
 .renderedPage {
   min-width: 1000px;
+  display: grid;
+  grid: repeat(12, 1fr) / repeat(12, 1fr);
+
+  .FileExplorerButton {
+    width: 15em;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+    border: none;
+    height: 30px;
+    margin-bottom: 5px;
+    margin-right: 40px;
+  }
+
+
+  .ScrollableRenderedContainer {
+    grid-area: 1/3/13/13;
+    max-height: 800px;
+    overflow: scroll;
+  }
+
+  .header {
+    display: grid;
+    grid-area: 1/3/3/13;
+
+    h1 {
+      font-size: 100px;
+      text-align: center;
+      color: $header !important;
+    }
+  }
+
+  .FileExplorer {
+    grid-area: 3/1/12/3;
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+  }
+
+  .DashBoard {
+    grid-area: 2/4/13/13;
+    display: grid;
+    grid: repeat(12, 1fr) / repeat(12, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    overflow: scroll;
+    max-height: 1200px;
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    .IndividualComponent {
+      grid-area: 1/1/7/7;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    }
+    .visualizer {
+      grid-area: 7/1/13/7;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    }
+    .componentTree {
+      grid-area: 7/7/13/13;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    }
+    .Blurb {
+      grid-area: 1/7/7/13;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    }
+  }
 }
 
-.renderedPage h1 {
-  display: grid;
-  width: 100%;
-  // border: 2px solid black;
-  font-size: 100px;
-  color: $header;
-  text-align: center;
-}
-
-.container {
-  display: grid;
-  grid-template: 1fr/ 1fr 1fr;
-  background-color: $container-background;
-  border: 1px solid black;
-}
+// .container {
+//   display: grid;
+//   grid-template: 1fr/ 1fr 1fr;
+//   background-color: $container-background;
+//   border: 1px solid black;
+// }
 
 /* COMPONENT TREE */
-.componentTree {
-  display: grid;
-  grid-column: 1 / span 1;
-  min-height: 700px;
-  // border: 2px solid blue;
-  margin-top: 20px;
-}
+// .componentTree {
+//   display: grid;
+//   grid-column: 1 / span 1;
+//   min-height: 700px;
+//   // border: 2px solid blue;
+//   margin-top: 20px;
+// }
 
 .treeGraph {
   //margin-top: 15vh;
@@ -191,10 +254,10 @@ body {
 }
 
 /* VISUALIZER */
-.visualizer {
-  grid-column: 2 / span 1;
-  // border: 2px solid red;
-}
+// .visualizer {
+//   grid-column: 2 / span 1;
+//   // border: 2px solid red;
+// }
 
 /* STATE CONTAINER */
 .stateContainer {
@@ -232,10 +295,10 @@ iframe {
 }
 
 body {
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  // overflow: auto;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -249,17 +312,17 @@ body {
 
 #root {
   /* border: #68828a solid 15px; */
-  min-height: 100vh;
-  height: auto;
+  // min-height: 100vh;
+  // height: auto;
   /* width: 80%; */
-  width: clamp(200px, 80%, 80%);
+  // width: clamp(200px, 80%, 80%);
 
   /* display: grid;
   grid-template-areas: 
   "head head"; */
   /* "nav  main"
   "nav  foot"; */
-  grid-template-columns: 1fr;
+  // grid-template-columns: 1fr;
 }
 
 #main-container-div {
@@ -319,6 +382,7 @@ body {
 .NavBar > a:hover {
   color: grey;
   background-color: rgba(100, 0, 0, 0.897);
+  cursor: pointer;
 }
 
 .website_link {
@@ -353,10 +417,6 @@ img {
 
 .TeamMembersWrapper > h2 {
   padding: 15px;
-}
-
-h2 {
-  animation: 10s slidein-left;
 }
 
 .TeamMemberComponentDiv {
@@ -468,3 +528,109 @@ h2 {
 // }
 
 // }
+
+.LoginPageWrapper {
+  display: grid;
+  place-items: center;
+
+  .LoginPage {
+    display: grid;
+    grid: repeat(12, 1fr) / repeat(12, 1fr);
+    max-width: 1200px;
+    height: 100vh;
+    width: 100vw;
+
+    .LoginContainer {
+      grid-area: 3/4 / span 7 / span 6;
+      box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+    }
+
+    .Login {
+      grid-area: 8/5 / span 1 / span 2;
+      border: 1px solid white;
+      display: grid;
+      place-items: center;
+      margin: 10px;
+      border-radius: 5px;
+
+      a {
+        text-decoration: none;
+      }
+
+      a:hover{
+        color: grey;
+      }
+    }
+
+    .Demo {
+      grid-area: 8/7 / span 1 / span 2;
+      border: 1px solid white;
+      display: grid;
+      place-items: center;
+      margin: 10px;
+      border-radius: 5px;
+
+      a:hover {
+        cursor: pointer;
+        color: grey;
+      }
+    }
+
+   
+
+    .Login .Demo {
+      background-color: grey;
+    }
+
+    .BackToSplash {
+      grid-area: 3/4 / span 1 / span 2;
+      margin: 10px;
+    }
+
+    .Logo {
+      grid-area: 4/5/7/9;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.NavBarContainer {
+  grid-area: 1/1 / span 12 / span 2;
+  border-right: 1px solid white;
+  display: grid;
+  grid: repeat(12, 1fr) / 1fr;
+  max-height: 100vh;
+  position: fixed;
+  z-index: 1;
+  overflow: hidden;
+
+  .Profile {
+    grid-area: 1/1 / span 4 / span 1;
+    height: 100px;
+  }
+
+  .Profile h2 {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .Signout {
+    grid-area: 12/1 / span 1 / span 1;
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid white;
+  }
+}
+
+
+
+@media (min-width: 1000px) {
+
+  .renderedPage .DashBoard {
+    grid-area: 2/3/13/13;
+  }
+
+}
+

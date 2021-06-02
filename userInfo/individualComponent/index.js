@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import Header from '../sample/sampleApp/Header.jsx'; ReactDOM.render(<Header />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import Header from '../Demo User/undefined/Header.js'; ReactDOM.render(<Header />, document.getElementById('root'))
