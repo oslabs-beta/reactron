@@ -81,84 +81,86 @@ export default function LandingPage(props) {
         useProjName={props.useProjName}
         useLoadStatus={props.useLoadStatus}
       />
-      <Header />
-      <div className='instructions'>
-        <p>
-          Select a Previous Project from the Side
-          <br />
-          - OR - <br />
-          Upload a New Project Below
-          <br />
-          {/* In order for Reactron to process your application files correctly,
-          please follow these instructions. <br />
-          If you have a CSS or SCSS file you would like processed, please upload
-          it under the Static Directory. <br />
-          Reactron will look for an <b>index.js</b> file that connects to an{' '}
-          <b>App.jsx</b> component. Please upload your index.js, App.jsx, and
-          any other component files in one directory under the Component
-          Directory below. */}
-        </p>
-      </div>
-      <div className='staticFiles'>
+      <div className="LandingPageDashboard">
+        <Header />
+        <div className='instructions'>
           <p>
-          <b>StaticDirectory</b>
-          <br /> <i>Example</i>
-          <br /> - style.css
-          <br /> <b>or</b>
-          <br /> - style.scss
-          <br />
-          <br />
-        </p>
-
-        <b>Upload Styling</b>
-        <button className='button' id='static' onClick={staticOnClick}>
-          Select File
-        </button>
-        <p>{staticFile ? `The file has been uploaded` : ''}</p>
-      </div>
-      <div className='componentFiles'>
-        <p>
-          <b>Component Directory</b>
-          <br /> <i>Example</i>
-          <br /> - index.js
-          <br /> - App.jsx
-          <br /> - Component1.jsx
-          <br /> - Component2.jsx
-        </p>
-        <b>Upload Components</b>
-        <button className='button' id='component' onClick={componentOnClick}>
-          Select Folder
-        </button>
-        <p>
-          {components
-            ? `The ${
-                components[Object.keys(components)[0]].handle.name
-              } directory has been uploaded`
-            : ''}
-        </p>
-      </div>
-      {staticFile && components ? (
-        <div className='next'>
-          <p>
-            Your files have been successfully uploaded. Give your project a name
-            and hit the next button for Reactron to begin the rendering process.
-          </p>
-          <form onSubmit={submitDirs}>
-            <input
-              className="NextInputField"
-              required
-              type='text'
-              placeholder='Give your project a name...'
-            />
+            Select a Previous Project from the Side
             <br />
-            <button className='button' type='submit'>
-              Next
-            </button>
-          </form>
+            - OR - <br />
+            Upload a New Project Below
+            <br />
+            {/* In order for Reactron to process your application files correctly,
+            please follow these instructions. <br />
+            If you have a CSS or SCSS file you would like processed, please upload
+            it under the Static Directory. <br />
+            Reactron will look for an <b>index.js</b> file that connects to an{' '}
+            <b>App.jsx</b> component. Please upload your index.js, App.jsx, and
+            any other component files in one directory under the Component
+            Directory below. */}
+          </p>
         </div>
-      ) : (
-        ''
-      )}
+        <div className='staticFiles'>
+            <p>
+            <b>StaticDirectory</b>
+            <br /> <i>Example</i>
+            <br /> - style.css
+            <br /> <b>or</b>
+            <br /> - style.scss
+            <br />
+            <br />
+          </p>
+
+          <b>Upload Styling</b>
+          <button className='button' id='static' onClick={staticOnClick}>
+            Select File
+          </button>
+          <p>{staticFile ? `The file has been uploaded` : ''}</p>
+        </div>
+        <div className='componentFiles'>
+          <p>
+            <b>Component Directory</b>
+            <br /> <i>Example</i>
+            <br /> - index.js
+            <br /> - App.jsx
+            <br /> - Component1.jsx
+            <br /> - Component2.jsx
+          </p>
+          <b>Upload Components</b>
+          <button className='button' id='component' onClick={componentOnClick}>
+            Select Folder
+          </button>
+          <p>
+            {components
+              ? `The ${
+                  components[Object.keys(components)[0]].handle.name
+                } directory has been uploaded`
+              : ''}
+          </p>
+        </div>
+        {staticFile && components ? (
+          <div className='next'>
+            <p>
+              Your files have been successfully uploaded. Give your project a name
+              and hit the next button for Reactron to begin the rendering process.
+            </p>
+            <form onSubmit={submitDirs}>
+              <input
+                className="NextInputField"
+                required
+                type='text'
+                placeholder='Give your project a name...'
+              />
+              <br />
+              <button className='button' type='submit'>
+                Next
+              </button>
+            </form>
+          </div>
+        ) : (
+          ''
+        )}
+      </div>
     </div>
   );
 }
