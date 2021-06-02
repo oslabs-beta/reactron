@@ -11,6 +11,7 @@ export default function NavBarContainer(props) {
         files={props.files}
         username={props.username}
         project={props.project}
+        useLoadStatus={props.useLoadStatus}
       />
       <Signout />
     </div>
