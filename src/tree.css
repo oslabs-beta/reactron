@@ -1,19 +1,24 @@
 .node circle {
-  fill: rgb(247, 106, 214);
-  stroke: rgb(184, 37, 81);
+  fill: rgb(119, 172, 183);
+  stroke: #1d3e53;
   stroke-width: 1.5px;
 }
 
 .node text {
   font-size: 11px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: black;
-  fill: black;
+  background-color: white;
+  color: white;
+  /* fill: black; */
+  fill: white;
+  margin-left: 10px;
+  margin-right: 10px;
   transform: rotate(-90deg);
 }
 
 .node {
   cursor: pointer;
+  color: white;
 }
 
 path.link {
@@ -61,7 +66,7 @@ span {
 
 .blue {
   fill: none;
-  stroke: blue;
+  stroke: #1d3e53;
   stroke-width: 1.5px;
 }
 
@@ -78,6 +83,6 @@ span {
   stroke-width: 1.5px;
 }
 
-.refresh{
-  color : black;
+.refresh {
+  color: black;
 }
