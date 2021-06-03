@@ -100,6 +100,7 @@ fsController.saveFiles = (req, res, next) => {
   res.locals.project = project;
 };
 
+
 fsController.individualBundle = (req, res, next) => {
   // config object for webpack
   const configOptions = {
@@ -127,6 +128,7 @@ fsController.individualBundle = (req, res, next) => {
     }
   });
 };
+
 
 // // runs puppeteer once files have been bundled
 // fsController.runPuppeteer = (req, res, next) => {
