@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
 const webpackConfig = require('../userInfo/webpack.user.config');
-const getRoot = require('../puppeteer.js');
 
 const fsController = {};
 
@@ -129,18 +128,33 @@ fsController.individualBundle = (req, res, next) => {
   });
 };
 
-
-// // runs puppeteer once files have been bundled
-// fsController.runPuppeteer = (req, res, next) => {
-//   console.log('in runPuppeteer');
-//   getRoot('http://localhost:5000').then(async (result) => {
-//     fs.writeFileSync(
-//       path.join(__dirname, '../src/data.ts'),
-//       'export default ' + JSON.stringify(result)
-//     );
-//     return next();
-//   });
-// };
+fsController.demoBundle = (req, res, next) => {
+    // config object for webpack
+    const configOptions = {
+      ...webpackConfig,
+      entry: {
+        main: path.join(
+          __dirname,
+          `../userInfo/demo/demo/index.js`
+        ),
+      },
+      output: {
+        path: path.join(__dirname, `../userInfo/individualComponent/build`),
+        filename: 'bundle.js',
+      },
+    };
+  
+    // creates webpack compiler
+    const compiler = webpack(configOptions);
+  
+    // runs compiler and bundles
+    compiler.run((err, stats) => {
+      if (err) console.log(`There was an error: ${err}`);
+      else {
+        return next();
+      }
+    });
+}
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);
@@ -203,11 +217,14 @@ fsController.runDemo = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', stylesheet);
   fs.writeFileSync('./userInfo/individualComponent/style.css', stylesheet);
 
+  res.locals.username = 'demo';
+  res.locals.project = 'demo';
+
   // config object for webpack
   const configOptions = {
     ...webpackConfig,
     entry: {
-      main: path.join(__dirname, `../userInfo/demo/components/index.js`),
+      main: path.join(__dirname, `../userInfo/demo/demo/index.js`),
     },
     output: {
       path: path.join(__dirname, `../userInfo/build`),

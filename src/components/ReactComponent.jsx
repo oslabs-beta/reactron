@@ -18,14 +18,9 @@ export default class ReactComponent extends React.Component {
 
   componentDidMount() {
     const arr = [
-      <iframe src='http://localhost:3000/secret' id='test'></iframe>,
+      <iframe src='https://app.reactron.io/secret' id='test'></iframe>,
     ];
     this.setState({ component: arr });
-  }
-
-  componentDidUpdate() {
-    const iframe = document.getElementById('test');
-    iframe.src = iframe.src;
   }
 
   render() {

@@ -1,0 +1,11 @@
+/* //overflow-y sects scroll for up and down for a div
+//overflow-x sets scroll for area horizontal
+
+//look at props for each card in react components dev tools */
+body {
+  background: dodgerblue;
+}
+.comiccardcontainer {
+  background: white;
+  border: 2px black;
+}

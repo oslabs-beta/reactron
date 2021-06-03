@@ -14,9 +14,9 @@ export default function App() {
   const [loadStatus, useLoadStatus] = useState(false);
 
   if (username === undefined)
-    return <LoginPage useUsername={useUsername} useFilesArr={useFilesArr} />;
+    return <LoginPage useUsername={useUsername} useFilesArr={useFilesArr} useProjName={useProjName}/>;
   if (username === 'demo')
-    return <RenderedPage username={'Demo User'} filesArr={filesArr} />;
+    return <RenderedPage username={username} filesArr={filesArr} project={projName}/>;
   else
     return (
       <div>

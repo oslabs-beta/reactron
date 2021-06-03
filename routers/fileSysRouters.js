@@ -6,7 +6,6 @@ router.post(
   '/upload',
   fsController.saveFiles,
   fsController.individualBundle,
-  // fsController.runPuppeteer,
   (req, res) => {
     return res.status(200).send('OK');
   }
@@ -24,7 +23,7 @@ router.post('/individual', fsController.individualComponent, (req, res) => {
 router.get(
   '/demo',
   fsController.runDemo,
-  // fsController.runPuppeteer,
+  fsController.demoBundle,
   (req, res) => {
     res.status(200);
   }
@@ -38,7 +37,6 @@ router.post(
   '/prevupload',
   fsController.prevProjectUpload,
   fsController.individualBundle,
-  // fsController.runPuppeteer,
   (req, res) => {
     res.status(200).json(res.locals.files);
   }

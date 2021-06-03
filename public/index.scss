@@ -5,7 +5,6 @@ $button-background: #1d3e53;
 $button-text: white;
 $button-hover: #1d3e53ec;
 $button-text-hover: grey;
-$container-background: white;
 
 * {
   margin: 0;
@@ -286,11 +285,10 @@ body {
   //   writing-mode: vertical-lr;
   //   text-orientation: mixed;
   // }
-  background-color: $container-background;
 }
 
 .node {
-  color: black;
+  color: white;
 }
 
 /* VISUALIZER */
@@ -700,3 +698,38 @@ img {
   }
 }
 
+.refreshbutton {
+  width: 15em;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  margin-bottom: 5px;
+  margin-right: 40px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: rgb(214, 214, 214);
+  }
+}
+
+.SignOutButton {
+  width: 14em;
+  color: black;
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  height: 30px;
+  margin-bottom: 5px;
+  margin-right: 40px;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  &:hover {
+    background-color: rgb(214, 214, 214);
+  }
+}

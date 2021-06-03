@@ -3,7 +3,7 @@ import React from 'react'
 export default function Signout() {
   return (
     <div className="Signout">
-      <a href='/logout'>Signout</a>
+      <button className='SignOutButton'><a href="/logout">Sign Out</a></button>
     </div>
   )
 }

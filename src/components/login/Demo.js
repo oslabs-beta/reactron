@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export default function Demo(props) {
   const demoFiles = [
@@ -37,12 +36,13 @@ export default function Demo(props) {
   ];
   const handleDemo = () => {
     axios.get('/fs/demo');
-    props.useUsername('demo');
+    props.useProjName('demo')
     props.useFilesArr(demoFiles);
+    props.useUsername('demo');
   };
   return (
     <div className='Demo'>
-      <a onClick={handleDemo}>Link to demo</a>
+      <a onClick={handleDemo}>Try the Demo</a>
     </div>
   );
 }
