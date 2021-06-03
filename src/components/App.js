@@ -25,6 +25,7 @@ export default function App() {
             filesArr={filesArr}
             username={username}
             project={projName}
+            useLoadStatus={useLoadStatus}
           />
         ) : (
           <LandingPage

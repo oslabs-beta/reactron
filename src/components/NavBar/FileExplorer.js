@@ -28,6 +28,18 @@ export default function FileExplorer(props) {
   };
   return (
     <div className='FileExplorer'>
+      {props.username !== 'demo' ? (
+        <button
+          className='FileExplorerButton'
+          onClick={() => props.useLoadStatus(false)}
+        >
+          Back
+        </button>
+      ) : (
+        ''
+      )}
+
+      <br></br>
       <h2>Files Uploaded</h2>
       {props.files ? returnArr() : ''}
     </div>

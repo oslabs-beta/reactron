@@ -19,6 +19,7 @@ export default function RenderedPage(props) {
       <NavBarContainerRendered
         files={props.filesArr}
         username={props.username}
+        useLoadStatus={props.useLoadStatus}
         project={props.project}
       />
       <DashBoard refresh={refresh} onClick={refreshTree} />
