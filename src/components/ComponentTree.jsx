@@ -26,59 +26,38 @@ export default function ComponentTree(props) {
           return parentFinder(node.return);
         }
       }
-    }
 
-    const objColors = [
-      'cyan',
-      'red',
-      'orange',
-      'yellow',
-      'green',
-      'blue',
-      'indigo',
-      'violet',
-      'orange',
-    ];
+      const objColors = [
+        'cyan',
+        'red',
+        'orange',
+        'yellow',
+        'green',
+        'blue',
+        'indigo',
+        'violet',
+        'orange',
+      ];
 
-    // Math.floor(Math.random() * objColors.length)
-    function findColor() {
-      // return objColors[Math.floor(Math.random() * objColors.length)];
-      return objColors[5];
-    }
-
-    let rootObj;
-
-    // class Node - corresponds to shape required for react tree graph
-    class Node {
-      constructor(name, parent) {
-        (this.name = name),
-          (this.parent = parent),
-          (this.children = []),
-          (this.color = findColor()),
-          (this.pathProps = { className: findColor() }),
-          (this.textProps = { x: -25, y: 25 });
+      // Math.floor(Math.random() * objColors.length)
+      function findColor() {
+        // return objColors[Math.floor(Math.random() * objColors.length)];
+        return objColors[5];
       }
-    }
 
-    // Requisite for obtaining root node's name
-    // Ends up being an array with react component objects that point to their parent
-    const treeNodes = [new Node('App', 'top')];
+      let rootObj;
 
-    const state = [];
-
-    // Traverses react fiber nodes similar to a linked list
-    function fiberFinder(node) {
-      if (node.sibling !== null) {
-        // If it has a sibling, and the sibling has a type property with a name, it is a React component
-        console.log('node tpye', node.type);
-        console.log('sibling type', node.sibling.type);
-        if (node.sibling.type) {
-          const parent = parentFinder(node);
-          treeNodes.push(new Node(node.sibling.type.name, parent));
+      // class Node - corresponds to shape required for react tree graph
+      class Node {
+        constructor(name, parent) {
+          (this.name = name),
+            (this.parent = parent || 'root'),
+            (this.children = []),
+            (this.color = findColor()),
+            (this.pathProps = { className: findColor() }),
+            (this.textProps = { x: -25, y: 25 });
         }
-        fiberFinder(node.sibling);
       }
-
 
       // Requisite for obtaining root node's name
       // Ends up being an array with react component objects that point to their parent
@@ -102,12 +81,19 @@ export default function ComponentTree(props) {
           if (node.child.type) {
             const parent = parentFinder(node);
             treeNodes.push(new Node(node.child.type.name, parent));
+            
+          }
+          fiberFinder(node.child);
         }
-        fiberFinder(node.child);
       }
-
       fiberFinder(_rootNode);
-      
+      // console.log('this is tree nodes', treeNodes)
+
+      // console.log(state);
+
+      // App
+      //  - Header
+      //  - Nav
       for (let i = 0; i < treeNodes.length; i += 1) {
         if (treeNodes[i].name) {
         // if node parent prop exist, assign node name to child of parent property
@@ -122,32 +108,24 @@ export default function ComponentTree(props) {
                 treeNodes[j].children.push(treeNodes[i]);
                 break;
               }
-
             }
           }
         }
       }
-    }
-
-    rootObj = treeNodes[0];
-    console.log('rootObj', rootObj);
-  };
-
 
       rootObj = treeNodes[0];
       setData(rootObj)
       
     
     }
-
   return (
     <div className='componentTree' data-testid='ComponentTree'>
-      <h2 className='Componentlabel'>Component Tree</h2>
+      <h2 className="Componentlabel">Component Tree</h2>
       <div className='treeGraph' data-testid='Tree'>
         <Tree
           duration={3000}
           svgProps={{
-            transform: 'rotate(90)',
+            transform: 'rotate(90)'
           }}
           animated={true}
           data={data}
@@ -165,7 +143,6 @@ export default function ComponentTree(props) {
           findFrameNodes();
           props.onClick();
         }}>Refresh Tree</button>   
-
       </div>
     </div>
   );
