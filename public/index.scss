@@ -244,8 +244,24 @@ body {
     .Blurb {
       grid-area: 1/7/7/13;
       box-shadow: 0px 8px 24px 0px rgba(149, 157, 165, 0.411);
+      padding: 15px;
+      position: relative;
+      display: grid;
+      place-items: center;
     }
   }
+}
+
+.Blurb-Container {
+  font-size: 20px;
+}
+
+.BlurbComponentlabel {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0px;
 }
 
 // .container {
