@@ -1,1 +1,1 @@
-import React from 'react'; import ReactDOM from 'react-dom'; import SubjectContainer from '../n8innate/Basic/SubjectContainer.jsx'; ReactDOM.render(<SubjectContainer />, document.getElementById('root'))
+import React from 'react'; import ReactDOM from 'react-dom'; import App from '../n8innate/Proj/App.jsx'; ReactDOM.render(<App />, document.getElementById('root'))

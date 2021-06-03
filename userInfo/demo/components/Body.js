@@ -62,11 +62,11 @@ export default class Body extends React.Component {
         <br />
         <h2>Tasks in Progress</h2>
         <br />
-        {inProgressTasks.length > 0 ? inProgressTasks : <b>Add a task!</b>}
+        {inProgressTasks}
         <br />
         <h2>Tasks Completed</h2>
         <br />
-        {completedTasks.length > 0 ? completedTasks : <b>Complete a task!</b>}
+        {completedTasks}
       </div>
     );
   }
