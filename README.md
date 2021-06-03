@@ -80,4 +80,4 @@ Reactron is currently in active development and welcomes any contributions to th
 [Romelo Gilbert](https://github.com/Seymour-creates)
 
 ## License
-MIT - check out [license](https://github.com/oslabs-beta/reactron/LICENSE) page for more details
+MIT - check out [license](https://github.com/oslabs-beta/reactron/blob/main/license) page for more details
