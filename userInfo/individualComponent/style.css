@@ -1,121 +1,52 @@
-
 body {
-  background-color: black;
-  /* margin: 1%; */
-  /* padding: 1%; */
+  font: 14px 'Century Gothic', Futura, sans-serif;
+  margin: 20px;
+  background-color: #999;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: 700;
-  
+  flex-direction: row;
 }
 
-#app-div{
-  background-color: rgb(96, 98, 112);
-  height: auto;
-  width: 100%;
-  position: relative;
-  top: 0px;
-  /* margin: 0% 13%; */
-  /* padding: 15px; */
-  /* border-radius: 5%; */
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#main-container{
-  background-color: rgb(96, 98, 112);
-  color: white;
-  height: auto;
-  width: 90%;
-  margin: 1%;
-  padding: 1%;
-  border-radius: 5%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-#subject-display{
-  background-color: rgb(61, 63, 71);
-  /* min-height: 50vh; */
-  height: auto;
-  width: 99%;
-  /* padding-top: 3%; */
-  margin: 1%;
-  padding: 1%;
-  /* border-radius: 2%; */
-
-  display: grid;
-  grid-template-areas: 
-  header header header
-  box box box;
-}
-
-#subject-bubbles{
-  background-color: rgb(179, 177, 177);
-  color: white;
-  /* min-height: 5vh; */
-  /* height: auto; */
-  width: 8em;
-  /* width: auto; */
-  margin: 1%;
-  /* padding: 7% 20px; */
-  border-radius: 10%;
-  grid-area: box;
-}
-
-#subject-container{
-  background-color: rgb(61, 63, 71);
-  color: white;
-  height: auto;
-  width: 99%;
-  margin: 1%;
-  margin: 1%;
-  padding: 1%;
-  border-radius: 2%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#subject-creator{
-  background-color: rgb(88, 89, 97);
-  height: auto;
-  width: 99%;
-  margin: 1%;
-  padding-right: 10000px;
-  padding: 1%;
-  border-radius: 2%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-}
-
-#starter-guide-header{
-  color: white;
-}
-
-#content-display{
-  background-color: rgb(88, 89, 97);
-  color: black;
-  min-height: 50vh;
-  height: auto;
-  width: 100%;
-  margin: 1%;
-  padding: 1%;
-  border-radius: 2%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.game-info {
+  margin-left: 20px;
 }
