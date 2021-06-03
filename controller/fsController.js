@@ -95,8 +95,8 @@ fsController.runPuppeteer = (req, res, next) => {
       'export default ' + JSON.stringify(result)
     );
     return next();
-  });
-};
+  });};
+
 
 fsController.stylesheet = (req, res, next) => {
   fs.writeFileSync('./userInfo/style.css', req.body.item);

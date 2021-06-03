@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import Tree from 'react-tree-graph';
-import data from '../data.ts';
+// import data from '../data.ts';
 import '../tree.css';
 
-//import func from filesyshelpers to write result of iframe scrape to data.ts file
-
-// Component Tree for React Fiber Tree
-// Currently renders a head node and a node component
-// Probably will need to change once we figure out how to show the tree
-
-//button needs to send a get request to server and call puppeteer as middle ware.
-//or could try to figure out why the
 
 export default function ComponentTree(props) {
+  const [data, setData] = useState({})
 
   const findFrameNodes = () => {
       let _rootNode;
@@ -22,13 +15,12 @@ export default function ComponentTree(props) {
         if (el._reactRootContainer) {
           // Returns root React node
           _rootNode = el._reactRootContainer._internalRoot.current
-          console.log('rootNode', _rootNode);
+
         }
       }
       function parentFinder(node) {
         if (!node.return) return ;
         if (node.return.tag === 0 || node.return.tag === 1) {
-          console.log(`This is the parent's name: ${node.return.type.name}`);
           return node.return.type.name;
         } else {
           return parentFinder(node.return);
@@ -77,8 +69,6 @@ export default function ComponentTree(props) {
       function fiberFinder(node) {
         if (node.sibling !== null) {
           // If it has a sibling, and the sibling has a type property with a name, it is a React component
-          console.log('node tpye',node.type)
-          console.log('sibling type',node.sibling.type)
           if (node.sibling.type) {
             const parent = parentFinder(node);
             treeNodes.push(new Node(node.sibling.type.name, parent));
@@ -88,8 +78,6 @@ export default function ComponentTree(props) {
         }
         if (node.child !== null) {
           // If it has a child, and the child has a type property with a name, it is a React component
-          console.log('node tpye',node.type)
-          console.log('child type',node.child.type)
           if (node.child.type) {
             const parent = parentFinder(node);
             treeNodes.push(new Node(node.child.type.name, parent));
@@ -99,7 +87,7 @@ export default function ComponentTree(props) {
         }
       }
       fiberFinder(_rootNode);
-      console.log('this is tree nodes', treeNodes)
+      // console.log('this is tree nodes', treeNodes)
 
       // console.log(state);
 
@@ -109,7 +97,7 @@ export default function ComponentTree(props) {
       for (let i = 0; i < treeNodes.length; i += 1) {
         if (treeNodes[i].name) {
         // if node parent prop exist, assign node name to child of parent property
-        console.log('which loop trough treeNodes', i)
+        // console.log('which loop trough treeNodes', i)
           if (treeNodes[i].parent) {
             // Header -> App
             const parent = treeNodes[i].parent;
@@ -126,12 +114,10 @@ export default function ComponentTree(props) {
       }
 
       rootObj = treeNodes[0];
-      console.log('rootObj', rootObj);
-
-      // return rootObj;
+      setData(rootObj)
+      
     
-  }
-  
+    }
   return (
     <div className='componentTree' data-testid='ComponentTree'>
       <h2 className="Componentlabel">Component Tree</h2>
@@ -153,14 +139,11 @@ export default function ComponentTree(props) {
           refresh={props.refresh}
         />
         <br />
-        <button onClick={() => {
+        <button classname='refreshbutton'onClick={() => {
           findFrameNodes();
           props.onClick();
-        }}>Refresh Tree</button>
-        <p className='refresh'>{props.refresh}</p>
+        }}>Refresh Tree</button>   
       </div>
-      {/* <HeadNode />
-      <Node /> */}
     </div>
   );
 }

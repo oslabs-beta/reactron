@@ -10,15 +10,7 @@ export default function RenderedPage(props) {
   const [refresh, setRefresh] = useState(0);
 
   const refreshTree = () => {
-    fetch('/fs/rerender')
-      .then((res) => {
-        console.log('response in tree rerender', res);
-      })
-      .then((res) => {
-        setRefresh(refresh + 1);
-        console.log('tree click', refresh);
-      })
-      .catch((err) => console.log('error in tree rerender', err));
+    setRefresh(refresh + 1)
   };
 
   return (
