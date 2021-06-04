@@ -21,8 +21,6 @@ test('should render LandingPage', () => {
   expect(landing).toContainHTML('h1');
   expect(landing).toContainHTML('button');
   expect(landing).toHaveTextContent('Reactron');
-  expect(landing).toHaveTextContent('Static Directory');
-  expect(landing).toHaveTextContent('Component Directory');
 });
 
 
