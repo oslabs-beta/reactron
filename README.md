@@ -15,7 +15,7 @@
 
 [Reactron](https://reactron.io/) bolsters development by rendering three essentials parts of any project: the latest version of your application including functionality, a React Component Tree for a macroscopic view of your project, and single component rendering for a microscopic understanding.
 
-Reactron is currently in active development so we welcome any constructive feedback or contributions to this product. Please follow this repo for contribution guidelines and our development road map.
+As of March 2022, Reactron is no longer an active project and cannot be accessed from reactron.io. Please feel free to continue to fork and use on your own.
 
 <!-- ## Features in the pipeline
 <img src="https://github.com/ReactION-js/ReactION/blob/master/src/ReactION-sample.png?raw=true" alt="features">
